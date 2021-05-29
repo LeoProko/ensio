@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> &page_title& </title>
+  <meta name="description" content="Ensio">
+  <meta name="author" content="leoproko">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/base.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/ensio_logo.png' %}">
+</head>
+
+
+&content_css&
+
+<body>
+  <div class="header" id="ensio_header">
+      <a href="/" style="color:inherit;"> ENSIO </a>
+  </div>
+
+  <div id="content">
+    &content_html&
+  </div>
+
+  <div class="footer" id="ensio_footer">
+    2021, Ensio
+  </div>
+</body>
+
+&content_js&
+
+</html>
+

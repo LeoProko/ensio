@@ -1,0 +1,130 @@
+<style>
+:root {
+  --key-color: #009e9e;
+  --gray-color: #474747;
+  --link-color: #4676D4;
+  font-family: Montserrat;
+}
+
+html {
+  font-family: Ubuntu;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: Ubuntu;
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 4px 2px;
+  opacity: 0.7;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+input:hover {
+    opacity: 1
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    color: black;
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background: white;
+}
+
+tr:nth-child(even) {
+    background: #ddd;
+}
+
+body {
+  background: #000729;
+  color: white;
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  top: 10px;
+  height: 60px;
+}
+
+.footer {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+#content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+#ensio_header{
+  position: fixed;
+  height: auto;
+  backdrop-filter: blur(5px);
+  color: var(--gray-color);
+  font-size: 36px;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#ensio_footer {
+  background: black;
+  color: white;
+  height: 44px;
+  font-size: 18px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 44px;
+}
+
+/*h1 {*/
+  /*color: black;*/
+  /*font-weight: bold;*/
+  /*font-size: 30px;*/
+  /*margin-top: 30px;*/
+  /*margin-bottom: 10px;*/
+/*}*/
+
+/*h2 {*/
+  /*margin-top: 30px;*/
+  /*margin-bottom: 10px;*/
+  /*color: black;*/
+  /*font-weight: bold;*/
+  /*font-size: 24px;*/
+/*}*/
+
+/*strong {*/
+  /*font-weight: 500 !important;*/
+/*}*/
+
+a {
+  color: var(--link-color);
+  text-decoration: none
+}
+
+a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+</style>

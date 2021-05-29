@@ -1,0 +1,32 @@
+<h2> Orders </h2>
+<form action="{% url 'new_order' %}">
+    <input type="submit" value="New order" />
+</form>
+<b> Found {{ orders_count }} orders </b>
+<table>
+    <tr>
+        <th> ID </th>
+        <th> Item </th>
+        <th> Status </th>
+        <th> First name </th>
+        <th> Surname </th>
+        <th> Phone number </th>
+        <th> Date created </th>
+        <th> Change </th>
+        <th> Remove </th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td> {{ order.id }} </td>
+        <td> {{ order.item.name }} </td>
+        <td> {{ order.status }} </td>
+        <td> {{ order.customer.first_name }} </td>
+        <td> {{ order.customer.surname }} </td>
+        <td> {{ order.customer.phone_number }} </td>
+        <td> {{ order.date_created }} </td>
+        <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
+        <td> <a href="{% url 'delete_order' order.id %}"> Remove </a> </td>
+    </tr>
+    {% endfor %}
+</table>
+

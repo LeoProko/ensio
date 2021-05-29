@@ -1,0 +1,21 @@
+<h2> Customers </h2>
+<b> Found {{ customers_count }} customers </b>
+<table>
+    <tr>
+        <th> Orders </th>
+        <th> First name </th>
+        <th> Surname </th>
+        <th> Phone number </th>
+        <th> Date created </th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+        <td> <a href="{% url 'customer' customer.id %}"> View </a> </td>
+        <td> {{ customer.first_name }} </td>
+        <td> {{ customer.surname }} </td>
+        <td> {{ customer.phone_number }} </td>
+        <td> {{ customer.date_created }} </td>
+    </tr>
+    {% endfor %}
+</table>
+

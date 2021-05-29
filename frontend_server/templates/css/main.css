@@ -1,0 +1,14 @@
+<style>
+#content {
+  width: 80%;
+  max-width: 700px;
+  margin: 60px auto;
+}
+
+input {
+    width:200px;
+}
+#navigation {
+    text-align: center;
+}
+</style>

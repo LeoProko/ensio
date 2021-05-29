@@ -1,0 +1,34 @@
+<b> Name: </b> {{ customer.first_name }} {{ customer.surname }} 
+<br>
+<b> Phone number: </b> {{ customer.phone_number }}
+<br>
+<b> Orders: </b> {{ orders_count }}
+<table>
+    <tr>
+        <th> ID </th>
+        <th> Item </th>
+        <th> Tags </th>
+        <th> Price </th>
+        <th> Date created </th>
+        <th> Status </th>
+        <th> Change </th>
+        <th> Remove </th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td> {{ order.id }} </td>
+        <td> {{ order.item.name }} </td>
+        <td> 
+            {% for tag in order.item.tags.all %}
+                {{ tag }} 
+            {% endfor %}
+        </td>
+        <td> {{ order.item.price }} </td>
+        <td> {{ order.date_created }} </td>
+        <td> {{ order.status }} </td>
+        <td> <a href=""> Change </a> </td>
+        <td> <a href=""> Remove </a> </td>
+    </tr>
+    {% endfor %}
+</table>
+
