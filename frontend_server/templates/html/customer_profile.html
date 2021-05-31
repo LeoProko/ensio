@@ -2,6 +2,9 @@
 <br>
 <b> Phone number: </b> {{ customer.phone_number }}
 <br>
+<form action="{% url 'new_order' customer.id %}">
+    <input type="submit" value="New order" />
+</form>
 <b> Orders: </b> {{ orders_count }}
 <table>
     <tr>
@@ -26,8 +29,8 @@
         <td> {{ order.item.price }} </td>
         <td> {{ order.date_created }} </td>
         <td> {{ order.status }} </td>
-        <td> <a href=""> Change </a> </td>
-        <td> <a href=""> Remove </a> </td>
+        <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
+        <td> <a href="{% url 'delete_order' order.id %}"> Remove </a> </td>
     </tr>
     {% endfor %}
 </table>

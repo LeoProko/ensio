@@ -1,8 +1,11 @@
 <h2> Orders </h2>
-<form action="{% url 'new_order' %}">
-    <input type="submit" value="New order" />
-</form>
 <b> Found {{ orders_count }} orders </b>
+<form method="get">
+    {{ filter.form }}
+    <button type="submit">
+        Search
+    </button>
+</form>
 <table>
     <tr>
         <th> ID </th>

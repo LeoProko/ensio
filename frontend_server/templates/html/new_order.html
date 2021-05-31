@@ -1,7 +1,11 @@
-<h2> New order </h2>
+<h2> New order for {{ customer.first_name }} {{ customer.surname }} </h2>
+<h3> Phone number: {{ customer.phone_number }} </h3>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {{ form }}
+    {{ forms.management_form }}
+    {% for form in forms %}
+        {{ form }}
+        <hr>
+    {% endfor %}
     <input type="submit" value="Submit" />
 </form>

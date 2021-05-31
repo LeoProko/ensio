@@ -9,6 +9,8 @@
   <meta name="author" content="leoproko">
   <link rel="stylesheet" tepe="text/css" href="{% static '/css/base.css' %}">
   <link rel="icon" type="image/png" href="{% static 'img/ensio_logo.png' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 
@@ -16,7 +18,29 @@
 
 <body>
   <div class="header" id="ensio_header">
-      <a href="/" style="color:inherit;"> ENSIO </a>
+      <div id="header_buttons">
+          <a href="/"> Ensio </a>
+          <img src="{% static '/img/header_line.svg' %}" id="header_line">
+          <a href="/">
+              <input type="button" value="Money">
+          </a>
+          <a href="/employees/">
+              <input type="button" value="Staff">
+          </a>
+          <a href="/orders/">
+              <input type="button" value="Orders">
+          </a>
+          <a href="/">
+              <input type="button" value="Stock">
+          </a>
+          <img src="{% static '/img/header_line.svg' %}" id="header_line">
+          <a href="/">
+              <input type="button" value="Register">
+          </a>
+          <a href="/">
+              <input type="button" value="Login">
+          </a>
+      </div>
   </div>
 
   <div id="content">
@@ -24,7 +48,7 @@
   </div>
 
   <div class="footer" id="ensio_footer">
-    2021, Ensio
+    Ensio, 2021
   </div>
 </body>
 

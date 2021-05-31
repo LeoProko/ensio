@@ -1,14 +1,36 @@
 <style>
 #content {
-  width: 80%;
-  max-width: 700px;
-  margin: 60px auto;
-}
-
-input {
-    width:200px;
-}
-#navigation {
     text-align: center;
+}
+.main_page_block {
+    width: 350;
+    padding-top: 20px;
+}
+.info_block {
+    display: inline-block;
+    padding: 20px;
+}
+.info_block_title {
+    background: #bbbcdb;
+    text-align: center;
+    width: 300px;
+    height: 60px
+}
+.info_block_data {
+    background: white;
+    text-align: center;
+    width: 300px;
+    height: 75px
+}
+.title {
+    font-size: 30px;
+    font-weight: 600;
+    padding:10px;
+    margin:0;
+}
+.value {
+    font-size: 50px;
+    padding:0;
+    margin:0;
 }
 </style>
