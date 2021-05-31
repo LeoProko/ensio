@@ -55,6 +55,35 @@ a:hover {
   color: var(--link-color);
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 3px solid black;
+  border-radius: 3px;
+  -moz-border-radius:3px;
+  width: 100%;
+  margin: 10px;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 8px;
+}
+
+th {
+  background: #fad7ee;
+  color white;
+}
+
+tr:nth-child(odd) {
+  background: #dbdbdb;
+}
+
+tr:nth-child(even) {
+  background: white;
+}
+
 .header {
   width: 100%;
 }

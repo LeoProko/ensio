@@ -10,7 +10,7 @@ from frontend_server.forms import OrderForm
 from frontend_server.filters import OrderFilter
 
 def index(request):
-    template = Template(CustomHtmlFactory.create('Ensio', 'main', 'main', ''))
+    template = Template(CustomHtmlFactory.create('Ensio', 'main', '', ''))
     context = Context({})
     return HttpResponse(template.render(context))
 
