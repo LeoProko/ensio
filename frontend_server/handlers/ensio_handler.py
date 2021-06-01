@@ -107,7 +107,7 @@ def change_order(request, order_id):
             return redirect('/customers/')
 
     context = Context({
-        'form' : order_form,
+        'forms' : [order_form],
     })
     return HttpResponse(template.render(context))
 
