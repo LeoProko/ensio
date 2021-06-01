@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from frontend_server.html_factories.custom import CustomHtmlFactory
 from frontend_server.models import Password, Employee, Item, Customer, Order
-from frontend_server.forms import OrderForm, EmployeeForm
+from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm
 from frontend_server.filters import OrderFilter
 
 def index(request):
@@ -21,6 +21,23 @@ def customers(request):
     context = Context({
         'customers' : customers,
         'customers_count' : customers_count,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+def new_customer(request):
+    template = Template(CustomHtmlFactory.create('New customer', 'new_customer', '', ''))
+    customer_form = CustomerForm()
+
+    if request.method == 'POST':
+        customer_form= CustomerForm(request.POST)
+        if customer_form.is_valid():
+            customer_form.save()
+            print('New customer has been created', request.POST)
+            return redirect('/customers/')
+
+    context = Context({
+        'form' : customer_form,
     })
     return HttpResponse(template.render(context))
 
@@ -50,7 +67,7 @@ def orders(request):
         'orders_count': orders_count,
         'filter' : filter,
     })
-    return HttpResponse(template.render(context))
+    return HtstpResponse(template.render(context))
 
 @csrf_exempt
 def new_order(request):

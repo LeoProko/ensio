@@ -1,5 +1,10 @@
 from  django.forms import ModelForm
-from .models import Order, Employee
+from .models import Customer, Order, Employee
+
+class CustomerForm(ModelForm):
+    class Meta:
+        model = Customer
+        fields = '__all__'
 
 class OrderForm(ModelForm):
     class Meta:

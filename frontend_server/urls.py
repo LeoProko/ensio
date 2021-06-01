@@ -15,6 +15,7 @@ urlpatterns = [
     path('change_employee/<str:employee_id>', ensio_handler.change_employee, name='change_employee'),
     path('delete_employee/<str:employee_id>', ensio_handler.delete_employee, name='delete_employee'),
     path('customers/', ensio_handler.customers, name='customers'),
+    path('new_customer/', ensio_handler.new_customer, name='new_customer'),
     path('orders/', ensio_handler.orders, name='orders'),
     path('new_order/', ensio_handler.new_order, name='new_order'),
     path('new_order/<str:customer_id>', ensio_handler.new_order_by_customer, name='new_order_by_customer'),
