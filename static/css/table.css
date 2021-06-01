@@ -1,0 +1,32 @@
+.data_table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 3px solid black;
+  border-radius: 3px;
+  -moz-border-radius:3px;
+  width: 100%;
+  margin: 10px;
+}
+
+.data_table td,
+.data_table th {
+  border: 1px solid black;
+  text-align: center;
+  padding: 8px;
+}
+
+.data_table th {
+  background: #fad7ee;
+  color white;
+  font-weight: 800;
+}
+
+.data_table tr:nth-child(odd) {
+  background: #dbdbdb;
+  font-weight: 600;
+}
+
+.data_table tr:nth-child(even) {
+  background: white;
+  font-weight: 600;
+}

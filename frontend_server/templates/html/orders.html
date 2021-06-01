@@ -1,12 +1,44 @@
-<h2> Orders </h2>
-<b> Found {{ orders_count }} orders </b>
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+
+<div class="wrapper_hvc">
+    <div class="inline_div left_div center_div">
+        <h2> Orders </h2>
+        <b> Found {{ orders_count.0 }} orders </b>
+        <ul>
+            <li>
+                <b>Received: {{ orders_count.1 }}</b>
+            </li>
+            <li>
+                <b>In work: {{ orders_count.2 }}</b>
+            </li>
+            <li>
+                <b>Raady to delived: {{ orders_count.3 }}</b>
+            </li>
+            <li>
+                <b>On the way: {{ orders_count.4 }}</b>
+            </li>
+            <li>
+                <b>Delivered: {{ orders_count.5 }}</b>
+            </li>
+        </ul>
+    </div>
+    <div class="inline_div right_div center_form">
+        <form action="" method="POST">
+            <a href="{% url 'new_order' %}">
+                <input type="button" value="New order">
+            </a>
+        </form>
+    </div>
+</div>
+
 <form method="get">
     {{ filter.form }}
-    <button type="submit">
-        Search
-    </button>
+    <input type="submit" value="Search">
+    </input>
 </form>
-<table>
+<table class="data_table">
     <tr id="tablde_header">
         <th> ID </th>
         <th> Item </th>

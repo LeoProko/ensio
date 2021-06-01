@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from frontend_server.html_factories.custom import CustomHtmlFactory
 from frontend_server.models import Password, Employee, Item, Customer, Order
-from frontend_server.forms import OrderForm
+from frontend_server.forms import OrderForm, EmployeeForm
 from frontend_server.filters import OrderFilter
 
 def index(request):
@@ -40,7 +40,9 @@ def customer_profile(request, customer_id):
 def orders(request):
     template = Template(CustomHtmlFactory.create('Orders', 'orders', '', ''))
     orders = Order.objects.all()
-    orders_count = orders.count()
+    orders_count = [orders.count()]
+    for status in ['Received', 'In work', 'Ready to deliver', 'On the way', 'Delivered']:
+        orders_count.append(Order.objects.filter(status=status).count())
     filter = OrderFilter(request.GET, queryset=orders)
     orders = filter.qs
     context = Context({
@@ -51,7 +53,26 @@ def orders(request):
     return HttpResponse(template.render(context))
 
 @csrf_exempt
-def new_order(request, customer_id):
+def new_order(request):
+    # OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer', 'item', 'status'), extra=5)
+    template = Template(CustomHtmlFactory.create('New order', 'new_order', '', ''))
+    # order_form_set = OrderFormSet(queryset=Order.objects.none())
+    order_form = OrderForm()
+
+    if request.method == 'POST':
+        order_form= OrderForm(request.POST)
+        if order_form.is_valid():
+            order_form.save()
+            print('New order has been created', request.POST)
+            return redirect('/orders/')
+
+    context = Context({
+        'forms' : [order_form],
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+def new_order_by_customer(request, customer_id):
     OrderFormSet = inlineformset_factory(Customer, Order, fields=('item', 'status'), extra=5)
     customer = Customer.objects.get(id=customer_id)
     template = Template(CustomHtmlFactory.create('New order', 'new_order', '', ''))
@@ -74,7 +95,7 @@ def new_order(request, customer_id):
 
 @csrf_exempt
 def change_order(request, order_id):
-    template = Template(CustomHtmlFactory.create('New order', 'new_order', '', ''))
+    template = Template(CustomHtmlFactory.create('Change order', 'new_order', '', ''))
     order = Order.objects.get(id=order_id)
     order_form = OrderForm(instance=order)
 
@@ -82,7 +103,7 @@ def change_order(request, order_id):
         form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
-            print('New order has been created', request.POST)
+            print('Order', order_id, 'has been changed', request.POST)
             return redirect('/customers/')
 
     context = Context({
@@ -108,6 +129,7 @@ def items(request):
     context = Context({})
     return HttpResponse(template.render(context))
 
+@csrf_exempt
 def show_all_employees(request):
     employees = Employee.objects.all()
     status_count = {
@@ -123,6 +145,54 @@ def show_all_employees(request):
         'status_count': status_count,
     })
     return HttpResponse(template.render(context))
+
+@csrf_exempt
+def new_employee(request):
+    template = Template(CustomHtmlFactory.create('New employee', 'new_employee', '', ''))
+    employee_form = EmployeeForm()
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print('New employee has been created', request.POST)
+            return redirect('/employees/')
+
+    context = Context({
+        'form' : employee_form,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+def change_employee(request, employee_id):
+    template = Template(CustomHtmlFactory.create('Change employee', 'new_employee', '', ''))
+    employee = Employee.objects.get(id=employee_id)
+    employee_form = EmployeeForm(instance=employee)
+
+    if request.method == 'POST':
+        form = EmployeeForm(request.POST, instance=employee)
+        if form.is_valid():
+            form.save()
+            print('Employee', employee_id, 'has been changed', request.POST)
+            return redirect('/employees/')
+
+    context = Context({
+        'form' : employee_form,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+def delete_employee(request, employee_id):
+    template = Template(CustomHtmlFactory.create('Delete employee', 'delete_employee', '', ''))
+    employee = Employee.objects.get(id=employee_id)
+    if request.method == 'POST':
+        employee.delete()
+        return redirect('/employees/')
+
+    context = Context({
+        'employee' : employee,
+    })
+    return HttpResponse(template.render(context))
+
 
 def password(request):
     passwords = Password.objects.all()

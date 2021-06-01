@@ -55,35 +55,6 @@ a:hover {
   color: var(--link-color);
 }
 
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 3px solid black;
-  border-radius: 3px;
-  -moz-border-radius:3px;
-  width: 100%;
-  margin: 10px;
-}
-
-td, th {
-  border: 1px solid black;
-  text-align: center;
-  padding: 8px;
-}
-
-th {
-  background: #fad7ee;
-  color white;
-}
-
-tr:nth-child(odd) {
-  background: #dbdbdb;
-}
-
-tr:nth-child(even) {
-  background: white;
-}
-
 .header {
   width: 100%;
 }
@@ -94,6 +65,10 @@ tr:nth-child(even) {
   font-weight: 500;
   width: 100px;
   height: 30px;
+}
+
+.header input:hover {
+  background: #aec2bb;
 }
 
 .footer {
@@ -112,22 +87,53 @@ tr:nth-child(even) {
 #ensio_header{
   top: 0;
   left: 0;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
   background: rgba(250, 215, 238, 0.9);
   position: fixed;
-  height: auto;
+  height: 110px;
   z-index: 100;
   font-size: 36px;
   font-weight: 600;
   text-align: center;
 }
 
+#ghost_header {
+  height: 60px;
+}
+
 #header_buttons {
-    padding-bottom: 10px;
 }
 
 #header_buttons input {
     vertical-align:middle;
+    margin: 0;
+}
+
+#header_buttons table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  border-radius: 0;
+  min-width: 900px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#header_buttons td {
+    font-size: 45px;
+}
+
+#header_buttons td,
+#header_buttons th,
+#header_buttons tr,
+#header_buttons tr:nth-child(odd),
+#header_buttons tr:nth-child(even) {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin:0;
 }
 
 #header_line {

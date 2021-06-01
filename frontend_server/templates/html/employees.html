@@ -1,3 +1,14 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+
+<div class="center_form">
+    <form action="" method="POST">
+        <a href="{% url 'new_employee' %}">
+            <input type="button" value="New employee">
+        </a>
+    </form>
+</div>
+
 <h2 id="employees_title"> Found {{ employees_count }} employees in the database </h2>
 <ul>
     <li> <b> Works: {{ status_count.works }} </b> </li>
@@ -5,7 +16,7 @@
     <li> <b> Dismissed: {{ status_count.dismissed }} </b> </li>
 </ul>
 
-<table>
+<table class="data_table">
     <tr>
         <th> First Name </th>
         <th> Surname </th>
@@ -32,8 +43,8 @@
         <td> {{ employee.email }} </td>
         <td> {{ employee.start_date }} </td>
         <td> {{ employee.birthday }} </td>
-        <td> <a href=""> Change </a> </td>
-        <td> <a href=""> Remove </a> </td>
+        <td> <a href="{% url 'change_employee' employee.id %}"> Change </a> </td>
+        <td> <a href="{% url 'delete_employee' employee.id %}"> Remove </a> </td>
     </tr>
     {% endfor %}
 </table>

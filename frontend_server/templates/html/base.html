@@ -19,29 +19,48 @@
 <body>
   <div class="header" id="ensio_header">
       <div id="header_buttons">
-          <a href="/"> Ensio </a>
-          <img src="{% static '/img/header_line.svg' %}" id="header_line">
-          <a href="/">
-              <input type="button" value="Money">
-          </a>
-          <a href="/employees/">
-              <input type="button" value="Staff">
-          </a>
-          <a href="/orders/">
-              <input type="button" value="Orders">
-          </a>
-          <a href="/">
-              <input type="button" value="Stock">
-          </a>
-          <img src="{% static '/img/header_line.svg' %}" id="header_line">
-          <a href="/">
-              <input type="button" value="Register">
-          </a>
-          <a href="/">
-              <input type="button" value="Login">
-          </a>
+          <table>
+              <tr>
+                  <td rowspan="2"> <a href="/"> Ensio </a> </th>
+                  <th rowspan="2"> <img src="{% static '/img/header_line.svg' %}" id="header_line"> </th>
+                  <th> <a href="/">
+                      <input type="button" value="Money">
+                  </a> </th>
+                  <th> <a href="/employees/">
+                      <input type="button" value="Staff">
+                  </a> </th>
+                  <th> <a href="/orders/">
+                      <input type="button" value="Orders">
+                  </a> </th>
+                  <th> <a href="/">
+                      <input type="button" value="Stock">
+                  </a> </th>
+                  <th rowspan="2"> <img src="{% static '/img/header_line.svg' %}" id="header_line"> </th>
+                  <th> <a href="/">
+                      <input type="button" value="Register">
+                  </a> </th>
+              </tr>
+              <tr>
+                  <th> <a href="/customers/">
+                      <input type="button" value="Customers">
+                  </a> </th>
+                  <th> <a href="/">
+                      <input type="button" value="---">
+                  </a> </th>
+                  <th> <a href="/">
+                      <input type="button" value="---">
+                  </a> </th>
+                  <th> <a href="/">
+                      <input type="button" value="---">
+                  </a> </th>
+                  <th> <a href="/">
+                      <input type="button" value="Login">
+                  </a> </th>
+              </tr>
+          </table>
       </div>
   </div>
+  <div id=ghost_header></div>
 
   <div id="content">
     &content_html&
