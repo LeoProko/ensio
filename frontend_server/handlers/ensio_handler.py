@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from frontend_server.html_factories.custom import CustomHtmlFactory
 from frontend_server.models import Password, Employee, Item, Customer, Order
 from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm
-from frontend_server.filters import OrderFilter
+from frontend_server.filters import OrderFilter, ItemFilter
 
 def index(request):
     template = Template(CustomHtmlFactory.create('Ensio', 'main', '', ''))
@@ -67,7 +67,7 @@ def orders(request):
         'orders_count': orders_count,
         'filter' : filter,
     })
-    return HtstpResponse(template.render(context))
+    return HttpResponse(template.render(context))
 
 @csrf_exempt
 def new_order(request):
@@ -210,13 +210,28 @@ def delete_employee(request, employee_id):
     })
     return HttpResponse(template.render(context))
 
-
 def password(request):
     passwords = Password.objects.all()
     passwords_count = passwords.count()
     template = Template(CustomHtmlFactory.create('Passwords', 'passwords', '', ''))
     context = Context({
-        'passwords': passwords,
-        'passwords_count': passwords_count,
+        'passwords' : passwords,
+        'passwords_count' : passwords_count,
     })
     return HttpResponse(template.render(context))
+
+def get_stock(request):
+    template = Template(CustomHtmlFactory.create('Stock', 'stock', '', ''))
+
+    items = Item.objects.all()
+    items_count = items.count()
+    filter = ItemFilter(request.GET, queryset=items)
+    items = filter.qs
+
+    context = Context({
+        'items' : items,
+        'filter' : filter,
+        'items_count' : items_count,
+    })
+    return HttpResponse(template.render(context))
+

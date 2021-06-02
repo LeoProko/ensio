@@ -21,5 +21,6 @@ urlpatterns = [
     path('new_order/<str:customer_id>', ensio_handler.new_order_by_customer, name='new_order_by_customer'),
     path('change_order/<str:order_id>', ensio_handler.change_order, name='change_order'),
     path('delete_order/<str:order_id>', ensio_handler.delete_order, name='delete_order'),
+    path('stock/', ensio_handler.get_stock, name='get_stock'),
     path('password/', ensio_handler.password, name='password'),
 ]

@@ -63,8 +63,8 @@ a:hover {
   background: #d1ddde;
   font-size: 18px;
   font-weight: 500;
-  width: 100px;
-  height: 30px;
+  width: 120px;
+  height: 35px;
 }
 
 .header input:hover {
@@ -81,7 +81,7 @@ a:hover {
 #content {
   width: 90%;
   max-width: 1200px;
-  margin: 60px auto;
+  margin: 50px auto;
 }
 
 #ensio_header{
@@ -106,7 +106,7 @@ a:hover {
 
 #header_buttons input {
     vertical-align:middle;
-    margin: 0;
+    margin: 5px;
 }
 
 #header_buttons table {
@@ -116,6 +116,7 @@ a:hover {
   border-radius: 0;
   min-width: 900px;
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   padding: 0;
 }

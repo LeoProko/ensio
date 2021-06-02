@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+
+<div class="wrapper_hvc">
+    <div class="inline_div left_div center_div">
+        <h2> Items </h2>
+        <b> Found {{ items_count }} items </b>
+    </div>
+    <div class="inline_div right_div center_form">
+        <form action="" method="POST">
+            <a href="">
+                <input type="button" value="New item">
+            </a>
+        </form>
+    </div>
+</div>
+
+<form method="get">
+    {{ filter.form }}
+    <input type="submit" value="Search">
+    </input>
+</form>
+<table class="data_table">
+    <tr id="tablde_header">
+        <th> ID </th>
+        <th> Name </th>
+        <th> Tags </th>
+        <th> Price </th>
+        <th> Stock balance </th>
+        <th> Change </th>
+        <th> Remove </th>
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td> {{ item.id }} </td>
+        <td> {{ item.name }} </td>
+        <td>
+            {% for tag in item.tags.all %}
+                {{ tag }}
+                <br>
+            {% endfor %}
+        </td>
+        <td> {{ item.price }} </td>
+        <td> {{ item.stock_balance }} </td>
+        <td> <a href=""> Change </a> </td>
+        <td> <a href=""> Remove </a> </td>
+    </tr>
+    {% endfor %}
+</table>

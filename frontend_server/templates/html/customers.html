@@ -16,6 +16,7 @@
         <th> First name </th>
         <th> Surname </th>
         <th> Phone number </th>
+        <th> Orders count </th>
         <th> Date created </th>
         <th> Change </th>
         <th> Remove </th>
@@ -26,6 +27,7 @@
         <td> {{ customer.first_name }} </td>
         <td> {{ customer.surname }} </td>
         <td> {{ customer.phone_number }} </td>
+        <td> {{ customer.order_set.all.count }} </td>
         <td> {{ customer.date_created }} </td>
         <td> <a href="">Change</a> </td>
         <td> <a href="">Remove</a> </td>
