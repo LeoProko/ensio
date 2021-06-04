@@ -8,6 +8,8 @@
   <meta name="description" content="Ensio">
   <meta name="author" content="leoproko">
   <link rel="stylesheet" tepe="text/css" href="{% static '/css/base.css' %}">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/div.css' %}">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/p.css' %}">
   <link rel="icon" type="image/png" href="{% static 'img/ensio_logo.png' %}">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -47,6 +49,7 @@
   </div>
   <div id="ghost_header"></div>
 
+  {% if not request.user.is_anonymous %}
   <div class="content_wrapper">
 
       <div class="sidebar">
@@ -78,11 +81,23 @@
               <input type="button" value="---">
           </a>
       </div>
-      
+
       <div class="content">
         &content_html&
       </div>
+
   </div>
+  {% else %}
+    
+    <div>
+        <p class="p1 pcenter"> Login to visit this site </p>
+        <hr>
+        <div class="pcenter">
+            &content_html&
+        </div>
+    </div>
+
+  {% endif %}
 
   <div class="footer" id="ensio_footer">
     Ensio, 2021

@@ -6,14 +6,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 
 from frontend_server.html_factories.base import BaseHtmlFactory
 from frontend_server.models import Password, Employee, Item, Customer, Order
 from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm
 from frontend_server.filters import OrderFilter, ItemFilter
+from frontend_server.decorators import unauthenticated_user, allowed_users
 
 @login_required(login_url='login')
-@csrf_exempt
+@allowed_users(allowed_users=[])
 def index(request):
     template = Template(BaseHtmlFactory.create('Ensio', 'main', '', ''))
     context = Context({
@@ -22,7 +24,7 @@ def index(request):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
-@csrf_exempt
+@allowed_users(allowed_users=['cashier'])
 def customers(request):
     customers = Customer.objects.all()
     customers_count = customers.count()
@@ -34,8 +36,9 @@ def customers(request):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=['cashier'])
 def new_customer(request):
     template = Template(BaseHtmlFactory.create('New customer', 'new_customer', '', ''))
     customer_form = CustomerForm()
@@ -54,6 +57,7 @@ def new_customer(request):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
+@allowed_users(allowed_users=['cashier'])
 def customer_profile(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     orders = customer.order_set.all()
@@ -69,7 +73,7 @@ def customer_profile(request, customer_id):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
-@csrf_exempt
+@allowed_users(allowed_users=['cashier'])
 def orders(request):
     template = Template(BaseHtmlFactory.create('Orders', 'orders', '', ''))
     orders = Order.objects.all()
@@ -86,8 +90,9 @@ def orders(request):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=['cashier'])
 def new_order(request):
     # OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer', 'item', 'status'), extra=5)
     template = Template(BaseHtmlFactory.create('New order', 'new_order', '', ''))
@@ -107,8 +112,9 @@ def new_order(request):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
 def new_order_by_customer(request, customer_id):
     OrderFormSet = inlineformset_factory(Customer, Order, fields=('item', 'status'), extra=5)
     customer = Customer.objects.get(id=customer_id)
@@ -131,8 +137,9 @@ def new_order_by_customer(request, customer_id):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
 def change_order(request, order_id):
     template = Template(BaseHtmlFactory.create('Change order', 'new_order', '', ''))
     order = Order.objects.get(id=order_id)
@@ -151,8 +158,9 @@ def change_order(request, order_id):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
 def delete_order(request, order_id):
     template = Template(BaseHtmlFactory.create('Delete order', 'delete_order', '', ''))
     order = Order.objects.get(id=order_id)
@@ -167,7 +175,7 @@ def delete_order(request, order_id):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
-@csrf_exempt
+@allowed_users(allowed_users=[])
 def show_all_employees(request):
     employees = Employee.objects.all()
     status_count = {
@@ -185,8 +193,9 @@ def show_all_employees(request):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
 def new_employee(request):
     template = Template(BaseHtmlFactory.create('New employee', 'new_employee', '', ''))
     employee_form = EmployeeForm()
@@ -203,8 +212,9 @@ def new_employee(request):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
 def change_employee(request, employee_id):
     template = Template(BaseHtmlFactory.create('Change employee', 'new_employee', '', ''))
     employee = Employee.objects.get(id=employee_id)
@@ -223,8 +233,9 @@ def change_employee(request, employee_id):
     })
     return HttpResponse(template.render(context))
 
-@login_required(login_url='login')
 @csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
 def delete_employee(request, employee_id):
     template = Template(BaseHtmlFactory.create('Delete employee', 'delete_employee', '', ''))
     employee = Employee.objects.get(id=employee_id)
@@ -239,7 +250,7 @@ def delete_employee(request, employee_id):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
-@csrf_exempt
+@allowed_users(allowed_users=[])
 def password(request):
     passwords = Password.objects.all()
     passwords_count = passwords.count()
@@ -252,7 +263,7 @@ def password(request):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
-@csrf_exempt
+@allowed_users(allowed_users=[])
 def get_stock(request):
     template = Template(BaseHtmlFactory.create('Stock', 'stock', '', ''))
 
@@ -270,10 +281,8 @@ def get_stock(request):
     return HttpResponse(template.render(context))
 
 @csrf_exempt
+@unauthenticated_user
 def user_login(request):
-    if request.user.is_authenticated:
-        return redirect('index')
-
     template = Template(BaseHtmlFactory.create('Login', 'login', '', ''))
     context = Context({
         'request' : request,
@@ -289,19 +298,19 @@ def user_login(request):
     return HttpResponse(template.render(context))
 
 @csrf_exempt
+@unauthenticated_user
 def user_register(request):
-    if request.user.is_authenticated:
-        return redirect('index')
-
     template = Template(BaseHtmlFactory.create('Register', 'register', '', ''))
     form  = RegisterForm()
 
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            user = form.cleaned_data['username']
-            messages.success(request, user + ' has been registered')
+            user = form.save()
+            username = form.cleaned_data['username']
+            group = Group.objects.get(name='guest')
+            user.groups.add(group)
+            messages.success(request, username + ' has been registered')
             return redirect('index')
 
     context = Context({
@@ -310,7 +319,13 @@ def user_register(request):
     })
     return HttpResponse(template.render(context))
 
-@csrf_exempt
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+def no_permissions(request):
+    template = Template(BaseHtmlFactory.create('No permissions', 'no_permissions', '', ''))
+    context = Context({
+        'request' : request,
+    })
+    return HttpResponse(template.render(context))

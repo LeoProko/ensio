@@ -8,6 +8,7 @@
 
 .center_div {
     margin: 0 auto;
+    vertical-align: middle;
 }
 
 .right_div {
