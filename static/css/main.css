@@ -1,12 +1,10 @@
 #content {
     text-align: center;
 }
-.main_page_block {
-    padding-top: 20px;
-}
 .info_block {
     display: inline-block;
-    padding: 10px;
+    padding: 0 10px;
+    padding-bottom: 20px;
     width: 250px;
 }
 .info_block_title {

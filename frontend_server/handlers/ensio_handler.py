@@ -3,30 +3,41 @@ from django.template import Template, Context
 from django.shortcuts import redirect
 from django.forms import inlineformset_factory
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
-from frontend_server.html_factories.custom import CustomHtmlFactory
+from frontend_server.html_factories.base import BaseHtmlFactory
 from frontend_server.models import Password, Employee, Item, Customer, Order
-from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm
+from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm
 from frontend_server.filters import OrderFilter, ItemFilter
 
+@login_required(login_url='login')
+@csrf_exempt
 def index(request):
-    template = Template(CustomHtmlFactory.create('Ensio', 'main', '', ''))
-    context = Context({})
+    template = Template(BaseHtmlFactory.create('Ensio', 'main', '', ''))
+    context = Context({
+        'request' : request,
+    })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
+@csrf_exempt
 def customers(request):
     customers = Customer.objects.all()
     customers_count = customers.count()
-    template = Template(CustomHtmlFactory.create('Customers', 'customers', '', ''))
+    template = Template(BaseHtmlFactory.create('Customers', 'customers', '', ''))
     context = Context({
+        'request' : request,
         'customers' : customers,
         'customers_count' : customers_count,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def new_customer(request):
-    template = Template(CustomHtmlFactory.create('New customer', 'new_customer', '', ''))
+    template = Template(BaseHtmlFactory.create('New customer', 'new_customer', '', ''))
     customer_form = CustomerForm()
 
     if request.method == 'POST':
@@ -37,25 +48,30 @@ def new_customer(request):
             return redirect('/customers/')
 
     context = Context({
+        'request' : request,
         'form' : customer_form,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 def customer_profile(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     orders = customer.order_set.all()
     orders_count = orders.count()
-    template = Template(CustomHtmlFactory.create(customer.first_name, 'customer_profile', '', ''))
+    template = Template(BaseHtmlFactory.create(customer.first_name, 'customer_profile', '', ''))
 
     context = Context({
+        'request' : request,
         'customer' : customer,
         'orders' : orders,
         'orders_count' : orders_count,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
+@csrf_exempt
 def orders(request):
-    template = Template(CustomHtmlFactory.create('Orders', 'orders', '', ''))
+    template = Template(BaseHtmlFactory.create('Orders', 'orders', '', ''))
     orders = Order.objects.all()
     orders_count = [orders.count()]
     for status in ['Received', 'In work', 'Ready to deliver', 'On the way', 'Delivered']:
@@ -63,16 +79,18 @@ def orders(request):
     filter = OrderFilter(request.GET, queryset=orders)
     orders = filter.qs
     context = Context({
+        'request' : request,
         'orders': orders,
         'orders_count': orders_count,
         'filter' : filter,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def new_order(request):
     # OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer', 'item', 'status'), extra=5)
-    template = Template(CustomHtmlFactory.create('New order', 'new_order', '', ''))
+    template = Template(BaseHtmlFactory.create('New order', 'new_order', '', ''))
     # order_form_set = OrderFormSet(queryset=Order.objects.none())
     order_form = OrderForm()
 
@@ -84,15 +102,17 @@ def new_order(request):
             return redirect('/orders/')
 
     context = Context({
+        'request' : request,
         'forms' : [order_form],
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def new_order_by_customer(request, customer_id):
     OrderFormSet = inlineformset_factory(Customer, Order, fields=('item', 'status'), extra=5)
     customer = Customer.objects.get(id=customer_id)
-    template = Template(CustomHtmlFactory.create('New order', 'new_order', '', ''))
+    template = Template(BaseHtmlFactory.create('New order', 'new_order', '', ''))
     # order_form = OrderForm(initial={'customer' : customer})
     order_form_set = OrderFormSet(queryset=Order.objects.none(), instance=customer)
 
@@ -105,14 +125,16 @@ def new_order_by_customer(request, customer_id):
             return redirect('/customers/' + str(customer.id))
 
     context = Context({
+        'request' : request,
         'customer' : customer,
         'forms' : order_form_set,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def change_order(request, order_id):
-    template = Template(CustomHtmlFactory.create('Change order', 'new_order', '', ''))
+    template = Template(BaseHtmlFactory.create('Change order', 'new_order', '', ''))
     order = Order.objects.get(id=order_id)
     order_form = OrderForm(instance=order)
 
@@ -124,28 +146,27 @@ def change_order(request, order_id):
             return redirect('/customers/')
 
     context = Context({
+        'request' : request,
         'forms' : [order_form],
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def delete_order(request, order_id):
-    template = Template(CustomHtmlFactory.create('Delete order', 'delete_order', '', ''))
+    template = Template(BaseHtmlFactory.create('Delete order', 'delete_order', '', ''))
     order = Order.objects.get(id=order_id)
     if request.method == 'POST':
         order.delete()
         return redirect('/customers/')
 
     context = Context({
+        'request' : request,
         'order' : order,
     })
     return HttpResponse(template.render(context))
 
-def items(request):
-    template = Template(CustomHtmlFactory.create('Items', 'items', '', ''))
-    context = Context({})
-    return HttpResponse(template.render(context))
-
+@login_required(login_url='login')
 @csrf_exempt
 def show_all_employees(request):
     employees = Employee.objects.all()
@@ -155,17 +176,19 @@ def show_all_employees(request):
         'dismissed' : employees.filter(status='Dismissed').count(),
     }
     employees_count = employees.count()
-    template = Template(CustomHtmlFactory.create('Employees', 'employees', '', ''))
+    template = Template(BaseHtmlFactory.create('Employees', 'employees', '', ''))
     context = Context({
+        'request' : request,
         'employees': employees,
         'employees_count': employees_count,
         'status_count': status_count,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def new_employee(request):
-    template = Template(CustomHtmlFactory.create('New employee', 'new_employee', '', ''))
+    template = Template(BaseHtmlFactory.create('New employee', 'new_employee', '', ''))
     employee_form = EmployeeForm()
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
@@ -175,13 +198,15 @@ def new_employee(request):
             return redirect('/employees/')
 
     context = Context({
+        'request' : request,
         'form' : employee_form,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def change_employee(request, employee_id):
-    template = Template(CustomHtmlFactory.create('Change employee', 'new_employee', '', ''))
+    template = Template(BaseHtmlFactory.create('Change employee', 'new_employee', '', ''))
     employee = Employee.objects.get(id=employee_id)
     employee_form = EmployeeForm(instance=employee)
 
@@ -193,35 +218,43 @@ def change_employee(request, employee_id):
             return redirect('/employees/')
 
     context = Context({
+        'request' : request,
         'form' : employee_form,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
 @csrf_exempt
 def delete_employee(request, employee_id):
-    template = Template(CustomHtmlFactory.create('Delete employee', 'delete_employee', '', ''))
+    template = Template(BaseHtmlFactory.create('Delete employee', 'delete_employee', '', ''))
     employee = Employee.objects.get(id=employee_id)
     if request.method == 'POST':
         employee.delete()
         return redirect('/employees/')
 
     context = Context({
+        'request' : request,
         'employee' : employee,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
+@csrf_exempt
 def password(request):
     passwords = Password.objects.all()
     passwords_count = passwords.count()
-    template = Template(CustomHtmlFactory.create('Passwords', 'passwords', '', ''))
+    template = Template(BaseHtmlFactory.create('Passwords', 'passwords', '', ''))
     context = Context({
+        'request' : request,
         'passwords' : passwords,
         'passwords_count' : passwords_count,
     })
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login')
+@csrf_exempt
 def get_stock(request):
-    template = Template(CustomHtmlFactory.create('Stock', 'stock', '', ''))
+    template = Template(BaseHtmlFactory.create('Stock', 'stock', '', ''))
 
     items = Item.objects.all()
     items_count = items.count()
@@ -229,9 +262,55 @@ def get_stock(request):
     items = filter.qs
 
     context = Context({
+        'request' : request,
         'items' : items,
         'filter' : filter,
         'items_count' : items_count,
     })
     return HttpResponse(template.render(context))
 
+@csrf_exempt
+def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    template = Template(BaseHtmlFactory.create('Login', 'login', '', ''))
+    context = Context({
+        'request' : request,
+    })
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password = password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        messages.info(request, 'Username or password in incorrect')
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+def user_register(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+
+    template = Template(BaseHtmlFactory.create('Register', 'register', '', ''))
+    form  = RegisterForm()
+
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data['username']
+            messages.success(request, user + ' has been registered')
+            return redirect('index')
+
+    context = Context({
+        'request' : request,
+        'form' : form
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+def user_logout(request):
+    logout(request)
+    return redirect('login')

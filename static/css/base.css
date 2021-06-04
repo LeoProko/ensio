@@ -1,10 +1,6 @@
 <style>
 :root {
-  --pink-color: #fad7ee;
-  --purple-color: #dbdaec;
-  --green-color: #d1ddde;
   --link-color: #4676D4;
-  font-family: Montserrat;
 }
 
 html {
@@ -18,32 +14,31 @@ input {
   appearance: none;
   border: none;
   color: black;
-  text-align: center;
+  text-align: left;
   font-size: 16px;
   font-weight: 500;
 }
 
 body {
   width: 100%;
-  background: #dbdaec;
+  background: #EAF7FB;
   color: black;
   font-size:18px;
+  margin: 0 auto;
 }
 
 h1 {
   color: black;
   font-weight: bold;
   font-size: 30px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 h2 {
   color: black;
   font-weight: bold;
   font-size: 24px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 a {
@@ -63,25 +58,53 @@ a:hover {
   background: #d1ddde;
   font-size: 18px;
   font-weight: 500;
-  width: 120px;
+  width: auto;
+  padding: 0 20px;
   height: 35px;
-}
-
-.header input:hover {
-  background: #aec2bb;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .footer {
   background:#fad7ee;
   width: 100%;
   bottom: 0;
+  left: 0;
   position: fixed;
 }
 
-#content {
-  width: 90%;
-  max-width: 1200px;
-  margin: 50px auto;
+.content_wrapper {
+  margin: -10px auto;
+}
+
+.sidebar {
+  background: #E0F0F5;
+  width: 166px;
+  position: fixed;
+  height: 100%;
+  margin-top: -20px;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar input {
+  background: #D5E8E9;
+  font-size: 18px;
+  font-weight: 500;
+  width: 160px;
+  height: 35px;
+  text-align: center;
+  margin: 1.5px 3px;
+}
+
+.content {
+  width: calc(100% - 250px);
+  margin-top: 20px;
+  margin-left: 200px;
+  padding-right: 50px;
 }
 
 #ensio_header{
@@ -90,51 +113,30 @@ a:hover {
   backdrop-filter: blur(2px);
   background: rgba(250, 215, 238, 0.9);
   position: fixed;
-  height: 110px;
-  z-index: 100;
+  height: 50px;
   font-size: 36px;
   font-weight: 600;
-  text-align: center;
 }
 
 #ghost_header {
   height: 60px;
 }
 
-#header_buttons {
+.left_header a {
+  margin-left: 30px;
 }
 
-#header_buttons input {
-    vertical-align:middle;
-    margin: 5px;
+.right_header {
+  text-align: right;
+}
+
+.right_header a {
+  margin-right: 10px;
 }
 
 #header_buttons table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: 0;
-  border-radius: 0;
-  min-width: 900px;
-  max-width: 1000px;
   width: 100%;
-  margin: 0 auto;
-  padding: 0;
-}
-
-#header_buttons td {
-    font-size: 45px;
-}
-
-#header_buttons td,
-#header_buttons th,
-#header_buttons tr,
-#header_buttons tr:nth-child(odd),
-#header_buttons tr:nth-child(even) {
-  background: none;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  margin:0;
+  margin-top: -10px;
 }
 
 #header_line {

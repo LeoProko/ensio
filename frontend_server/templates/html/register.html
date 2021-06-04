@@ -1,0 +1,11 @@
+<h2>Register</h2>
+<form method="POST" action="">
+    {% for field in form %}
+        {{ field.label }}
+        {{ field }}
+        {{ field.help_text }}
+        <hr>
+    {% endfor %}
+    <input type="submit" value="Register">
+    {{ form.errors }}
+</form>
