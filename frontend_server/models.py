@@ -78,3 +78,11 @@ class Order(models.Model):
     def __str__(self):
         return self.customer.first_name + ' ' + self.customer.surname + ' ' + self.status
 
+class Document(models.Model):
+    title = models.CharField(max_length=200, null=True)
+    owner = models.CharField(max_length=50, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    text_data = models.TextField(null=True)
+
+    def __str__(self):
+        return self.title

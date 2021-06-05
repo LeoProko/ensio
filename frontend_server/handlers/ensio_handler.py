@@ -8,11 +8,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
+from markdown import markdown
+
 from frontend_server.html_factories.base import BaseHtmlFactory
-from frontend_server.models import Password, Employee, Item, Customer, Order
-from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm
+from frontend_server.models import Password, Employee, Item, Customer, Order, Document
+from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm, DocumentForm
 from frontend_server.filters import OrderFilter, ItemFilter
 from frontend_server.decorators import unauthenticated_user, allowed_users
+
 
 @login_required(login_url='login')
 @allowed_users(allowed_users=[])
@@ -44,7 +47,7 @@ def new_customer(request):
     customer_form = CustomerForm()
 
     if request.method == 'POST':
-        customer_form= CustomerForm(request.POST)
+        customer_form = CustomerForm(request.POST)
         if customer_form.is_valid():
             customer_form.save()
             print('New customer has been created', request.POST)
@@ -150,7 +153,7 @@ def change_order(request, order_id):
         if form.is_valid():
             form.save()
             print('Order', order_id, 'has been changed', request.POST)
-            return redirect('/customers/')
+            return redirect('/orders/')
 
     context = Context({
         'request' : request,
@@ -327,5 +330,92 @@ def no_permissions(request):
     template = Template(BaseHtmlFactory.create('No permissions', 'no_permissions', '', ''))
     context = Context({
         'request' : request,
+    })
+    return HttpResponse(template.render(context))
+
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
+def get_documents(request):
+    template = Template(BaseHtmlFactory.create('Documents', 'documents', '', ''))
+    documents = Document.objects.all()
+    documents_count = documents.count()
+    context = Context({
+        'documents' : documents,
+        'documents_count' : documents_count,
+        'request' : request,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=['cashier'])
+def new_document(request):
+    template = Template(BaseHtmlFactory.create('New document', 'new_document', '', ''))
+    document_form = DocumentForm(initial={'owner':request.user})
+
+    if request.method == 'POST':
+        document_form = DocumentForm(request.POST)
+        if document_form.is_valid():
+            form = document_form.save(commit=False)
+            form.text_data = markdown(form.text_data)
+            form.save()
+            print('New document has been created', request.POST)
+            return redirect('/documents/')
+
+    context = Context({
+        'request' : request,
+        'form' : document_form,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
+def change_document(request, document_id):
+    template = Template(BaseHtmlFactory.create('Document', 'new_document', '', ''))
+    document = Document.objects.get(id=document_id)
+    document_form = DocumentForm(instance=document)
+
+    if request.method == 'POST':
+        document_form = DocumentForm(request.POST, instance=document)
+        if document_form.is_valid():
+            form = document_form.save(commit=False)
+            form.text_data = markdown(form.text_data)
+            form.save()
+            print('Document', document_id, 'has been created', request.POST)
+            return redirect('/documents/')
+
+    context = Context({
+        'request' : request,
+        'form' : document_form,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
+def view_document(request, document_id):
+    template = Template(BaseHtmlFactory.create('Document', 'view_document', '', ''))
+    document = Document.objects.get(id=document_id)
+    context = Context({
+        'request' : request,
+        'document' : document,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
+def delete_document(request, document_id):
+    template = Template(BaseHtmlFactory.create('Remove document', 'delete_document', '', ''))
+    document = Document.objects.get(id=document_id)
+    document.text_data = markdown(document.text_data)
+    if request.method == 'POST':
+        document.delete()
+        return redirect('/documents/')
+
+    context = Context({
+        'request' : request,
+        'document' : document,
     })
     return HttpResponse(template.render(context))

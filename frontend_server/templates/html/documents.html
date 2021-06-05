@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+
+<h2> Documents </h2>
+<b> Found {{ documents_count }} documents </b>
+<div class="center_form">
+    <form action="" method="POST">
+        <a href="{% url 'new_document' %}">
+            <input type="button" value="New document">
+        </a>
+    </form>
+</div>
+<table class="data_table">
+    <tr>
+        <th> Id </th>
+        <th> Title </th>
+        <th> Owner </th>
+        <th> Date created </th>
+        <th> View </th>
+        <th> Change </th>
+        <th> Remove </th>
+    </tr>
+    {% for document in documents %}
+    <tr>
+        <td> {{ document.id }} </td>
+        <td> {{ document.title }} </td>
+        <td> {{ document.owner }} </td>
+        <td> {{ document.date_created }} </td>
+        <td> <a href="{% url 'view_document' document.id %}">View</a> </td>
+        <td> <a href="{% url 'change_document' document.id %}">Change</a> </td>
+        <td> <a href="{% url 'delete_document' document.id %}">Remove</a> </td>
+    </tr>
+    {% endfor %}
+</table>
+
+

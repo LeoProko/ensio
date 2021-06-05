@@ -2,6 +2,22 @@
   font-size:42px;
 }
 
+.p2 {
+  font-size:32px;
+}
+
+.p3 {
+  font-size:22px;
+}
+
 .pcenter {
   text-align: center;
+}
+
+.pleft {
+  text-align: left;
+}
+
+.pright {
+  text-align: right;
 }

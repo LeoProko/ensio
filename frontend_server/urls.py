@@ -21,7 +21,7 @@ urlpatterns = [
     path('change_order/<str:order_id>', ensio_handler.change_order, name='change_order'),
     path('delete_order/<str:order_id>', ensio_handler.delete_order, name='delete_order'),
 
-    path('stock/', ensio_handler.get_stock, name='get_stock'),
+    path('stock/', ensio_handler.get_stock, name='stock'),
 
     path('employees/', ensio_handler.show_all_employees, name='employees'),
     path('new_employee/', ensio_handler.new_employee, name='new_employee'),
@@ -29,4 +29,10 @@ urlpatterns = [
     path('delete_employee/<str:employee_id>', ensio_handler.delete_employee, name='delete_employee'),
 
     path('password/', ensio_handler.password, name='password'),
+
+    path('document/<str:document_id>', ensio_handler.view_document, name='view_document'),
+    path('documents/', ensio_handler.get_documents, name='documents'),
+    path('new_document/', ensio_handler.new_document, name='new_document'),
+    path('change_document/<str:document_id>', ensio_handler.change_document, name='change_document'),
+    path('delete_document/<str:document_id>', ensio_handler.delete_document, name='delete_document'),
 ]

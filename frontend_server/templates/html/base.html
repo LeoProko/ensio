@@ -53,31 +53,31 @@
   <div class="content_wrapper">
 
       <div class="sidebar">
-          <a href="/">
+          <a href="{% url 'index' %}">
               <input type="button" value="Money">
           </a>
-          <a href="/employees/">
+          <a href="{% url 'employees' %}">
               <input type="button" value="Staff">
           </a>
-          <a href="/orders/">
+          <a href="{% url 'orders' %}">
               <input type="button" value="Orders">
           </a>
-          <a href="/stock/">
+          <a href="{% url 'stock' %}">
               <input type="button" value="Stock">
           </a>
-          <a href="/customers/">
+          <a href="{% url 'customers' %}">
               <input type="button" value="Customers">
           </a>
-          <a href="/password/">
+          <a href="{% url 'password' %}">
               <input type="button" value="Passwords">
           </a> </th>
-          <a href="/">
+          <a href="{% url 'documents' %}">
+              <input type="button" value="Documents">
+          </a>
+          <a href="{% url 'index' %}">
               <input type="button" value="---">
           </a>
-          <a href="/">
-              <input type="button" value="---">
-          </a>
-          <a href="/">
+          <a href="{% url 'index' %}">
               <input type="button" value="---">
           </a>
       </div>
@@ -98,6 +98,8 @@
     </div>
 
   {% endif %}
+
+  <div class="ghost_footer"></div>
 
   <div class="footer" id="ensio_footer">
     Ensio, 2021

@@ -65,6 +65,10 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.ghost_footer {
+  height: 70px;
+}
+
 .footer {
   background:#fad7ee;
   width: 100%;
