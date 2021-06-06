@@ -11,3 +11,24 @@
   border: 4px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
+.input_form input {
+  font-size: 18px;
+  padding: 3px;
+  font-weight: 600;
+  background: #d1ddde;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin:5px;
+}
+
+.long_button input {
+  text-align: center;
+  font-size: 25px;
+  width: 45%;
+  font-weight: 600;
+  background: #d1ddde;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin: 5px;
+}

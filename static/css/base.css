@@ -30,14 +30,21 @@ body {
 h1 {
   color: black;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 42px;
   margin: 0;
 }
 
 h2 {
   color: black;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 32px;
+  margin: 0;
+}
+
+h3 {
+  color: black;
+  font-weight: bold;
+  font-size: 26px;
   margin: 0;
 }
 

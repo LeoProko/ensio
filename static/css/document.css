@@ -1,0 +1,25 @@
+.document_title, .document_body {
+  width: 90%;
+  max-width: 1000px;
+  background:white;
+  padding:10px 40px;
+}
+
+.document_body {
+  margin-top: 30px;
+  padding-top: 40px;
+  padding-bottom: 25px;
+}
+
+.document_textarea textarea {
+  padding: 20px;
+  width: calc(100% - 40px);
+  height: auto;
+  min-height: 200px;
+  border: 1px solid black;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  resize: none;
+  outline: none;
+  overflow: hidden;
+}

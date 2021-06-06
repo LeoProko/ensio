@@ -30,3 +30,4 @@ class DocumentForm(ModelForm):
     class Meta:
         model = Document
         fields = '__all__'
+        exclude = ['html_data']

@@ -1,13 +1,16 @@
 .p1 {
   font-size:42px;
+  margin: 0;
 }
 
 .p2 {
   font-size:32px;
+  margin: 0;
 }
 
 .p3 {
-  font-size:22px;
+  font-size:26px;
+  margin: 0;
 }
 
 .pcenter {

@@ -1,4 +1,41 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static 'css/p.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/document.css' %}">
+
+<div class="center_div">
+</div>
 <form action="" method="POST">
-    {{ form }}
-    <input type="submit" value="Submit" />
+    <div class="center_div document_title">
+        <p class="pcenter p3">
+            This is Document editor. Heare you can use <b>Markdown</b> for text formatting.
+        </p>
+        <hr>
+        <h2> Title: 
+            <div class="input_form inline_div">
+                {{ form.title }}
+            </div>
+        </h2>
+        <i> Author:
+            <div class="input_form inline_div">
+                {{ form.owner }}
+            </div>
+        </i>
+        <br>
+        <i> Date created: {{ document.date_created }} </i>
+        <hr>
+        <div class="long_button">
+            <input type="submit" value="Save" />
+            <a href="{% url 'view_document' document.id %}">
+                <input type="button" value="View" />
+            </a>
+        </div>
+    </div>
+    <div class="document_body center_div document_textarea">
+        <p class="p3">
+        {{ form.markdown_data }}
+        </p>
+    </div>
 </form>
+
+<script type="text/javascript" src="{% static 'js/document.js' %}"></script>

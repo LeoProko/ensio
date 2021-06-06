@@ -357,7 +357,7 @@ def new_document(request):
         document_form = DocumentForm(request.POST)
         if document_form.is_valid():
             form = document_form.save(commit=False)
-            form.text_data = markdown(form.text_data)
+            form.html_data = markdown(form.markdown_data)
             form.save()
             print('New document has been created', request.POST)
             return redirect('/documents/')
@@ -380,13 +380,14 @@ def change_document(request, document_id):
         document_form = DocumentForm(request.POST, instance=document)
         if document_form.is_valid():
             form = document_form.save(commit=False)
-            form.text_data = markdown(form.text_data)
+            form.html_data = markdown(form.markdown_data)
             form.save()
             print('Document', document_id, 'has been created', request.POST)
-            return redirect('/documents/')
+            return redirect('/change_document/' + document_id)
 
     context = Context({
         'request' : request,
+        'document' : document,
         'form' : document_form,
     })
     return HttpResponse(template.render(context))
@@ -395,7 +396,7 @@ def change_document(request, document_id):
 @login_required(login_url='login')
 @allowed_users(allowed_users=[])
 def view_document(request, document_id):
-    template = Template(BaseHtmlFactory.create('Document', 'view_document', '', ''))
+    template = Template(BaseHtmlFactory.create('Document', 'document', '', ''))
     document = Document.objects.get(id=document_id)
     context = Context({
         'request' : request,
@@ -409,7 +410,6 @@ def view_document(request, document_id):
 def delete_document(request, document_id):
     template = Template(BaseHtmlFactory.create('Remove document', 'delete_document', '', ''))
     document = Document.objects.get(id=document_id)
-    document.text_data = markdown(document.text_data)
     if request.method == 'POST':
         document.delete()
         return redirect('/documents/')

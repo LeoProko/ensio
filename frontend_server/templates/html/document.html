@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/p.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/document.css' %}">
+
+
+<div class="center_div document_title">
+    <h1> {{ document.title }} </h1>
+    <i> Author: {{ document.owner }} </i>
+    <br>
+    <i> Date created: {{ document.date_created }} </i>
+    <hr>
+    <div class="long_button">
+        <a href="{% url 'change_document' document.id %}">
+            <input type="submit" value="Change" />
+        </a>
+    </div>
+</div>
+<div class="center_div document_body">
+    <p class="p3">
+        {{ document.html_data|safe }}
+    </p>
+</div>
