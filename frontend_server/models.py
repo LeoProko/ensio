@@ -87,3 +87,13 @@ class Document(models.Model):
 
     def __str__(self):
         return self.title
+
+class Task(models.Model):
+    done = models.BooleanField(default=False)
+    task = models.TextField(null=True)
+    deadline = models.DateField()
+    chief = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='chief')
+    executors = models.ManyToManyField(Employee, related_name='executors')
+
+    def __str__(self):
+        return self.task

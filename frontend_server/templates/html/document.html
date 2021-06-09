@@ -10,9 +10,9 @@
     <br>
     <i> Date created: {{ document.date_created }} </i>
     <hr>
-    <div class="long_button">
-        <a href="{% url 'change_document' document.id %}">
-            <input type="submit" value="Change" />
+    <div class="buttons_wrapper">
+        <a href="{% url 'edit_document' document.id %}">
+            <input type="submit" value="Edit" />
         </a>
     </div>
 </div>

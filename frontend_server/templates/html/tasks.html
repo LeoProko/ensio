@@ -1,0 +1,37 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+
+<h2> Tasks </h2>
+<b> Found {{ tasks_count }} documents </b>
+<div class="center_form">
+    <form action="" method="POST">
+        <a href="">
+            <input type="button" value="New task">
+        </a>
+    </form>
+</div>
+<table class="data_table">
+    <tr>
+        <th> Id </th>
+        <th> Done </th>
+        <th> Task </th>
+        <th> Dedline </th>
+        <th> Chief </th>
+        <th> Executors </th>
+        <th> Update </th>
+    </tr>
+        {% for task in task_set %}
+            <form action="" method="POST">
+            {{ task_set.management_form }}
+            <tr>
+                <td> {{ task.initial.id }} </td>
+                <td> {{ task.done }} </td>
+                <td> {{ task.task }} </td>
+                <td> {{ task.deadline }} </td>
+                <td> {{ task.chief }} </td>
+                <td> {{ task.executors }} </td>
+                <td> <input type="submit" value="Update"> </td>
+            </tr>
+            </form>
+        {% endfor %}
+</table>

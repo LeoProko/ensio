@@ -4,7 +4,7 @@ from  django.forms import ModelForm
 
 from markdown import markdown
 
-from .models import Customer, Order, Employee, Document
+from .models import Customer, Order, Employee, Document, Task
 
 class CustomerForm(ModelForm):
     class Meta:
@@ -31,3 +31,8 @@ class DocumentForm(ModelForm):
         model = Document
         fields = '__all__'
         exclude = ['html_data']
+
+class TaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = '__all__'

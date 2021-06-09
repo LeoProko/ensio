@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="center_div document_title">
         <p class="pcenter p3">
-            This is Document editor. Heare you can use <b>Markdown</b> for text formatting.
+            This is Document editor. Heare you can use <a href="https://www.markdownguide.org/basic-syntax/">Markdown</a> for text formatting.
         </p>
         <hr>
         <h2> Title: 
@@ -24,11 +24,15 @@
         <br>
         <i> Date created: {{ document.date_created }} </i>
         <hr>
-        <div class="long_button">
-            <input type="submit" value="Save" />
-            <a href="{% url 'view_document' document.id %}">
-                <input type="button" value="View" />
-            </a>
+        <div class="buttons_wrapper">
+            <div class="inline_button">
+                <input type="submit" value="Save" />
+            </div>
+            <div class="inline_button">
+                <a href="{% url 'view_document' document.id %}">
+                    <input type="button" value="View" />
+                </a>
+            </div>
         </div>
     </div>
     <div class="document_body center_div document_textarea">

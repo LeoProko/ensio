@@ -33,6 +33,8 @@ urlpatterns = [
     path('document/<str:document_id>', ensio_handler.view_document, name='view_document'),
     path('documents/', ensio_handler.get_documents, name='documents'),
     path('new_document/', ensio_handler.new_document, name='new_document'),
-    path('change_document/<str:document_id>', ensio_handler.change_document, name='change_document'),
+    path('edit_document/<str:document_id>', ensio_handler.edit_document, name='edit_document'),
     path('delete_document/<str:document_id>', ensio_handler.delete_document, name='delete_document'),
+
+    path('tasks/', ensio_handler.get_tasks, name='tasks'),
 ]

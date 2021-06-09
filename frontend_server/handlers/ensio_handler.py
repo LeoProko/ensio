@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.shortcuts import redirect
-from django.forms import inlineformset_factory
+from django.forms import inlineformset_factory, modelformset_factory
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -11,8 +11,8 @@ from django.contrib.auth.models import Group
 from markdown import markdown
 
 from frontend_server.html_factories.base import BaseHtmlFactory
-from frontend_server.models import Password, Employee, Item, Customer, Order, Document
-from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm, DocumentForm
+from frontend_server.models import Password, Employee, Item, Customer, Order, Document, Task
+from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm, DocumentForm, TaskForm
 from frontend_server.filters import OrderFilter, ItemFilter
 from frontend_server.decorators import unauthenticated_user, allowed_users
 
@@ -371,19 +371,18 @@ def new_document(request):
 @csrf_exempt
 @login_required(login_url='login')
 @allowed_users(allowed_users=[])
-def change_document(request, document_id):
+def edit_document(request, document_id):
     template = Template(BaseHtmlFactory.create('Document', 'new_document', '', ''))
     document = Document.objects.get(id=document_id)
     document_form = DocumentForm(instance=document)
-
     if request.method == 'POST':
         document_form = DocumentForm(request.POST, instance=document)
         if document_form.is_valid():
             form = document_form.save(commit=False)
             form.html_data = markdown(form.markdown_data)
             form.save()
-            print('Document', document_id, 'has been created', request.POST)
-            return redirect('/change_document/' + document_id)
+            print('Document', document_id, 'has been changed', request.POST)
+            return redirect('/edit_document/' + document_id)
 
     context = Context({
         'request' : request,
@@ -417,5 +416,45 @@ def delete_document(request, document_id):
     context = Context({
         'request' : request,
         'document' : document,
+    })
+    return HttpResponse(template.render(context))
+
+@csrf_exempt
+@login_required(login_url='login')
+@allowed_users(allowed_users=[])
+def get_tasks(request):
+    template = Template(BaseHtmlFactory.create('Tasks', 'tasks', '', ''))
+    tasks = Task.objects.all()
+    tasks_count = tasks.count()
+    TaskFormSet = modelformset_factory(Task, form=TaskForm)
+    task_form_set = TaskFormSet(queryset=tasks)
+    if request.method == 'POST':
+        for index, form in enumerate(task_form_set):
+            print("index:::::::::", index, request.POST)
+            form = TaskForm(request.POST, initial={
+                'done' : request.POST.get('form-' + str(index) + '-done'),
+                'task' : request.POST.get('form-' + str(index) + '-task'),
+                'deadline' : request.POST.get('form-' + str(index) + '-deadline'),
+                'chief' : request.POST.get('form-' + str(index) + '-chief'),
+                'executors' : request.POST.get('form-' + str(index) + '-executors'),
+            })
+            form.save()
+            if form.is_valid():
+                form.save()
+
+        return redirect('/tasks/')
+        # for key, value in request.POST.items():
+            # print("TASK REQUEST", key, value)
+        # print("TASK RECEIVED", request.POST.get('form-1-done'))
+        # task_form = TaskForm(request.POST)
+        # if task_form.is_valid():
+            # task_form.save()
+            # return redirect('/tasks/')
+
+    context = Context({
+        'request' : request,
+        'tasks' : tasks,
+        'tasks_count' : tasks_count,
+        'task_set' : task_form_set,
     })
     return HttpResponse(template.render(context))

@@ -49,16 +49,21 @@ h3 {
 }
 
 a {
-  color: var(--link-color);
+  color: #4676D4;
   text-decoration: none
 }
 
 a:hover {
-  color: var(--link-color);
+  color: #4676D4;
+  text-decoration: underline;
 }
 
 .header {
   width: 100%;
+}
+
+.header a {
+  color: black;
 }
 
 .header input {

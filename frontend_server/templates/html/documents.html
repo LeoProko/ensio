@@ -17,7 +17,7 @@
         <th> Owner </th>
         <th> Date created </th>
         <th> View </th>
-        <th> Change </th>
+        <th> Edit </th>
         <th> Remove </th>
     </tr>
     {% for document in documents %}
@@ -27,7 +27,7 @@
         <td> {{ document.owner }} </td>
         <td> {{ document.date_created }} </td>
         <td> <a href="{% url 'view_document' document.id %}">View</a> </td>
-        <td> <a href="{% url 'change_document' document.id %}">Change</a> </td>
+        <td> <a href="{% url 'edit_document' document.id %}">Edit</a> </td>
         <td> <a href="{% url 'delete_document' document.id %}">Remove</a> </td>
     </tr>
     {% endfor %}
