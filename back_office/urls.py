@@ -1,6 +1,6 @@
 from django.urls import path
 
-from frontend_server.handlers import ensio_handler
+from back_office.handlers import ensio_handler
 
 from .models import *
 

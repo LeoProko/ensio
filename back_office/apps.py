@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class PollsConfig(AppConfig):
-    name = 'frontend_server'
+    name = 'back_office'

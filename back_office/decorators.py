@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 
-from frontend_server.handlers import ensio_handler
+from back_office.handlers import ensio_handler
 
 def unauthenticated_user(handle_func):
     def wrapper(request, *args, **kwargs):

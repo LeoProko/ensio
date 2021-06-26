@@ -2,13 +2,14 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PRIVATE_DIR = '/home/leoproko/ensio_private/'
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%)98cewx3v!^n-y8*eu@f&c(uo=7jaeq&854hg0u4butjsm478'
+SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8').read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -25,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'frontend_server',
+    'back_office',
+    'front_office',
     'django_filters',
 ]
 
@@ -39,7 +41,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'ensio_site.urls'
+ROOT_URLCONF = 'base_app.urls'
 
 TEMPLATES = [
     {
@@ -57,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ensio_site.wsgi.application'
+WSGI_APPLICATION = 'base_app.wsgi.application'
 
 
 # Database
@@ -66,7 +68,7 @@ WSGI_APPLICATION = 'ensio_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(PRIVATE_DIR, 'database/db.sqlite3'),
         'USER': 'mydatauser',
         'PASSWORD': 'mypassword',
         'HOST': '127.0.0.1',

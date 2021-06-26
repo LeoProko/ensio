@@ -10,11 +10,11 @@ from django.contrib.auth.models import Group
 
 from markdown import markdown
 
-from frontend_server.html_factories.base import BaseHtmlFactory
-from frontend_server.models import Password, Employee, Item, Customer, Order, Document, Task
-from frontend_server.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm, DocumentForm, TaskForm
-from frontend_server.filters import OrderFilter, ItemFilter
-from frontend_server.decorators import unauthenticated_user, allowed_users
+from back_office.html_factories.base import BaseHtmlFactory
+from back_office.models import Password, Employee, Item, Customer, Order, Document, Task
+from back_office.forms import CustomerForm, OrderForm, EmployeeForm, RegisterForm, DocumentForm, TaskForm
+from back_office.filters import OrderFilter, ItemFilter
+from back_office.decorators import unauthenticated_user, allowed_users
 
 
 @login_required(login_url='login')
