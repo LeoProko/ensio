@@ -1,40 +1,41 @@
 from django.urls import path
 
-from back_office.handlers import ensio_handler
-
-from .models import *
+from back_office.handlers import index
+from back_office.handlers import customers
+from back_office.handlers import documents
+from back_office.handlers import employees
+from back_office.handlers import orders
+from back_office.handlers import passwords
+from back_office.handlers import stock
+from back_office.handlers import tasks
 
 urlpatterns = [
-    path('', ensio_handler.index, name='index'),
+    path('', index.index, name='back_office'),
 
-    path('login/', ensio_handler.user_login, name='login'),
-    path('register/', ensio_handler.user_register, name='register'),
-    path('logout/', ensio_handler.user_logout, name='logout'),
+    path('customers/', customers.customers, name='customers'),
+    path('customers/<str:customer_id>/', customers.customer_profile, name='customer'),
+    path('new_customer/', customers.new_customer, name='new_customer'),
 
-    path('customers/', ensio_handler.customers, name='customers'),
-    path('customers/<str:customer_id>/', ensio_handler.customer_profile, name='customer'),
-    path('new_customer/', ensio_handler.new_customer, name='new_customer'),
+    path('orders/', orders.orders, name='orders'),
+    path('new_order/', orders.new_order, name='new_order'),
+    path('new_order/<str:customer_id>', orders.new_order_by_customer, name='new_order_by_customer'),
+    path('change_order/<str:order_id>', orders.change_order, name='change_order'),
+    path('delete_order/<str:order_id>', orders.delete_order, name='delete_order'),
 
-    path('orders/', ensio_handler.orders, name='orders'),
-    path('new_order/', ensio_handler.new_order, name='new_order'),
-    path('new_order/<str:customer_id>', ensio_handler.new_order_by_customer, name='new_order_by_customer'),
-    path('change_order/<str:order_id>', ensio_handler.change_order, name='change_order'),
-    path('delete_order/<str:order_id>', ensio_handler.delete_order, name='delete_order'),
+    path('stock/', stock.get_stock, name='stock'),
 
-    path('stock/', ensio_handler.get_stock, name='stock'),
+    path('employees/', employees.show_all_employees, name='employees'),
+    path('new_employee/', employees.new_employee, name='new_employee'),
+    path('change_employee/<str:employee_id>', employees.change_employee, name='change_employee'),
+    path('delete_employee/<str:employee_id>', employees.delete_employee, name='delete_employee'),
 
-    path('employees/', ensio_handler.show_all_employees, name='employees'),
-    path('new_employee/', ensio_handler.new_employee, name='new_employee'),
-    path('change_employee/<str:employee_id>', ensio_handler.change_employee, name='change_employee'),
-    path('delete_employee/<str:employee_id>', ensio_handler.delete_employee, name='delete_employee'),
+    path('password/', passwords.password, name='password'),
 
-    path('password/', ensio_handler.password, name='password'),
+    path('document/<str:document_id>', documents.view_document, name='view_document'),
+    path('documents/', documents.get_documents, name='documents'),
+    path('new_document/', documents.new_document, name='new_document'),
+    path('edit_document/<str:document_id>', documents.edit_document, name='edit_document'),
+    path('delete_document/<str:document_id>', documents.delete_document, name='delete_document'),
 
-    path('document/<str:document_id>', ensio_handler.view_document, name='view_document'),
-    path('documents/', ensio_handler.get_documents, name='documents'),
-    path('new_document/', ensio_handler.new_document, name='new_document'),
-    path('edit_document/<str:document_id>', ensio_handler.edit_document, name='edit_document'),
-    path('delete_document/<str:document_id>', ensio_handler.delete_document, name='delete_document'),
-
-    path('tasks/', ensio_handler.get_tasks, name='tasks'),
+    path('tasks/', tasks.get_tasks, name='tasks'),
 ]

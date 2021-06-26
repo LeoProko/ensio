@@ -116,7 +116,7 @@ a:hover {
   margin: 1.5px 3px;
 }
 
-.sidebar input:hover {
+.sidebar input:hover, #ensio_header input:hover {
   background: #bccecf;
 }
 
@@ -136,6 +136,10 @@ a:hover {
   height: 50px;
   font-size: 36px;
   font-weight: 600;
+}
+
+#ensio_header a:hover {
+  text-decoration: none;
 }
 
 #ghost_header {

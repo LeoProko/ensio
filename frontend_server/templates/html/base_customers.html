@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> &page_title& </title>
+  <meta name="description" content="Ensio">
+  <meta name="author" content="leoproko">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/base.css' %}">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/div.css' %}">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/p.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'img/ensio_logo.png' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+
+&content_css&
+
+<body>
+    {% include 'html/header.html' %}
+
+    <div class="content">
+        &content_html&
+    </div>
+
+  <div class="ghost_footer"></div>
+
+  <div class="footer" id="ensio_footer">
+    Ensio, 2021
+  </div>
+</body>
+
+&content_js&
+
+</html>
+

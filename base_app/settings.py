@@ -27,7 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'back_office',
-    'front_office',
+    'customer_app',
+    'base_app',
+    'frontend_server',
     'django_filters',
 ]
 

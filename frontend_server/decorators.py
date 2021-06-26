@@ -1,7 +1,15 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect
+from django.template import Template, Context
+from django.http import HttpResponse
 
-from back_office.handlers import ensio_handler
+from frontend_server.html_factories.base import BaseHtmlFactory
+
+def no_permissions(request):
+    template = Template(BaseHtmlFactory.create('No permissions', 'frontend_server/templates/', 'no_permissions', '', ''))
+    context = Context({
+        'request' : request,
+    })
+    return HttpResponse(template.render(context))
 
 def unauthenticated_user(handle_func):
     def wrapper(request, *args, **kwargs):
@@ -17,6 +25,6 @@ def allowed_users(allowed_users=[]):
             for group in request.user.groups.all():
                 if group.name in allowed_users:
                     return handle_func(request, *args, **kwargs)
-            return ensio_handler.no_permissions(request)
+            return no_permissions(request)
         return wrapper
     return decorator
