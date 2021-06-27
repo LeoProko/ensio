@@ -13,7 +13,7 @@ from frontend_server.decorators import unauthenticated_user
 @csrf_exempt
 @unauthenticated_user
 def user_login(request):
-    template = Template(BaseHtmlFactory.create_back_office('Login', 'frontend_server/templates/', 'login', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Login', 'frontend_server/templates/', 'login', '', ''))
     context = Context({
         'request' : request,
     })
@@ -30,7 +30,7 @@ def user_login(request):
 @csrf_exempt
 @unauthenticated_user
 def user_register(request):
-    template = Template(BaseHtmlFactory.create_back_office('Register', 'frontend_server/templates/', 'register', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Register', 'frontend_server/templates/', 'register', '', ''))
     form  = RegisterForm()
 
     if request.method == 'POST':
@@ -52,10 +52,3 @@ def user_register(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
-
-def no_permissions(request):
-    template = Template(BaseHtmlFactory.create_back_office('No permissions', 'frontend_server/templates/', 'no_permissions', '', ''))
-    context = Context({
-        'request' : request,
-    })
-    return HttpResponse(template.render(context))

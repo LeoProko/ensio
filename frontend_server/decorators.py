@@ -18,12 +18,12 @@ def unauthenticated_user(handle_func):
         return handle_func(request, *args, **kwargs)
     return wrapper
 
-def allowed_users(allowed_users=[]):
-    allowed_users.append('superuser')
+def allowed_users(allowed_users_list=[]):
+    allowed_users_list.append('superuser')
     def decorator(handle_func):
         def wrapper(request, *args, **kwargs):
             for group in request.user.groups.all():
-                if group.name in allowed_users:
+                if group.name in allowed_users_list:
                     return handle_func(request, *args, **kwargs)
             return no_permissions(request)
         return wrapper

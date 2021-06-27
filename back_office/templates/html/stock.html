@@ -1,6 +1,10 @@
+{%  load static %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/img.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/item.css' %}">
 
 <div class="wrapper_hvc">
     <div class="inline_div left_div center_div">
@@ -19,15 +23,16 @@
 <form method="get">
     {{ filter.form }}
     <input type="submit" value="Search">
-    </input>
 </form>
 <table class="data_table">
-    <tr id="tablde_header">
+    <tr id="table_header">
         <th> ID </th>
         <th> Name </th>
+        <th> Image </th>
         <th> Tags </th>
         <th> Price </th>
         <th> Stock balance </th>
+        <th> View </th>
         <th> Change </th>
         <th> Remove </th>
     </tr>
@@ -36,6 +41,13 @@
         <td> {{ item.id }} </td>
         <td> {{ item.name }} </td>
         <td>
+            {% if item.item_image %}
+                <div class="item_image_in_table">
+                    <img class="fit_image image_width_100" src="{% static item.item_image.url %}">
+                </div>
+            {%  endif %}
+        </td>
+        <td>
             {% for tag in item.tags.all %}
                 {{ tag }}
                 <br>
@@ -43,6 +55,7 @@
         </td>
         <td> {{ item.price }} </td>
         <td> {{ item.stock_balance }} </td>
+        <td> <a href="{% url 'item' item.id %}"> View </a> </td>
         <td> <a href=""> Change </a> </td>
         <td> <a href=""> Remove </a> </td>
     </tr>

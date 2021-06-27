@@ -6,9 +6,9 @@ from frontend_server.html_factories.base import BaseHtmlFactory
 from frontend_server.decorators import allowed_users
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def index(request):
-    template = Template(BaseHtmlFactory.create_customer_app('Ensio', 'customer_app/templates/', 'main', '', ''))
+    template = Template(BaseHtmlFactory.create.customer_app('Ensio', 'customer_app/templates/', 'main', '', ''))
     context = Context({
         'request' : request,
     })

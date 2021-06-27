@@ -8,11 +8,11 @@ from frontend_server.decorators import allowed_users
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def password(request):
     passwords = Password.objects.all()
     passwords_count = passwords.count()
-    template = Template(BaseHtmlFactory.create_back_office('Passwords', 'back_office/templates/', 'passwords', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Passwords', 'back_office/templates/', 'passwords', '', ''))
     context = Context({
         'request' : request,
         'passwords' : passwords,

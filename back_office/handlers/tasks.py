@@ -12,9 +12,9 @@ from frontend_server.decorators import allowed_users
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def get_tasks(request):
-    template = Template(BaseHtmlFactory.create_back_office('Tasks', 'back_office/templates/', 'tasks', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Tasks', 'back_office/templates/', 'tasks', '', ''))
     tasks = Task.objects.all()
     tasks_count = tasks.count()
     TaskFormSet = modelformset_factory(Task, form=TaskForm)

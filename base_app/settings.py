@@ -2,7 +2,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRIVATE_DIR = '/home/leoproko/ensio_private/'
+PRIVATE_DIR = '/Users/leonidprokopcuk/Desktop/ensio_private/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -121,3 +121,5 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/img/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')

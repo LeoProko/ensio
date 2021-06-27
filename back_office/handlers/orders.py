@@ -13,9 +13,9 @@ from frontend_server.decorators import allowed_users
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=['cashier'])
+@allowed_users(allowed_users_list=['cashier'])
 def orders(request):
-    template = Template(BaseHtmlFactory.create_back_office('Orders', 'back_office/templates/', 'orders', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Orders', 'back_office/templates/', 'orders', '', ''))
     orders = Order.objects.all()
     orders_count = [orders.count()]
     for status in ['Received', 'In work', 'Ready to deliver', 'On the way', 'Delivered']:
@@ -32,10 +32,10 @@ def orders(request):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=['cashier'])
+@allowed_users(allowed_users_list=['cashier'])
 def new_order(request):
     # OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer', 'item', 'status'), extra=5)
-    template = Template(BaseHtmlFactory.create_back_office('New order', 'back_office/templates/', 'new_order', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('New order', 'back_office/templates/', 'new_order', '', ''))
     # order_form_set = OrderFormSet(queryset=Order.objects.none())
     order_form = OrderForm()
 
@@ -54,11 +54,11 @@ def new_order(request):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def new_order_by_customer(request, customer_id):
     OrderFormSet = inlineformset_factory(Customer, Order, fields=('item', 'status'), extra=5)
     customer = Customer.objects.get(id=customer_id)
-    template = Template(BaseHtmlFactory.create_back_office('New order', 'back_office/templates/', 'new_order', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('New order', 'back_office/templates/', 'new_order', '', ''))
     # order_form = OrderForm(initial={'customer' : customer})
     order_form_set = OrderFormSet(queryset=Order.objects.none(), instance=customer)
 
@@ -79,9 +79,9 @@ def new_order_by_customer(request, customer_id):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def change_order(request, order_id):
-    template = Template(BaseHtmlFactory.create_back_office('Change order', 'back_office/templates/', 'new_order', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Change order', 'back_office/templates/', 'new_order', '', ''))
     order = Order.objects.get(id=order_id)
     order_form = OrderForm(instance=order)
 
@@ -100,9 +100,9 @@ def change_order(request, order_id):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def delete_order(request, order_id):
-    template = Template(BaseHtmlFactory.create_back_office('Delete order', 'back_office/templates/', 'delete_order', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Delete order', 'back_office/templates/', 'delete_order', '', ''))
     order = Order.objects.get(id=order_id)
     if request.method == 'POST':
         order.delete()

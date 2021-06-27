@@ -12,9 +12,9 @@ from frontend_server.forms import DocumentForm
 from frontend_server.decorators import allowed_users
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def get_documents(request):
-    template = Template(BaseHtmlFactory.create_back_office('Documents', 'back_office/templates/', 'documents', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Documents', 'back_office/templates/', 'documents', '', ''))
     documents = Document.objects.all()
     documents_count = documents.count()
     context = Context({
@@ -26,9 +26,9 @@ def get_documents(request):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=['cashier'])
+@allowed_users(allowed_users_list=['cashier'])
 def new_document(request):
-    template = Template(BaseHtmlFactory.create_back_office('New document', 'back_office/templates/', 'new_document', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('New document', 'back_office/templates/', 'new_document', '', ''))
     document_form = DocumentForm(initial={'owner':request.user})
 
     if request.method == 'POST':
@@ -48,9 +48,9 @@ def new_document(request):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def edit_document(request, document_id):
-    template = Template(BaseHtmlFactory.create_back_office('Document', 'back_office/templates/', 'new_document', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Document', 'back_office/templates/', 'new_document', '', ''))
     document = Document.objects.get(id=document_id)
     document_form = DocumentForm(instance=document)
     if request.method == 'POST':
@@ -71,9 +71,9 @@ def edit_document(request, document_id):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def view_document(request, document_id):
-    template = Template(BaseHtmlFactory.create_back_office('Document', 'back_office/templates/', 'document', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Document', 'back_office/templates/', 'document', '', ''))
     document = Document.objects.get(id=document_id)
     context = Context({
         'request' : request,
@@ -83,9 +83,9 @@ def view_document(request, document_id):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def delete_document(request, document_id):
-    template = Template(BaseHtmlFactory.create_back_office('Remove document', 'back_office/templates/', 'delete_document', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Remove document', 'back_office/templates/', 'delete_document', '', ''))
     document = Document.objects.get(id=document_id)
     if request.method == 'POST':
         document.delete()

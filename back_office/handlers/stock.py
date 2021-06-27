@@ -8,9 +8,9 @@ from frontend_server.filters import ItemFilter
 from frontend_server.decorators import allowed_users
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=[])
+@allowed_users(allowed_users_list=[])
 def get_stock(request):
-    template = Template(BaseHtmlFactory.create_back_office('Stock', 'back_office/templates/', 'stock', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Stock', 'back_office/templates/', 'stock', '', ''))
 
     items = Item.objects.all()
     items_count = items.count()

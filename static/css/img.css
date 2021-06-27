@@ -1,0 +1,9 @@
+.image_width_100 {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+}
+
+.fit_image {
+    object-fit: contain;
+}

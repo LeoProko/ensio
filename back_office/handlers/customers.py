@@ -11,11 +11,11 @@ from frontend_server.decorators import allowed_users
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=['cashier'])
+@allowed_users(allowed_users_list=['cashier'])
 def customers(request):
     customers = Customer.objects.all()
     customers_count = customers.count()
-    template = Template(BaseHtmlFactory.create_back_office('Customers', 'back_office/templates/', 'customers', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Customers', 'back_office/templates/', 'customers', '', ''))
     context = Context({
         'request' : request,
         'customers' : customers,
@@ -25,9 +25,9 @@ def customers(request):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users=['cashier'])
+@allowed_users(allowed_users_list=['cashier'])
 def new_customer(request):
-    template = Template(BaseHtmlFactory.create_back_office('New customer', 'back_office/templates/', 'new_customer', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('New customer', 'back_office/templates/', 'new_customer', '', ''))
     customer_form = CustomerForm()
 
     if request.method == 'POST':
@@ -44,12 +44,12 @@ def new_customer(request):
     return HttpResponse(template.render(context))
 
 @login_required(login_url='login')
-@allowed_users(allowed_users=['cashier'])
+@allowed_users(allowed_users_list=['cashier'])
 def customer_profile(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     orders = customer.order_set.all()
     orders_count = orders.count()
-    template = Template(BaseHtmlFactory.create_back_office(customer.first_name, 'back_office/templates/', 'customer_profile', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(customer.first_name, 'back_office/templates/', 'customer_profile', '', ''))
 
     context = Context({
         'request' : request,
