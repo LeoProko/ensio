@@ -1,0 +1,227 @@
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+
+<style>
+body {
+    background: white;
+    font-family: 'Tenor Sans', sans-serif;
+    max-width: 2000px;
+    width: 100%;
+    height: auto;
+    color: #373737;
+}
+
+#landing_header {
+    text-align: center;
+}
+
+#landing_header img {
+    width: 100%;
+    margin: -3px;
+}
+
+#landing_content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.images_column {
+}
+
+#header_text_1 {
+    font-size: 5vw;
+    margin-top: 2%;
+}
+
+#header_text_2 {
+    font-size: 2.5vw;
+    margin-top: -7%;
+}
+
+#header_text_3 {
+    text-align: center;
+    display: inline-block;
+    margin-top: 3%;
+}
+
+#header_text_3 p {
+    font-size: 2vw;
+    margin-top: -10%;
+    text-align: left;
+}
+
+#content_table {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: -30%;
+}
+
+#content_table td {
+    vertical-align: top;
+    width: 50%;
+    text-align: center;
+}
+
+.ring_image {
+    width: 80%;
+    padding: 3% 0;
+}
+
+#order_form {
+    background: #9FEFFA;
+    text-align: left;
+    padding: 3% 5%;
+    width: 80%;
+    margin: 8% auto;
+}
+
+#order_form li {
+    list-style-type: none;
+    font-size: 2.3vw;
+    padding: 0.5% 0;
+}
+
+::placeholder {
+    color: #a7a7a7;
+}
+
+#order_form input[type=text] {
+    color: #373737;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 2.5vw;
+    width: 98%;
+    margin: 2% 1%;
+}
+
+#order_form input[type=submit] {
+    background: #a7a7a7;
+    color: white;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 3vw;
+    text-align: center;
+    width: 100%;
+    margin: 3% 0;
+    border-radius: 20px;
+}
+
+#order_form input[type=submit]:hover {
+    background: #8a8a8a;
+}
+
+#order_form input[type=radio] {
+    height: 2vw;
+    width: 2vw;
+    vertical-align: middle;
+    margin-bottom: 2%;
+}
+
+#order_form p, #order_form ul {
+    margin: 0;
+}
+
+#order_form ul {
+    padding: 2% 0;
+}
+
+#id_connection_type {
+    padding: 0;
+}
+
+.field_title {
+    color: white;
+    font-size: 3vw;
+    margin: 2% 0;
+}
+
+.field_help_text {
+    color: #373737;
+    font-size: 2vw;
+    float: right;
+    display: inline;
+    padding: 3% 0;
+}
+
+select {
+    background: white;
+    font-family: inherit;
+    font-size: 2.5vw;
+    color: #a7a7a7;
+    color: #373737;
+    text-align: center;
+    border: none;
+    width: 20%;
+    outline: none;
+    margin: 2% 1%;
+}
+
+#size_tutorial {
+    margin: 8% 0;
+    border: 1vw solid #9FEFFA;
+    padding: 5%;
+}
+
+#size_tutorial img {
+    padding: 5%;
+    width: 35%;
+}
+
+#tutorial_title {
+    font-size: 3.5vw;
+    color: #373737;
+    margin: 0;
+}
+
+.tutorial_text {
+    margin: 5% 0;
+    margin-top: 0;
+    text-align: left;
+    font-size: 1.5vw;
+}
+
+.tutorial_text_title {
+    text-decoration: underline;
+}
+
+#tutorial_table {
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid #a7a7a7;
+    border-collapse: collapse;
+    width: 70%;
+    font-size: 1.6vw;
+}
+
+#tutorial_table td, #tutorial_table th {
+    border: 1px solid #a7a7a7;
+    padding: 2%;
+}
+
+#size_tutorial_link {
+    color: #373737;
+    text-decoration: underline;
+}
+
+#size_tutorial_link:hover {
+    color: black;
+}
+
+#footer_text {
+    margin: 0 auto;
+    width: 80%;
+}
+
+#footer_text p {
+    font-size: 2vw;
+    text-align: left;
+}
+
+#ensio_footer {
+    background: #9FEFFA;
+}
+
+#delivery_info {
+    font-size: 2vw;
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}
+</style>

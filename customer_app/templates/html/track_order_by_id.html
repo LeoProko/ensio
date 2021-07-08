@@ -1,0 +1,23 @@
+<div id="track_order">
+    {% if order_is_found %}
+    <ul>
+        <li><b>Заказ номер:</b> {{ order.id }}</li>
+        <li><b>Товар:</b> {{ order.item.name }}</li>
+        <li><b>Размер:</b> {{ order.size }}</li>
+        <li><b>Статус:</b> {{ order.status }}</li>
+        <li><b>Дата создания:</b> {{ order.date_created }}</li>
+    </ul>
+    {% else %}
+    <p>
+        Заказ не найден
+    </p>
+    {% endif %}
+    <span>
+        <a href="/landing/ring_1">Назад к товару</a>
+    </span>
+    <hr>
+    <span>
+        <a href="/track_order">Отследить другой заказ</a>
+    </span>
+</div>
+

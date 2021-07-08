@@ -3,11 +3,11 @@
 }
 
 html {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Tenor Sans', sans-serif;
 }
 
 input {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Tenor Sans', sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -16,6 +16,13 @@ input {
   text-align: left;
   font-size: 16px;
   font-weight: 500;
+  outline: none;
+}
+
+input[type=radio] {
+  appearance: radio;
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
 }
 
 body {

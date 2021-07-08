@@ -2,7 +2,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRIVATE_DIR = '/Users/leonidprokopcuk/Desktop/ensio_private/'
+PRIVATE_DIR = '/home/leoproko/ensio_private/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'back_office',
     'customer_app',
+    'landing',
     'base_app',
     'frontend_server',
     'django_filters',

@@ -1,0 +1,24 @@
+<div id="order_form">
+    <form action="" method="POST">
+        <div>
+            {{ order_form.customer_name }}
+        </div>
+        <div>
+            <p class="field_title">Способ связи</p>
+            {{ order_form.connection_type }}
+        </div>
+        <div>
+            {{ order_form.contacts }}
+        </div>
+        <div>
+            <p class="field_title">
+                Размер
+            </p>
+            {{ order_form.size }}
+            <p class="field_help_text">
+                <a href="#size_tutorial" id="size_tutorial_link">Как выбрать размер?</a>
+            </p>
+        </div>
+        <input id="order_button" type="submit" value="Заказать">
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<style>
+#track_order {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 20%;
+}
+
+#track_order input[type=text] {
+    margin: 2%;
+    font-size: 40px;
+    width: 400px;
+    text-align: center;
+    padding: 5px;
+}
+
+#track_order input[type=submit] {
+    margin: 2%;
+    font-size: 30px;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+</style>

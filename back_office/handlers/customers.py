@@ -47,7 +47,7 @@ def new_customer(request):
 @allowed_users(allowed_users_list=['cashier'])
 def customer_profile(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
-    orders = customer.order_set.all()
+    orders = customer.customerorder_set.all()
     orders_count = orders.count()
     template = Template(BaseHtmlFactory.create.back_office(customer.first_name, 'back_office/templates/', 'customer_profile', '', ''))
 

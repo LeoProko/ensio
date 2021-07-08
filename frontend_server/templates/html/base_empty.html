@@ -16,33 +16,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 </head>
 
-
 &content_css&
 
 <body>
-  {% include 'html/header.html' %}
 
-  {% if not request.user.is_anonymous %}
-  <div class="content_wrapper">
-
-      {% include 'html/back_office_navbar.html' %}
-
-      <div class="back_office_content">
+    <div class="content">
         &content_html&
-      </div>
-
-  </div>
-  {% else %}
-    
-    <div>
-        <p class="p1 pcenter"> Login to visit this site </p>
-        <hr>
-        <div class="pcenter">
-            &content_html&
-        </div>
     </div>
-
-  {% endif %}
 
   <div class="ghost_footer"></div>
 

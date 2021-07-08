@@ -1,0 +1,71 @@
+{% load static %}
+
+<div id="landing_header">
+    <img src="{% static 'img/ring_1/header.jpg' %}">
+    <img src="{% static 'img/ring_1/under_header.svg' %}">
+</div>
+
+<div id="landing_content">
+    <table id="content_table">
+        <tr>
+            <td>
+                <div class="images_column">
+                    <img class ="ring_image" src="{% static 'img/ring_1/ring_1.png' %}">
+                </div>
+                <div class="images_column">
+                    <img class ="ring_image" src="{% static 'img/ring_1/ring_2.png' %}">
+                </div>
+                <div class="images_column">
+                    <img class ="ring_image" src="{% static 'img/ring_1/ring_3.png' %}">
+                </div>
+                <div class="images_column">
+                    <img class ="ring_image" src="{% static 'img/ring_1/ring_4.png' %}">
+                </div>
+                <div id="footer_text">
+                    <p>
+                        Вы только посмотрите на этот вырезанный хуй по бокам кольца.
+                        <br>
+                        <br>
+                        А на рельеф спереди?
+                        <br>
+                        <br>
+                        Прям как заборчик.
+                    </p>
+                </div>
+            </td>
+            <td>
+                <p id="header_text_1">Послать всех на хуй за 5000₽</p>
+                <p id="header_text_2">Кольцо из серебра 925 пробы</p>
+                    <ul id="header_text_3">
+                        <li>
+                            <p>
+                                Размеры: от 15 до 21
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Вес: 9,5 грамм
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Доставка по России
+                            </p>
+                        </li>
+                    </ul>
+                {% include 'html/size_tutorial.html' %}
+                {% include 'html/order_form.html' %}
+                <p id="delivery_info">
+                    Доставка СберЛогистикой или Почтой России
+                    по 50% предоплате.
+                    <br>
+                    Остальное при получении.
+                    <br>
+                    Статус заказа вы сможете отследить по трек-номеру
+                    на <a href="/track_order">этом сайте</a>,
+                    а посылки на сайте службы доставки.
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -62,13 +62,13 @@ class Customer(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.surname
 
-class Order(models.Model):
+class CustomerOrder(models.Model):
     STATUS = (
-        ('Received', 'Received'),
-        ('In work', 'In work'),
-        ('Ready to deliver', 'Ready to deliver'),
-        ('On the way', 'On the way'),
-        ('Delivered', 'Deliverd'),
+        ('Received', 'Получен'),
+        ('In work', 'В работе'),
+        ('Ready to deliver', 'Готовится к доставке'),
+        ('On the way', 'В пути'),
+        ('Delivered', 'Доставлен'),
     )
 
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -78,6 +78,50 @@ class Order(models.Model):
 
     def __str__(self):
         return self.customer.first_name + ' ' + self.customer.surname + ' ' + self.status
+
+class Order(models.Model):
+    STATUS = (
+        ('Received', 'Получен'),
+        ('In work', 'В работе'),
+        ('Ready to deliver', 'Готовится к доставке'),
+        ('On the way', 'В пути'),
+        ('Delivered', 'Доставлен'),
+    )
+
+    CONNECTION = (
+        ('Phone', 'Телефон'),
+        ('Telegram', 'Телеграм'),
+        ('Whats App', 'Вотс ап'),
+        ('Instagram', 'Инстаграм'),
+    )
+
+    SIZE = (
+        ('15', '15'),
+        ('15.5', '15.5'),
+        ('16', '16'),
+        ('16.5', '16.5'),
+        ('17', '17'),
+        ('17.5', '17.5'),
+        ('18', '18'),
+        ('18.5', '18.5'),
+        ('19', '19'),
+        ('19.5', '19.5'),
+        ('20', '20'),
+        ('20.5', '20.5'),
+        ('21', '21'),
+    )
+
+    customer_name = models.CharField(max_length=50, null=True)
+    connection_type = models.CharField(max_length=50, choices=CONNECTION, null=True)
+    contacts = models.CharField(max_length=50, null=True)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
+    size = models.CharField(max_length=50, null=True, choices=SIZE)
+    comment = models.CharField(max_length=500, null=True, blank=True)
+    status = models.CharField(max_length=50, choices=STATUS, null=True, default='Получен')
+    date_created = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.customer_name
 
 class Document(models.Model):
     title = models.CharField(max_length=200, null=True)
@@ -98,3 +142,4 @@ class Task(models.Model):
 
     def __str__(self):
         return self.task
+
