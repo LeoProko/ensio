@@ -42,10 +42,12 @@
     <tr id="tablde_header">
         <th> ID </th>
         <th> Item </th>
+        <th> Size </th>
         <th> Status </th>
-        <th> First name </th>
-        <th> Surname </th>
-        <th> Phone number </th>
+        <th> Name </th>
+        <th> Contact type </th>
+        <th> Contacts </th>
+        <th> Comment </th>
         <th> Date created </th>
         <th> Change </th>
         <th> Remove </th>
@@ -54,10 +56,12 @@
     <tr>
         <td> {{ order.id }} </td>
         <td> {{ order.item.name }} </td>
+        <td> {{ order.size }} </td>
         <td> {{ order.status }} </td>
-        <td> {{ order.customer.first_name }} </td>
-        <td> {{ order.customer.surname }} </td>
-        <td> {{ order.customer.phone_number }} </td>
+        <td> {{ order.customer_name }} </td>
+        <td> {{ order.connection_type }} </td>
+        <td> {{ order.contacts }} </td>
+        <td> {{ order.comment }} </td>
         <td> {{ order.date_created }} </td>
         <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
         <td> <a href="{% url 'delete_order' order.id %}"> Remove </a> </td>

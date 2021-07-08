@@ -6,9 +6,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
 from frontend_server.html_factories.base import BaseHtmlFactory
-from frontend_server.models import Customer, CustomerOrder
-from frontend_server.forms import CustomerOrderForm
-from frontend_server.filters import CustomerOrderFilter
+from frontend_server.models import Customer, CustomerOrder, Order
+from frontend_server.forms import CustomerOrderForm, OrderForm
+from frontend_server.filters import OrderFilter
 from frontend_server.decorators import allowed_users
 
 
@@ -16,15 +16,15 @@ from frontend_server.decorators import allowed_users
 @allowed_users(allowed_users_list=['cashier'])
 def orders(request):
     template = Template(BaseHtmlFactory.create.back_office('CustomerOrders', 'back_office/templates/', 'orders', '', ''))
-    orders = CustomerOrder.objects.all()
+    orders = Order.objects.all()
     orders_count = [orders.count()]
     for status in ['Received', 'In work', 'Ready to deliver', 'On the way', 'Delivered']:
         orders_count.append(CustomerOrder.objects.filter(status=status).count())
-    filter = CustomerOrderFilter(request.GET, queryset=orders)
+    filter = OrderFilter(request.GET, queryset=orders)
     orders = filter.qs
     context = Context({
         'request' : request,
-        'orders': orders,
+        'orders': reversed(orders),
         'orders_count': orders_count,
         'filter' : filter,
     })
@@ -82,11 +82,11 @@ def new_order_by_customer(request, customer_id):
 @allowed_users(allowed_users_list=[])
 def change_order(request, order_id):
     template = Template(BaseHtmlFactory.create.back_office('Change order', 'back_office/templates/', 'new_order', '', ''))
-    order = CustomerOrder.objects.get(id=order_id)
-    order_form = CustomerOrderForm(instance=order)
+    order = Order.objects.get(id=order_id)
+    order_form = OrderForm(instance=order)
 
     if request.method == 'POST':
-        form = CustomerOrderForm(request.POST, instance=order)
+        form = OrderForm(request.POST, instance=order)
         if form.is_valid():
             form.save()
             print('CustomerOrder', order_id, 'has been changed', request.POST)
