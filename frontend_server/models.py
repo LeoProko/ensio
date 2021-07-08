@@ -64,11 +64,11 @@ class Customer(models.Model):
 
 class CustomerOrder(models.Model):
     STATUS = (
-        ('Received', 'Получен'),
-        ('In work', 'В работе'),
-        ('Ready to deliver', 'Готовится к доставке'),
-        ('On the way', 'В пути'),
-        ('Delivered', 'Доставлен'),
+        ('Получен', 'Получен'),
+        ('В работе', 'В работе'),
+        ('Готовится к доставке', 'Готовится к доставке'),
+        ('В пути', 'В пути'),
+        ('Доставлен', 'Доставлен'),
     )
 
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -81,11 +81,11 @@ class CustomerOrder(models.Model):
 
 class Order(models.Model):
     STATUS = (
-        ('Received', 'Получен'),
-        ('In work', 'В работе'),
-        ('Ready to deliver', 'Готовится к доставке'),
-        ('On the way', 'В пути'),
-        ('Delivered', 'Доставлен'),
+        ('Получен', 'Получен'),
+        ('В работе', 'В работе'),
+        ('Готовится к доставке', 'Готовится к доставке'),
+        ('В пути', 'В пути'),
+        ('Доставлен', 'Доставлен'),
     )
 
     CONNECTION = (
