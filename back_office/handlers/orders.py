@@ -15,7 +15,7 @@ from frontend_server.decorators import allowed_users
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=['cashier'])
 def orders(request):
-    template = Template(BaseHtmlFactory.create.back_office('CustomerOrders', 'back_office/templates/', 'orders', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office('Orders', 'back_office/templates/', 'orders', '', ''))
     orders = Order.objects.all()
     orders_count = [orders.count()]
     for status in ['Received', 'In work', 'Ready to deliver', 'On the way', 'Delivered']:

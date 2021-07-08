@@ -90,6 +90,8 @@ body {
     font-size: 2.5vw;
     width: 98%;
     margin: 2% 1%;
+    border-radius: 0;
+    padding: 1px;
 }
 
 #order_form input[type=submit] {
@@ -210,7 +212,7 @@ select {
 }
 
 #footer_text p {
-    font-size: 2vw;
+    font-size: 2.5vw;
     text-align: left;
 }
 

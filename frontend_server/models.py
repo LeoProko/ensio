@@ -48,7 +48,7 @@ class Item(models.Model):
     tags = models.ManyToManyField(Tag)
     price = models.FloatField()
     stock_balance = models.FloatField()
-    item_image = models.ImageField(null=True)
+    item_image = models.ImageField(upload_to='stock_photo/', null=True)
 
     def __str__(self):
         return self.name
