@@ -1,13 +1,16 @@
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 
 <style>
 body {
     background: white;
-    font-family: 'Tenor Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     max-width: 2000px;
     width: 100%;
     height: auto;
     color: #373737;
+    margin: 0;
+    padding:0;
 }
 
 #landing_header {
@@ -19,22 +22,24 @@ body {
     margin: -3px;
 }
 
+#under_header {
+    color: white;
+}
+
 #landing_content {
     width: 100%;
     margin: 0 auto;
 }
 
-.images_column {
-}
 
 #header_text_1 {
-    font-size: 5vw;
+    font-size: 4vw;
     margin-top: 2%;
 }
 
 #header_text_2 {
     font-size: 2.5vw;
-    margin-top: -7%;
+    margin-top: -5%;
 }
 
 #header_text_3 {
@@ -52,7 +57,7 @@ body {
 #content_table {
     width: 90%;
     margin: 0 auto;
-    margin-top: -30%;
+    margin-top: -27%;
 }
 
 #content_table td {
@@ -61,13 +66,40 @@ body {
     text-align: center;
 }
 
+#under_header {
+    font-family: 'Tenor sans', sans-serif;
+    margin-top: -2%;
+}
+
 .ring_image {
+    padding: 0% 0;
+}
+
+.ring_image img {
+    width: 83%;
+    border: 13px solid #BD1818;
+    z-index: 10;
+    position: relative;
+}
+
+.photo_text {
+    font-size: 3vw;
+    font-weight: 600;
     width: 80%;
-    padding: 3% 0;
+    margin: -3% auto;
+    text-align: left;
+}
+
+.huy_image img {
+    width: 80%;
+    margin-bottom: -23%;
+    margin-top: -38%;
+    margin-left: -6%;
 }
 
 #order_form {
-    background: #9FEFFA;
+    font-family: 'Tenor sans' sans-serif;
+    background: #373737;
     text-align: left;
     padding: 3% 5%;
     width: 80%;
@@ -95,7 +127,7 @@ body {
 }
 
 #order_form input[type=submit] {
-    background: #a7a7a7;
+    background: #E23333;
     color: white;
     font-family: 'Tenor Sans', sans-serif;
     font-size: 3vw;
@@ -106,7 +138,7 @@ body {
 }
 
 #order_form input[type=submit]:hover {
-    background: #8a8a8a;
+    background: #BD1818;
 }
 
 #order_form input[type=radio] {
@@ -117,6 +149,7 @@ body {
 }
 
 #order_form p, #order_form ul {
+    font-family: 'Tenor Sans', sans-serif;
     margin: 0;
 }
 
@@ -126,6 +159,7 @@ body {
 
 #id_connection_type {
     padding: 0;
+    color: white;
 }
 
 .field_title {
@@ -157,7 +191,7 @@ select {
 
 #size_tutorial {
     margin: 8% 0;
-    border: 1vw solid #9FEFFA;
+    border: 1vw solid #373737;
     padding: 5%;
 }
 
@@ -198,26 +232,17 @@ select {
 }
 
 #size_tutorial_link {
-    color: #373737;
+    color: #f4f4f4;
     text-decoration: underline;
 }
 
 #size_tutorial_link:hover {
-    color: black;
-}
-
-#footer_text {
-    margin: 0 auto;
-    width: 80%;
-}
-
-#footer_text p {
-    font-size: 2.5vw;
-    text-align: left;
+    color: white;
 }
 
 #ensio_footer {
-    background: #9FEFFA;
+    background: #373737;
+    color: white;
 }
 
 #delivery_info {
