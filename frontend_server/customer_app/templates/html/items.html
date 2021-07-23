@@ -1,0 +1,22 @@
+{%  load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/img.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/item.css' %}">
+
+{% for item in items %}
+    {{ item.id }}
+    {{ item.name }}
+    {% if item.item_image %}
+        <img class="image_width_100" src="{% static item.item_image.url %}">
+    {%  endif %}
+    {% for tag in item.tags.all %}
+        {{ tag }}
+        <br>
+    {% endfor %}
+    {{ item.price }}
+    {{ item.stock_balance }}
+    <hr>
+{% endfor %}
