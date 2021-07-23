@@ -13,10 +13,9 @@ from factory.decorators import unauthenticated_user
 @csrf_exempt
 @unauthenticated_user
 def user_login(request):
-    template = Template(BaseHtmlFactory.create.back_office('Login', 'factory/templates/', 'login', '', ''))
-    context = Context({
-        'request' : request,
-    })
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Login', 'factory', 'login', '', ''
+    ))
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -25,14 +24,18 @@ def user_login(request):
             login(request, user)
             return redirect('/back_office/')
         messages.info(request, 'Username or password in incorrect')
+    context = Context({
+        'request' : request,
+    })
     return HttpResponse(template.render(context))
 
 @csrf_exempt
 @unauthenticated_user
 def user_register(request):
-    template = Template(BaseHtmlFactory.create.back_office('Register', 'factory/templates/', 'register', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Register', 'factory', 'register', '', ''
+    ))
     form  = RegisterForm()
-
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -42,7 +45,6 @@ def user_register(request):
             user.groups.add(group)
             messages.success(request, username + ' has been registered')
             return redirect('/back_office/')
-
     context = Context({
         'request' : request,
         'form' : form

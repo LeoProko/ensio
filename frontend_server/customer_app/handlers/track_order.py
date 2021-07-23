@@ -10,7 +10,7 @@ from factory.models import Order
 @csrf_exempt
 def track_order(request):
     template = Template(BaseHtmlFactory.create.empty(
-        'Track Order', 'customer_app/templates/', 'track_order', 'track_order', ''))
+        'Track Order', 'customer_app', 'track_order', 'track_order', ''))
 
     form = TrackOrderForm()
 
@@ -31,7 +31,7 @@ def track_order(request):
 
 def track_order_by_id(request, order_id):
     template = Template(BaseHtmlFactory.create.empty(
-        'Track Order', 'customer_app/templates/', 'track_order_by_id', 'track_order_by_id', ''))
+        'Track Order', 'customer_app', 'track_order_by_id', 'track_order_by_id', ''))
     order_is_found = True
     order = ''
     try:

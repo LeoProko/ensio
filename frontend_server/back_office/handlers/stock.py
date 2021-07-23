@@ -10,13 +10,13 @@ from factory.decorators import allowed_users
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
 def get_stock(request):
-    template = Template(BaseHtmlFactory.create.back_office('Stock', 'back_office/templates/', 'stock', '', ''))
-
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Stock', 'back_office', 'stock', '', ''
+    ))
     items = Item.objects.all()
     items_count = items.count()
     filter = ItemFilter(request.GET, queryset=items)
     items = filter.qs
-
     context = Context({
         'request' : request,
         'items' : items,

@@ -12,7 +12,9 @@ from factory.decorators import allowed_users
 def password(request):
     passwords = Password.objects.all()
     passwords_count = passwords.count()
-    template = Template(BaseHtmlFactory.create.back_office('Passwords', 'back_office/templates/', 'passwords', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Passwords', 'back_office', 'passwords', '', ''
+    ))
     context = Context({
         'request' : request,
         'passwords' : passwords,

@@ -14,14 +14,15 @@ from factory.decorators import allowed_users
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
 def get_tasks(request):
-    template = Template(BaseHtmlFactory.create.back_office('Tasks', 'back_office/templates/', 'tasks', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Tasks', 'back_office', 'tasks', '', ''
+    ))
     tasks = Task.objects.all()
     tasks_count = tasks.count()
     TaskFormSet = modelformset_factory(Task, form=TaskForm)
     task_form_set = TaskFormSet(queryset=tasks)
     if request.method == 'POST':
         for index, form in enumerate(task_form_set):
-            print("index:::::::::", index, request.POST)
             form = TaskForm(request.POST, initial={
                 'done' : request.POST.get('form-' + str(index) + '-done'),
                 'task' : request.POST.get('form-' + str(index) + '-task'),

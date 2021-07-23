@@ -19,7 +19,9 @@ def show_all_employees(request):
         'dismissed' : employees.filter(status='Dismissed').count(),
     }
     employees_count = employees.count()
-    template = Template(BaseHtmlFactory.create.back_office('Employees', 'back_office/templates/', 'employees', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Employees', 'back_office', 'employees', '', ''
+    ))
     context = Context({
         'request' : request,
         'employees': employees,
@@ -32,7 +34,9 @@ def show_all_employees(request):
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
 def new_employee(request):
-    template = Template(BaseHtmlFactory.create.back_office('New employee', 'back_office/templates/', 'new_employee', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'New employee', 'back_office', 'new_employee', '', ''
+    ))
     employee_form = EmployeeForm()
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
@@ -51,7 +55,9 @@ def new_employee(request):
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
 def change_employee(request, employee_id):
-    template = Template(BaseHtmlFactory.create.back_office('Change employee', 'back_office/templates/', 'new_employee', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Change employee', 'back_office', 'new_employee', '', ''
+    ))
     employee = Employee.objects.get(id=employee_id)
     employee_form = EmployeeForm(instance=employee)
 
@@ -72,7 +78,9 @@ def change_employee(request, employee_id):
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
 def delete_employee(request, employee_id):
-    template = Template(BaseHtmlFactory.create.back_office('Delete employee', 'back_office/templates/', 'delete_employee', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'Delete employee', 'back_office', 'delete_employee', '', ''
+    ))
     employee = Employee.objects.get(id=employee_id)
     if request.method == 'POST':
         employee.delete()

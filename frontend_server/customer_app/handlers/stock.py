@@ -7,7 +7,7 @@ from factory.models import Item
 def view_item(request, item_id):
     item = Item.objects.get(id=item_id)
     template = Template(BaseHtmlFactory.create.customer_app(
-        item.name, 'customer_app/templates/', 'item', '', ''
+        item.name, 'customer_app', 'item', '', ''
     ))
     context = Context({
         'request' : request,
@@ -17,7 +17,7 @@ def view_item(request, item_id):
 
 def view_items(request):
     template = Template(BaseHtmlFactory.create.customer_app(
-        'Leo Proko shop', 'customer_app/templates/', 'items', 'items', ''
+        'Leo Proko shop', 'customer_app', 'items', 'items', ''
     ))
     items = Item.objects.all()
     context = Context({

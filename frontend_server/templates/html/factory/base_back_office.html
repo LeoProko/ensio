@@ -7,7 +7,7 @@
   <title> &page_title& </title>
   <meta name="description" content="Ensio">
   <meta name="author" content="leoproko">
-  <link rel="stylesheet" tepe="text/css" href="{% static '/css/base.css' %}">
+  <link rel="stylesheet" tepe="text/css" href="{% static '/css/factory/base.css' %}">
   <link rel="stylesheet" tepe="text/css" href="{% static '/css/div.css' %}">
   <link rel="stylesheet" tepe="text/css" href="{% static '/css/p.css' %}">
   <link rel="icon" type="image/png" href="{% static 'img/ensio_logo.png' %}">
@@ -16,14 +16,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
 </head>
 
+
 &content_css&
 
 <body>
-    {% include 'html/header.html' %}
+  {% include 'html/factory/header.html' %}
 
-    <div class="customers_content">
+  {% if not request.user.is_anonymous %}
+  <div class="content_wrapper">
+
+      {% include 'html/factory/back_office_navbar.html' %}
+
+      <div class="back_office_content">
         &content_html&
+      </div>
+
+  </div>
+  {% else %}
+    
+    <div>
+        <p class="p1 pcenter"> Login to visit this site </p>
+        <hr>
+        <div class="pcenter">
+            &content_html&
+        </div>
     </div>
+
+  {% endif %}
 
   <div class="ghost_footer"></div>
 
