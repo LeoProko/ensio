@@ -5,8 +5,8 @@ class Password(models.Model):
     username = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
 
-    def __str__(self):
-        return self.service
+    def __str__(self) -> str:
+        return str(self.service)
 
 class Employee(models.Model):
     STATUS = (
@@ -34,24 +34,54 @@ class Employee(models.Model):
     start_date = models.DateField()
     birthday = models.DateField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.first_name + ' ' + self.surname + ': ' + self.position
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return str(self.name)
+
+class Material(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return str(self.name)
+
+class Size(models.Model):
+    size = models.CharField(max_length=5)
+
+    def __str__(self) -> str:
+        return str(self.size)
+
+def main_photo_path(instance, filename) -> str:
+    return f'item_photos/{instance.name_id}/{filename}'
 
 class Item(models.Model):
-    name = models.CharField(max_length=50)
+    name_id = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50, null=True)
+    price = models.FloatField(null=True)
+    weight = models.CharField(max_length=10, null=True)
+    materials = models.ManyToManyField(Material)
+    sizes = models.ManyToManyField(Size)
     tags = models.ManyToManyField(Tag)
-    price = models.FloatField()
-    stock_balance = models.FloatField()
-    item_image = models.ImageField(upload_to='stock_photo/', null=True)
+    stock_balance = models.FloatField(null=True)
+    main_photo = models.ImageField(upload_to=main_photo_path, null=True)
+    description = models.CharField(max_length=200, null=True)
+
+    def __str__(self) -> str:
+        return str(self.name) + ': ' + str(self.name_id)
+
+def get_image_path(instance, filename) -> str:
+    return f'item_photos/{instance.item.name_id}/{filename}'
+
+class Image(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
+    image = models.ImageField(upload_to=get_image_path, null=True)
 
     def __str__(self):
-        return self.name
+        return 'image of ' + self.item.name
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
@@ -76,8 +106,9 @@ class CustomerOrder(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50, choices=STATUS)
 
-    def __str__(self):
-        return self.customer.first_name + ' ' + self.customer.surname + ' ' + self.status
+    def __str__(self) -> str:
+        return str(self.customer.first_name) + ' ' +\
+            str(self.customer.surname) + ' ' + str(self.status)
 
 class Order(models.Model):
     STATUS = (
@@ -88,40 +119,17 @@ class Order(models.Model):
         ('Доставлен', 'Доставлен'),
     )
 
-    CONNECTION = (
-        ('Phone', 'Телефон'),
-        ('Telegram', 'Телеграм'),
-        ('Whats App', 'Вотс ап'),
-        ('Instagram', 'Инстаграм'),
-    )
-
-    SIZE = (
-        ('15', '15'),
-        ('15.5', '15.5'),
-        ('16', '16'),
-        ('16.5', '16.5'),
-        ('17', '17'),
-        ('17.5', '17.5'),
-        ('18', '18'),
-        ('18.5', '18.5'),
-        ('19', '19'),
-        ('19.5', '19.5'),
-        ('20', '20'),
-        ('20.5', '20.5'),
-        ('21', '21'),
-    )
-
     customer_name = models.CharField(max_length=50, null=True)
-    connection_type = models.CharField(max_length=50, choices=CONNECTION, null=True)
+    connection_type = models.CharField(max_length=50, null=True)
     contacts = models.CharField(max_length=50, null=True)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
-    size = models.CharField(max_length=50, null=True, choices=SIZE)
+    size = models.CharField(max_length=10, null=True)
     comment = models.CharField(max_length=500, null=True, blank=True)
     status = models.CharField(max_length=50, choices=STATUS, null=True, default='Получен')
     date_created = models.DateTimeField(null=True)
 
-    def __str__(self):
-        return self.customer_name
+    def __str__(self) -> str:
+        return str(self.customer_name)
 
 class Document(models.Model):
     title = models.CharField(max_length=200, null=True)
@@ -130,8 +138,8 @@ class Document(models.Model):
     markdown_data = models.TextField(null=True)
     html_data = models.TextField(null=True)
 
-    def __str__(self):
-        return self.title
+    def __str__(self) -> str:
+        return str(self.title)
 
 class Task(models.Model):
     done = models.BooleanField(default=False)
@@ -140,6 +148,6 @@ class Task(models.Model):
     chief = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='chief')
     executors = models.ManyToManyField(Employee, related_name='executors')
 
-    def __str__(self):
-        return self.task
+    def __str__(self) -> str:
+        return str(self.task)
 

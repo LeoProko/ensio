@@ -3,11 +3,11 @@
 }
 
 html {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 input {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -54,22 +54,10 @@ h3 {
   margin: 0;
 }
 
-a {
-  color: #4676D4;
-  text-decoration: none
-}
-
-a:hover {
-  color: #4676D4;
-  text-decoration: underline;
-}
-
 .header {
   width: 100%;
-}
-
-.header a {
-  color: black;
+  position: fixed;
+  top: 0;
 }
 
 .header input {
@@ -132,10 +120,6 @@ a:hover {
   margin-top: 20px;
   margin-left: 200px;
   padding-right: 50px;
-}
-
-.customers_content {
-  text-align: center;
 }
 
 #ensio_header{

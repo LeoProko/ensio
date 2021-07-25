@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/customer_app/collections.css' %}">
+
+<div id="collection_title">
+    Free yourself
+    <br>
+    from the
+    <br>
+    influence
+</div>
+<div id="collection_description">
+    Управляй
+    <br>
+    своей жизнью сам
+</div>
+
+<div id="images">
+    {% for image in images %}
+        <div class="collection_image">
+            <img src="{% static 'img/collections/free_yourself/'|add:image %}">
+        </div>
+    {% endfor %}
+</div>

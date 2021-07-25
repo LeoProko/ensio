@@ -11,10 +11,10 @@ from factory.models import Order, Item
 
 @csrf_exempt
 def index(request, landing_id):
-    # landing_id HAVE TO be the same as name of Item
+    # landing_id HAVE TO be the same as name_id of Item
     try:
         template = Template(BaseHtmlFactory.create.empty(
-            'Landing', 'landing', landing_id, landing_id, ''))
+            'Landing', 'landing', landing_id, '', ''))
     except:
         return HttpResponseNotFound('Ooops... 404 error')
 

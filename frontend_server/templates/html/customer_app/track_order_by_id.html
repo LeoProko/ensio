@@ -1,23 +1,64 @@
-<div id="track_order">
+<link rel="stylesheet" type="text/css" href="{% static 'css/customer_app/track_order.css' %}">
+
+<div id="track_order_id">
     {% if order_is_found %}
-    <ul>
-        <li><b>Заказ номер:</b> {{ order.id }}</li>
-        <li><b>Товар:</b> {{ order.item.name }}</li>
-        <li><b>Размер:</b> {{ order.size }}</li>
-        <li><b>Статус:</b> {{ order.status }}</li>
-        <li><b>Дата создания:</b> {{ order.date_created }}</li>
-    </ul>
+    <div id="table">
+        <table>
+            <tr>
+                <td>
+                    <b>Заказ номер:</b>
+                </td>
+                <td>
+    {{ order.id }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Товар:</b>
+                </td>
+                <td>
+                    {{ order.item.name }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Размер:</b>
+                </td>
+                <td>
+                    {{ order.size }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Статус:</b>
+                </td>
+                <td>
+                    {{ order.status }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Дата создания:</b>
+                </td>
+                <td>
+                    {{ order.date_created }}
+                </td>
+            </tr>
+        </table>
+    </div>
     {% else %}
     <p>
         Заказ не найден
     </p>
     {% endif %}
-    <span>
-        <a href="/landing/ring_1">Назад к товару</a>
-    </span>
-    <hr>
-    <span>
-        <a href="/track_order">Отследить другой заказ</a>
-    </span>
+    <div id="links">
+        <span>
+            <a href="/shop">На главную</a>
+        </span>
+        <br>
+        <span>
+            <a href="/track_order">Отследить другой заказ</a>
+        </span>
+    </div>
 </div>
 

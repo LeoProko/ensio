@@ -1,0 +1,59 @@
+#size_tutorial {
+    margin: 4% 0;
+    border: 1vw solid #373737;
+    padding: 5%;
+    text-align: center;
+}
+
+#size_tutorial img {
+    padding: 5%;
+    width: 35%;
+}
+
+#tutorial_title {
+    font-size: 3.5vw;
+    color: #373737;
+    margin: 0;
+}
+
+.tutorial_text {
+    margin: 5% 0;
+    margin-top: 0;
+    text-align: left;
+    font-size: 1.5vw;
+}
+
+.tutorial_text_title {
+    text-decoration: underline;
+}
+
+#tutorial_table {
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid #a7a7a7;
+    border-collapse: collapse;
+    width: 70%;
+    font-size: 1.6vw;
+}
+
+#tutorial_table th,
+#tutorial_table td {
+    border: 1px solid #a7a7a7;
+}
+
+#tutorial_table th {
+    padding: 3%;
+}
+
+#tutorial_table {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#tutorial_table td {
+    padding: 0.3vw;
+    vertical-align: top;
+    width: 50%;
+    text-align: center;
+}
+

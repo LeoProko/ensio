@@ -1,19 +1,63 @@
-{%  load static %}
+{% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/img.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/item.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/customer_app/item.css' %}">
 
-{{ item.id }}
-{{ item.name }}
-{% if item.item_image %}
-    <img class="image_width_100" src="{% static item.item_image.url %}">
-{%  endif %}
-{% for tag in item.tags.all %}
-    {{ tag }}
-    <br>
-{% endfor %}
-{{ item.price }}
-{{ item.stock_balance }}
+<table id="content_table">
+    <tr>
+        <td>
+            <img class="item_image" src="{% static item.main_photo.url %}">
+            {% for image in images  %}
+                <img class="item_image" src="{% static image.image.url %}">
+            {% endfor %}
+        </td>
+        <td>
+            <span id="item_name">
+                {{ item.name }}
+            </span>
+            <br>
+            <br>
+            <span id="item_price">
+                {{ item.price|floatformat:0 }}₽
+            </span>
+            <br>
+            <br>
+            <span id="item_material">
+                {% for material in item.materials.all %}
+                    {{ material }}
+                    <br>
+                {% endfor %}
+            </span>
+            <br>
+            <span id="item_weight">
+                {{ item.weight }}
+            </span>
+            <br>
+            <br>
+            <span id="item_description">
+                {{ item.description }}
+            </span>
+
+            {% include 'html/order/order_form.html' %}
+            {% include 'html/order/size_tutorial.html' %}
+
+            <div id="button_to_order_form">
+                <a href="#order_form">
+                    <input id="order_button" type="submit" value="Заказать">
+                </a>
+            </div>
+
+            <p id="delivery_info">
+                Больше фоток можете увидеть в нашей
+                <a href="https://instagram.com">инсте</a>
+                <br>
+                <br>
+                Доставка СберЛогистикой или Почтой России
+                <br>
+                Статус заказа вы сможете отследить по номеру заказа
+                на <a href="/track_order">этой странице</a>,
+                а статус посылки на сайте службы доставки по трек-номеру,
+                который мы вам вышлем после отправления.
+            </p>
+        </td>
+    </tr>
+</table>

@@ -1,8 +1,13 @@
 {% load static %}
 
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/landing/ring_1.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/order/order_form.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/order/size_tutorial.css' %}">
+
 <div id="landing_header">
-    <img src="{% static 'img/ring_1/header.jpg' %}">
-    <img src="{% static 'img/ring_1/under_header.svg' %}">
+    <img src="{% static 'img/landing/ring_hyu_silver/header.jpg' %}">
+    <img src="{% static 'img/landing/ring_hyu_silver/under_header.svg' %}">
 </div>
 
 <div id="landing_content">
@@ -10,13 +15,13 @@
         <tr>
             <td>
                 <div class="ring_image">
-                    <img src="{% static 'img/ring_1/ring_1.jpeg' %}">
+                    <img src="{% static 'img/landing/ring_hyu_silver/ring_1.jpeg' %}">
                 </div>
                 <div class="huy_image">
-                    <img id="hi" src="{% static 'img/ring_1/hi.svg' %}">
+                    <img id="hi" src="{% static 'img/landing/ring_hyu_silver/hi.svg' %}">
                 </div>
                 <div class="ring_image">
-                    <img src="{% static 'img/ring_1/ring_2.jpeg' %}">
+                    <img src="{% static 'img/landing/ring_hyu_silver/ring_2.jpeg' %}">
                 </div>
                 <div class="photo_text">
                     <p>
@@ -24,7 +29,7 @@
                     </p>
                 </div>
                 <div class="ring_image">
-                    <img src="{% static 'img/ring_1/ring_3.jpeg' %}">
+                    <img src="{% static 'img/landing/ring_hyu_silver/ring_3.jpeg' %}">
                 </div>
                 <div class="photo_text">
                     <p>
@@ -32,7 +37,7 @@
                     </p>
                 </div>
                 <div class="ring_image">
-                    <img src="{% static 'img/ring_1/ring_4.jpeg' %}">
+                    <img src="{% static 'img/landing/ring_hyu_silver/ring_4.jpeg' %}">
                 </div>
                 <div class="photo_text">
                     <p>
@@ -67,8 +72,8 @@
                             </li>
                         </ul>
                 </div>
-                {% include 'html/landing/size_tutorial.html' %}
-                {% include 'html/landing/order_form.html' %}
+                {% include 'html/order/size_tutorial.html' %}
+                {% include 'html/order/order_form.html' %}
                 <p id="delivery_info">
                     Доставка СберЛогистикой или Почтой России
                     по 50% предоплате.

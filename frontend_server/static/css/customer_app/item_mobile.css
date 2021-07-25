@@ -1,0 +1,133 @@
+#customer_footer {
+    height: 60px;
+}
+
+#customer_footer span {
+    font-size: 40px;
+}
+
+#logo_footer img {
+    height: 50px;
+}
+
+.footer_link a {
+    margin: 0 70px;
+    margin-top: -43px;
+}
+
+.item {
+    width: 95%;
+    height: 113vw;
+}
+
+.item_name {
+    margin-top: 5%;
+    font-size: 9vw;
+}
+
+.item_material {
+    margin-top: 1%;
+    font-size: 4vw;
+}
+
+.item_price {
+    bottom: 5vw;
+    font-size: 7vw;
+}
+
+#button_to_order_form input[type=submit] {
+    background: #E23333;
+    color: white;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 8vw;
+    text-align: center;
+    width: 80%;
+    margin: 3%;
+    border-radius: 5vw;
+}
+
+#button_to_order_form input[type=submit]:hover {
+    background: #BD1818;
+}
+
+#order_form {
+    margin-top: 0% !important;
+}
+
+.item_image {
+    width: 95%;
+    padding: 0.5% 0;
+}
+
+#order_form {
+    width: 85% !important;
+    margin: 0 auto !important;
+}
+
+#order_form li {
+    font-size: 5vw !important;
+}
+
+#order_form input[type=text] {
+    font-size: 6vw !important;
+    padding: 0.5vw 1vw !important;
+    color: #ffffff !important;
+}
+
+.field_title {
+    font-size: 7vw !important;
+}
+
+#order_form input[type=radio],
+#order_form input[type=radio]:after {
+    height: 6vw !important;
+    width: 8vw !important;
+}
+
+#order_form input[type=radio]:after,
+#order_form input[type=radio]:checked:after {
+    border-radius: 1.5vw !important;
+}
+
+#order_form input[type=radio]:checked:after {
+    height: 3vw !important;
+    width: 5vw !important;
+    border: 1.5vw solid #585858 !important;
+}
+
+select {
+    font-size: 6vw !important;
+}
+
+option {
+    font-size: 3vw !important;
+}
+
+#size_tutorial {
+    margin: 2% auto !important;
+    width: 85% !important;
+}
+
+#size_tutorial_link {
+    font-size: 5vw !important;
+}
+
+#order_button {
+    font-size: 7vw !important;
+}
+
+#tutorial_title {
+    font-size: 5vw !important;
+}
+
+#tutorial_table {
+    font-size: 4vw !important;
+}
+
+#tutorial_table td {
+    padding: 1vw !important;
+}
+
+::placeholder {
+    color: #9a9a9a !important;
+}

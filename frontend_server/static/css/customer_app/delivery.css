@@ -1,0 +1,21 @@
+.customers_content {
+    text-align: center;
+}
+
+.delivery {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+    padding: 0 1%;
+}
+
+.title {
+    text-align: center;
+    font-size: 60px;
+}
+
+.text {
+    text-align: left !important;
+    font-size: 30px;
+    display: block;
+}

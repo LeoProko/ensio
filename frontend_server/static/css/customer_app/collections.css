@@ -1,0 +1,37 @@
+.customers_content {
+    width: 100%;
+    text-align: center;
+}
+.collection_image {
+    display: inline-block;
+    width: 49%;
+}
+.collection_image img {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+}
+
+#collection_title {
+    text-align: left;
+    font-weight: 600;
+    font-size: 6vw;
+    position: absolute;
+    top: calc(0.5vw + 70px);
+    left: 5vw;
+    display: inline-block;
+}
+
+#collection_description {
+    text-align: center;
+    display: inline-block;
+    font-size: 3vw;
+    font-weight: 600;
+    position: absolute;
+    top: calc(1vw + 70px);
+    right: 10vw;
+}
+
+#images {
+    margin-top: 10vw;
+}

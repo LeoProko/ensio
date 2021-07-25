@@ -1,0 +1,130 @@
+#order_form {
+    font-family: 'Tenor sans' sans-serif;
+    background: #9a9a9a;
+    text-align: left;
+    padding: 3% 5%;
+    width: 80%;
+    margin: 8% auto;
+}
+
+#order_form li {
+    list-style-type: none;
+    font-size: 2.3vw;
+    padding: 0.5% 0;
+}
+
+::placeholder {
+    color: #9a9a9a;
+}
+
+#order_form input[type=text] {
+    background: #585858;
+    color: #373737;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 2.5vw;
+    width: 93%;
+    margin: 2% 1%;
+    border-radius: 0;
+    padding: 1% 3%;
+}
+
+#order_form input[type=submit] {
+    background: #E23333;
+    color: white;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 3vw;
+    text-align: center;
+    width: 100%;
+    margin: 3% 0;
+    border-radius: 20px;
+}
+
+#order_form input[type=submit]:hover {
+    background: #BD1818;
+}
+
+#order_form input[type=radio] {
+    background-color: #585858;
+    height: 2vw;
+    width: 3vw;
+    vertical-align: middle;
+    margin-bottom: 2%;
+}
+
+#order_form input[type=radio]:after {
+    content: '';
+    height: 2vw;
+    width: 3vw;
+    border-radius: 0.5vw;
+    background-color: #585858;
+    display: inline-block;
+    visibility: visible;
+    border: 0;
+}
+#order_form input[type=radio]:checked:after {
+    content: '';
+    height: 1vw;
+    width: 2vw;
+    border-radius: 0.5vw;
+    background-color: #00A3FF;
+    display: inline-block;
+    visibility: visible;
+    border: 0.5vw solid #585858;
+}
+
+#order_form p,
+#order_form ul {
+    font-family: 'Tenor Sans', sans-serif;
+    color: #000000;
+    margin: 0;
+}
+
+#order_form ul {
+    padding: 2% 0;
+}
+
+#id_connection_type {
+    padding: 0;
+    color: white;
+}
+
+.field_title {
+    color: #000000;
+    font-size: 3vw;
+    margin: 2% 0;
+}
+
+.field_help_text {
+    font-size: 2vw;
+    float: right;
+    display: inline;
+    padding: 3% 0;
+}
+
+select {
+    background: #585858;
+    font-family: inherit;
+    font-size: 2.5vw;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    width: 20%;
+    outline: none;
+    margin: 2% 1%;
+}
+
+#size_tutorial_link {
+    color: #000000;
+    text-decoration: underline;
+}
+
+#size_tutorial_link:hover {
+    color: white;
+}
+
+#delivery_info {
+    font-size: 2vw;
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+}

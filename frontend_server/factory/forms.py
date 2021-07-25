@@ -29,35 +29,18 @@ class FastOrderForm(Form):
         ('Whats App', 'Вотс ап'),
         ('Instagram', 'Инстаграм'),
     )
-
-    SIZE = (
-        ('15', '15'),
-        ('15.5', '15.5'),
-        ('16', '16'),
-        ('16.5', '16.5'),
-        ('17', '17'),
-        ('17.5', '17.5'),
-        ('18', '18'),
-        ('18.5', '18.5'),
-        ('19', '19'),
-        ('19.5', '19.5'),
-        ('20', '20'),
-        ('20.5', '20.5'),
-        ('21', '21'),
-    )
-
+    size = forms.ChoiceField(choices=[])
     customer_name = forms.CharField(max_length=50, label='Имя', widget=forms.TextInput(
         attrs={
             'Placeholder' : 'Имя',
-        }))
+        }
+    ))
     connection_type = forms.ChoiceField(choices=CONNECTION, widget=forms.RadioSelect)
     contacts = forms.CharField(max_length=50, label='Номер телефона/Ник', widget=forms.TextInput(
         attrs={
-            'Placeholder' : 'Номре телефона/Ник',
-        }))
-
-    size = forms.ChoiceField(choices=SIZE)
-
+            'Placeholder' : 'Номер телефона/Ник',
+        }
+    ))
 
 class EmployeeForm(ModelForm):
     class Meta:
