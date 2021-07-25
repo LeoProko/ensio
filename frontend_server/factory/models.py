@@ -68,7 +68,7 @@ class Item(models.Model):
     tags = models.ManyToManyField(Tag)
     stock_balance = models.FloatField(null=True)
     main_photo = models.ImageField(upload_to=main_photo_path, null=True)
-    description = models.CharField(max_length=200, null=True)
+    description = models.TextField(null=True)
 
     def __str__(self) -> str:
         return str(self.name) + ': ' + str(self.name_id)
