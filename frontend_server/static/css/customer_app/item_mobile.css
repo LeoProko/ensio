@@ -35,6 +35,13 @@
     font-size: 7vw;
 }
 
+#item_description {
+    text-align: left;
+    width: 90%;
+    margin: 1vw auto;
+    margin-bottom: 0;
+}
+
 #button_to_order_form input[type=submit] {
     background: #E23333;
     color: white;
