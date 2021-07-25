@@ -19,3 +19,37 @@
         </div>
     </a>
 {% endfor %}
+{% for item in items %}
+    <a href="{% url 'item' item.name_id %}">
+        <div class="item" style="background-image: url({% static item.main_photo.url %});">
+            <div class="item_name">
+                {{ item.name }}
+            </div>
+            <div class="item_material">
+            {% for material in item.materials.all %}
+                {{ material }}
+            {% endfor %}
+            </div>
+            <div class="item_price">
+            {{ item.price|floatformat:0 }}₽
+            </div>
+        </div>
+    </a>
+{% endfor %}
+{% for item in items %}
+    <a href="{% url 'item' item.name_id %}">
+        <div class="item" style="background-image: url({% static item.main_photo.url %});">
+            <div class="item_name">
+                {{ item.name }}
+            </div>
+            <div class="item_material">
+            {% for material in item.materials.all %}
+                {{ material }}
+            {% endfor %}
+            </div>
+            <div class="item_price">
+            {{ item.price|floatformat:0 }}₽
+            </div>
+        </div>
+    </a>
+{% endfor %}

@@ -76,7 +76,8 @@ class Item(models.Model):
 def get_image_path(instance, filename) -> str:
     return f'item_photos/{instance.item.name_id}/{filename}'
 
-class Image(models.Model):
+class ItemImage(models.Model):
+    # all images have to be 4x3
     item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to=get_image_path, null=True)
 

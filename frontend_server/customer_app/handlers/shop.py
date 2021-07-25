@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 
 from factory.html_factories.base import BaseHtmlFactory
-from factory.models import Order, Item, Image
+from factory.models import Order, Item, ItemImage
 from factory.forms import FastOrderForm
 
 def index(request):
@@ -28,7 +28,7 @@ def get_sizes_list(sizes) -> list:
 @csrf_exempt
 def view_item(request, item_id):
     item = Item.objects.get(name_id=item_id)
-    images = Image.objects.filter(item=item)
+    images = ItemImage.objects.filter(item=item)
     if request.user_agent.is_mobile:
         template = Template(BaseHtmlFactory.create.customer_app(
             item.name, 'customer_app', 'item_mobile', '', ''
