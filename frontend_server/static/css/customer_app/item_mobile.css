@@ -36,8 +36,9 @@
 }
 
 #item_description {
+    font-size: 3vw;
     text-align: left;
-    width: 90%;
+    width: 85%;
     margin: 1vw auto;
     margin-bottom: 0;
 }
