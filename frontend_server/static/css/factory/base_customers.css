@@ -43,7 +43,7 @@ a {
 
 #customer_header a:hover,
 #customer_footer a:hover {
-    color: #e6efff;
+    color: #edd8ab;
     text-decoration: none;
 }
 
@@ -65,7 +65,7 @@ a {
 }
 
 #logo:hover {
-    filter: invert(30%) sepia(100%) saturate(30%) hue-rotate(330deg);
+    filter: invert(30%) sepia(100%) saturate(100%);
 }
 
 #logo_footer {
@@ -86,7 +86,7 @@ a {
 }
 
 #logo_footer img:hover {
-    filter: invert(30%) sepia(100%) saturate(30%) hue-rotate(330deg);
+    filter: invert(30%) sepia(100%) saturate(100%);
 }
 
 .customers_content {
