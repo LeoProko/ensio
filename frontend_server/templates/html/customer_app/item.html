@@ -34,7 +34,7 @@
             <br>
             <br>
             <span id="item_description">
-                {{ item.description }}
+                {{ item.description|safe }}
             </span>
 
             {% include 'html/order/order_form.html' %}
