@@ -27,7 +27,7 @@ input[type=radio] {
 
 body {
   width: 100%;
-  background: #EAF7FB;
+  background: #5F5F5F;
   color: black;
   font-size:18px;
   margin: 0 auto;
@@ -61,7 +61,8 @@ h3 {
 }
 
 .header input {
-  background: #d1ddde;
+  background: #5f5f5f;
+  color: #ffffff;
   font-size: 18px;
   font-weight: 500;
   width: auto;
@@ -69,6 +70,14 @@ h3 {
   height: 35px;
   text-align: center;
   margin-bottom: 10px;
+}
+
+.header input:hover {
+    color: #000000;
+}
+
+#logo:hover {
+    filter: invert(30%);
 }
 
 .ghost_footer {
@@ -89,7 +98,7 @@ h3 {
 }
 
 .sidebar {
-  background: #E0F0F5;
+  background: #373737;
   width: 166px;
   position: fixed;
   height: 100%;
@@ -102,7 +111,7 @@ h3 {
 }
 
 .sidebar input {
-  background: #D5E8E9;
+  background: #ffffff;
   font-size: 18px;
   font-weight: 500;
   width: 160px;
@@ -112,7 +121,7 @@ h3 {
 }
 
 .sidebar input:hover, #ensio_header input:hover {
-  background: #bccecf;
+  background: #5f5f5f;
 }
 
 .back_office_content {
@@ -126,7 +135,7 @@ h3 {
   top: 0;
   left: 0;
   backdrop-filter: blur(2px);
-  background: rgba(250, 215, 238, 0.9);
+  background: #373737;
   position: fixed;
   height: 50px;
   font-size: 36px;
@@ -141,16 +150,27 @@ h3 {
   height: 60px;
 }
 
-.left_header a {
+#header_left {
+    text-align: left;
+}
+
+#header_left img {
+    height: 40px;
+    margin-top: 10px;
+}
+
+#header_left a {
   margin-left: 30px;
 }
 
-.right_header {
-  text-align: right;
+#header_right {
+    text-align: right;
 }
 
-.right_header a {
-  margin-right: 10px;
+#header_right a {
+    padding-top: 3px;
+    display: inline-block;
+    margin-right: 30px;
 }
 
 #header_buttons table {
@@ -163,11 +183,34 @@ h3 {
 }
 
 #ensio_footer {
-  height: 44px;
-  font-weight: 600;
-  font-size: 24px;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 44px;
+    background: #373737;
+    color: white;
+    height: 50px;
+    text-align: center;
+    vertical-align: center;
+}
+
+#ensio_footer a {
+    color: white;
+}
+
+#logo_footer {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#logo_footer a {
+    display: inline-block;
+    margin: 0 10px;
+    margin-top: -20px;
+}
+
+#logo_footer img {
+    display: inline-block;
+    height: 35px;
+    margin-top: 18px;
+}
+
+#logo_footer img:hover {
+    filter: invert(30%);
 }

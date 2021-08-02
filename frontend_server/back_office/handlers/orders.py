@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from factory.html_factories.base import BaseHtmlFactory
 from factory.models import Customer, CustomerOrder, Order
-from factory.forms import CustomerOrderForm, OrderForm
+from factory.forms import OrderForm
 from factory.filters import OrderFilter
 from factory.decorators import allowed_users
 
@@ -19,15 +19,26 @@ def orders(request):
         'Orders', 'back_office', 'orders', '', ''
     ))
     orders = Order.objects.all()
-    orders_count = [orders.count()]
-    for status in ['Received', 'In work', 'Ready to deliver', 'On the way', 'Delivered']:
-        orders_count.append(CustomerOrder.objects.filter(status=status).count())
+    order_counter = orders.count()
+    order_counters = []
+    for status in [
+            'Получен',
+            'В работе',
+            'Готовится к доставке',
+            'В пути',
+            'Доставлен',
+    ]:
+        order_counters.append([
+            status,
+            Order.objects.filter(status=status).count()
+        ])
     filter = OrderFilter(request.GET, queryset=orders)
     orders = filter.qs
     context = Context({
         'request' : request,
         'orders': reversed(orders),
-        'orders_count': orders_count,
+        'order_counter': order_counter,
+        'order_counters': order_counters,
         'filter' : filter,
     })
     return HttpResponse(template.render(context))
@@ -41,10 +52,10 @@ def new_order(request):
         'New order', 'back_office', 'new_order', '', ''
     ))
     # order_form_set = CustomerOrderFormSet(queryset=CustomerOrder.objects.none())
-    order_form = CustomerOrderForm()
+    order_form = OrderForm()
 
     if request.method == 'POST':
-        order_form= CustomerOrderForm(request.POST)
+        order_form= OrderForm(request.POST)
         if order_form.is_valid():
             order_form.save()
             print('New order has been created', request.POST)

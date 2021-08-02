@@ -28,7 +28,6 @@
     <tr id="table_header">
         <th> ID </th>
         <th> Name </th>
-        <th> Image </th>
         <th> Tags </th>
         <th> Price </th>
         <th> Stock balance </th>
@@ -40,13 +39,6 @@
     <tr>
         <td> {{ item.id }} </td>
         <td> {{ item.name }} </td>
-        <td>
-            {% if item.item_image %}
-                <div class="item_image_in_table">
-                    <img class="fit_image image_width_100" src="{% static item.item_image.url %}">
-                </div>
-            {%  endif %}
-        </td>
         <td>
             {% for tag in item.tags.all %}
                 {{ tag }}

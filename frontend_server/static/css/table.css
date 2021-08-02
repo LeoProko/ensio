@@ -1,35 +1,35 @@
 .data_table {
   border-collapse: separate;
-  border-spacing: 1px 7px;
+  border-spacing: 1px 3px;
   border: 0;
   border-radius: 3px;
   -moz-border-radius:3px;
   width: 100%;
   word-wrap: break-word;
-  margin: 10px;
   table-layout: fixed;
 }
 
-.data_table td,
 .data_table th {
-  border: 2px solid #9dafb0;
+  border: 1px solid #373737;
   text-align: center;
-  padding: 5px 0;
-}
-
-.data_table th {
-  background: #fad7ee;
+  background: #ffffff;
   font-weight: 800;
 }
 
-.data_table tr:nth-child(odd) {
-  background: #dbdbdb;
-  font-weight: 600;
+.data_table td {
+  border: 1px solid #373737;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px;
 }
 
 .data_table tr:nth-child(even) {
-  background: white;
-  font-weight: 600;
+  background: #dbdbdb;
+}
+
+.data_table tr:nth-child(odd) {
+  background: #ffffff;
 }
 
 .data_table input, .data_table select, .data_table textarea {

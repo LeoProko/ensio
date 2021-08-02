@@ -7,9 +7,14 @@
   font-size: 30px;
   padding: 20px;
   font-weight: 600;
-  background: #FAD7EE;
+  background: #373737;
+  color: #ffffff;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+
+.center_form input:hover {
+  background: #000000;
 }
 
 .input_form input {
