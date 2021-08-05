@@ -1,0 +1,39 @@
+.order_form {
+    background: #ffffff;
+    border: 2px solid #373737;
+    font-size: 20px;
+    padding: 30px;
+}
+
+.order_form select,
+.order_form input {
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    background: #5f5f5f;
+    color: #ffffff;
+    padding: 1%;
+}
+
+.order_form input {
+    width: calc(100% - 9px);
+}
+
+#submit_button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#submit_button input {
+    height: auto;
+    width: auto;
+    font-size: 30px;
+    text-align: center;
+    background: #5f5f5f;
+    color: #ffffff;
+    padding: 1% 2%;
+}
+
+#submit_button input:hover {
+    background: #000000;
+}

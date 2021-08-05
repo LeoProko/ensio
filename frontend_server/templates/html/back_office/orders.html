@@ -20,6 +20,8 @@
             <br>
             <span class="form_title">Status: </span>{{ filter.form.status }}
             <br>
+            <span class="form_title">Phone number: </span>{{ filter.form.phone_number }}
+            <br>
             <div id="seach_button">
                 <input type="submit" value="Search">
             </div>
@@ -35,7 +37,7 @@
         <th> Status </th>
         <th> Name </th>
         <th> Contact type </th>
-        <th> Contacts </th>
+        <th> Phone number </th>
         <th> Date created </th>
         <th> Change </th>
         <th> Remove </th>
@@ -48,7 +50,7 @@
         <td> {{ order.status }} </td>
         <td> {{ order.customer_name }} </td>
         <td> {{ order.connection_type }} </td>
-        <td> {{ order.contacts }} </td>
+        <td> {{ order.phone_number }} </td>
         <td> {{ order.date_created }} </td>
         <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
         <td> <a href="{% url 'delete_order' order.id %}"> Remove </a> </td>

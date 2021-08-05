@@ -38,3 +38,8 @@
     justify-content: center;
 }
 
+.white_header {
+    background: #ffffff;
+    border: 2px solid #373737;
+    padding: 20px;
+}

@@ -3,7 +3,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from back_office.handlers import index
-from back_office.handlers import customers
 from back_office.handlers import documents
 from back_office.handlers import employees
 from back_office.handlers import orders
@@ -14,13 +13,7 @@ from back_office.handlers import tasks
 urlpatterns = [
     path('', index.index, name='back_office'),
 
-    path('customers/', customers.customers, name='customers'),
-    path('customers/<str:customer_id>/', customers.customer_profile, name='customer'),
-    path('new_customer/', customers.new_customer, name='new_customer'),
-
     path('orders/', orders.orders, name='orders'),
-    path('new_order/', orders.new_order, name='new_order'),
-    path('new_order/<str:customer_id>', orders.new_order_by_customer, name='new_order_by_customer'),
     path('change_order/<str:order_id>', orders.change_order, name='change_order'),
     path('delete_order/<str:order_id>', orders.delete_order, name='delete_order'),
 

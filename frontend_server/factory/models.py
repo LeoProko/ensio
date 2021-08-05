@@ -1,4 +1,5 @@
 from django.db import models
+from phone_field import PhoneField
 
 class Password(models.Model):
     service = models.CharField(max_length=200)
@@ -28,7 +29,7 @@ class Employee(models.Model):
     father_name = models.CharField(max_length=50, blank=True)
     position = models.CharField(max_length=50, choices=POSITION)
     status = models.CharField(max_length=50, choices=STATUS)
-    phone_number = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20, null=True)
     telegram = models.CharField(max_length=50, blank=True)
     email = models.CharField(max_length=100)
     start_date = models.DateField()
@@ -84,33 +85,6 @@ class ItemImage(models.Model):
     def __str__(self):
         return 'image of ' + self.item.name
 
-class Customer(models.Model):
-    first_name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50, blank=True)
-    phone_number = models.CharField(max_length=20)
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.first_name + ' ' + self.surname
-
-class CustomerOrder(models.Model):
-    STATUS = (
-        ('Получен', 'Получен'),
-        ('В работе', 'В работе'),
-        ('Готовится к доставке', 'Готовится к доставке'),
-        ('В пути', 'В пути'),
-        ('Доставлен', 'Доставлен'),
-    )
-
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=50, choices=STATUS)
-
-    def __str__(self) -> str:
-        return str(self.customer.first_name) + ' ' +\
-            str(self.customer.surname) + ' ' + str(self.status)
-
 class Order(models.Model):
     STATUS = (
         ('Получен', 'Получен'),
@@ -122,7 +96,7 @@ class Order(models.Model):
 
     customer_name = models.CharField(max_length=50, null=True)
     connection_type = models.CharField(max_length=50, null=True)
-    contacts = models.CharField(max_length=50, null=True)
+    phone_number = models.CharField(max_length=50, null=True)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
     size = models.CharField(max_length=10, null=True)
     comment = models.CharField(max_length=500, null=True, blank=True)

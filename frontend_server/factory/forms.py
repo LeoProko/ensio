@@ -5,17 +5,7 @@ from django.forms import ModelForm, Form
 
 from markdown import markdown
 
-from .models import Customer, CustomerOrder, Order, Employee, Document, Task
-
-class CustomerForm(ModelForm):
-    class Meta:
-        model = Customer
-        fields = '__all__'
-
-class CustomerOrderForm(ModelForm):
-    class Meta:
-        model = CustomerOrder
-        fields = '__all__'
+from .models import Order, Employee, Document, Task
 
 class OrderForm(ModelForm):
     class Meta:
@@ -27,7 +17,6 @@ class FastOrderForm(Form):
         ('Phone', 'Телефон'),
         ('Telegram', 'Телеграм'),
         ('Whats App', 'Вотс ап'),
-        ('Instagram', 'Инстаграм'),
     )
     size = forms.ChoiceField(choices=[])
     customer_name = forms.CharField(max_length=50, label='Имя', widget=forms.TextInput(
@@ -36,9 +25,9 @@ class FastOrderForm(Form):
         }
     ))
     connection_type = forms.ChoiceField(choices=CONNECTION, widget=forms.RadioSelect)
-    contacts = forms.CharField(max_length=50, label='Номер телефона/Ник', widget=forms.TextInput(
+    phone_number = forms.CharField(max_length=50, label='Номер телефона', widget=forms.TextInput(
         attrs={
-            'Placeholder' : 'Номер телефона/Ник',
+            'Placeholder' : 'Номер телефона',
         }
     ))
 

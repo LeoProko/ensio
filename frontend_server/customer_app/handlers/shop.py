@@ -49,14 +49,14 @@ def view_item(request, item_id):
         if order_form.is_valid():
             customer_name = order_form.cleaned_data['customer_name']
             connection_type = order_form.cleaned_data['connection_type']
-            contacts = order_form.cleaned_data['contacts']
+            phone_number = order_form.cleaned_data['phone_number']
             size = order_form.cleaned_data['size']
             item = Item.objects.get(name_id=item_id)
 
             new_order = Order.objects.create(item=item,
                               customer_name=customer_name,
                               connection_type=connection_type,
-                              contacts=contacts,
+                              phone_number=phone_number,
                               size=size,
                               date_created=timezone.now())
             new_order.save()
