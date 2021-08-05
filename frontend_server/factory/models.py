@@ -1,5 +1,4 @@
 from django.db import models
-from phone_field import PhoneField
 
 class Password(models.Model):
     service = models.CharField(max_length=200)
