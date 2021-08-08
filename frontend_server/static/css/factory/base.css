@@ -216,7 +216,8 @@ h3 {
 }
 
 .no_navbar {
-  width: 100%;
-  margin: 0;
-  margin-top: 20px;
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+    padding: 0;
 }
