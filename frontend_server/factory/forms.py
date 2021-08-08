@@ -45,7 +45,7 @@ class DocumentForm(ModelForm):
     class Meta:
         model = Document
         fields = '__all__'
-        exclude = ['html_data']
+        exclude = ['html_data', 'owner']
 
 class TaskForm(ModelForm):
     class Meta:

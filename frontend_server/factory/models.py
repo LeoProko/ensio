@@ -107,10 +107,11 @@ class Order(models.Model):
 
 class Document(models.Model):
     title = models.CharField(max_length=200, null=True)
-    owner = models.CharField(max_length=50, null=True)
+    owner = models.CharField(max_length=50, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     markdown_data = models.TextField(null=True)
     html_data = models.TextField(null=True)
+    is_private = models.BooleanField(default=True, null=True)
 
     def __str__(self) -> str:
         return str(self.title)

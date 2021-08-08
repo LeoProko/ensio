@@ -3,6 +3,8 @@
 <link rel="stylesheet" tepe="text/css" href="{% static 'css/p.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/document.css' %}">
 
+<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+
 <div class="center_div">
 </div>
 <form action="" method="POST">
@@ -16,20 +18,27 @@
                 {{ form.title }}
             </div>
         </h2>
-        <i> Author:
-            <div class="input_form inline_div">
-                {{ form.owner }}
-            </div>
-        </i>
+        <i> Author:</i>
+        {% if document %}
+            <b>{{ document.owner }}</b>
+            <br>
+            <i> Date created: {{ document.date_created }} </i>
+        {% else %}
+            <b>{{ request.user }}</b>
+        {% endif %}
         <br>
-        <i> Date created: {{ document.date_created }} </i>
+        <i> Is private: {{ form.is_private }} </i>
         <hr>
         <div class="buttons_wrapper">
             <div class="inline_button">
                 <input type="submit" value="Save" />
             </div>
             <div class="inline_button">
+            {% if document %}
                 <a href="{% url 'view_document' document.id %}">
+            {% else %}
+                <a href="">
+            {% endif %}
                     <input type="button" value="View" />
                 </a>
             </div>

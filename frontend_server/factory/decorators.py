@@ -5,7 +5,9 @@ from django.http import HttpResponse
 from factory.html_factories.base import BaseHtmlFactory
 
 def no_permissions(request):
-    template = Template(BaseHtmlFactory.create('No permissions', 'factory/templates/', 'no_permissions', '', ''))
+    template = Template(BaseHtmlFactory.create.back_office(
+        'No permissions', 'back_office', 'no_permissions', '', ''
+    ))
     context = Context({
         'request' : request,
     })

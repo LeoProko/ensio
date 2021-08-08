@@ -9,7 +9,7 @@ from markdown import markdown
 from factory.html_factories.base import BaseHtmlFactory
 from factory.models import Document
 from factory.forms import DocumentForm
-from factory.decorators import allowed_users
+from factory.decorators import allowed_users, no_permissions
 
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
@@ -37,12 +37,15 @@ def new_document(request):
 
     if request.method == 'POST':
         document_form = DocumentForm(request.POST)
+        print(document_form.errors)
+        print('ХУЙ')
         if document_form.is_valid():
             form = document_form.save(commit=False)
+            form.owner = request.user
             form.html_data = markdown(form.markdown_data)
             form.save()
             print('New document has been created', request.POST)
-            return redirect('/documents/')
+            return redirect('/back_office/edit_document/' + str(form.id))
 
     context = Context({
         'request' : request,
@@ -66,7 +69,7 @@ def edit_document(request, document_id):
             form.html_data = markdown(form.markdown_data)
             form.save()
             print('Document', document_id, 'has been changed', request.POST)
-            return redirect('/edit_document/' + document_id)
+            return redirect('/back_office/edit_document/' + document_id)
 
     context = Context({
         'request' : request,
@@ -76,13 +79,16 @@ def edit_document(request, document_id):
     return HttpResponse(template.render(context))
 
 @csrf_exempt
-@login_required(login_url='login')
-@allowed_users(allowed_users_list=[])
 def view_document(request, document_id):
+    try:
+        document = Document.objects.get(id=document_id)
+    except:
+        return no_permissions(request)
+    if document.is_private:
+        return no_permissions(request)
     template = Template(BaseHtmlFactory.create.back_office(
         'Document', 'back_office', 'document', '', ''
     ))
-    document = Document.objects.get(id=document_id)
     context = Context({
         'request' : request,
         'document' : document,
@@ -99,7 +105,7 @@ def delete_document(request, document_id):
     document = Document.objects.get(id=document_id)
     if request.method == 'POST':
         document.delete()
-        return redirect('/documents/')
+        return redirect('/back_office/documents/')
 
     context = Context({
         'request' : request,

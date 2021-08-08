@@ -214,3 +214,9 @@ h3 {
 #logo_footer img:hover {
     filter: invert(30%);
 }
+
+.no_navbar {
+  width: 100%;
+  margin: 0;
+  margin-top: 20px;
+}

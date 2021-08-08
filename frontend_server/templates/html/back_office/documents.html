@@ -15,6 +15,7 @@
         <th> Id </th>
         <th> Title </th>
         <th> Owner </th>
+        <th> Private </th>
         <th> Date created </th>
         <th> View </th>
         <th> Edit </th>
@@ -25,6 +26,7 @@
         <td> {{ document.id }} </td>
         <td> {{ document.title }} </td>
         <td> {{ document.owner }} </td>
+        <td> {{ document.is_private }} </td>
         <td> {{ document.date_created }} </td>
         <td> <a href="{% url 'view_document' document.id %}">View</a> </td>
         <td> <a href="{% url 'edit_document' document.id %}">Edit</a> </td>
