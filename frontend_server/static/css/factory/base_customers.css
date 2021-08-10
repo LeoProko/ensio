@@ -1,5 +1,5 @@
 body {
-    background: white;
+    background: #5F5F5F;
 }
 
 a {
@@ -43,7 +43,7 @@ a {
 
 #customer_header a:hover,
 #customer_footer a:hover {
-    color: #edd8ab;
+    color: #5f5f5f;
     text-decoration: none;
 }
 
@@ -65,7 +65,7 @@ a {
 }
 
 #logo:hover {
-    filter: invert(30%) sepia(100%) saturate(100%);
+    filter: invert(50%);
 }
 
 #logo_footer {
@@ -86,13 +86,15 @@ a {
 }
 
 #logo_footer img:hover {
-    filter: invert(30%) sepia(100%) saturate(100%);
+    filter: invert(50%);
 }
 
 .customers_content {
     margin: 0 auto;
     margin-top: 0.8vw;
     width: 90%;
+    background: #ffffff;
+    padding: 3px;
 }
 
 #header_buttons {

@@ -19,9 +19,14 @@
                 Размер
             </p>
             {{ order_form.size }}
-            <p class="field_help_text">
-                <a href="#size_tutorial" id="size_tutorial_link">Как выбрать размер?</a>
-            </p>
+            {% if 'ring' in item_tags %}
+                <p class="field_help_text">
+                    <a href="#size_tutorial"
+                        id="size_tutorial_link">
+                        Как выбрать размер?
+                    </a>
+                </p>
+            {% endif %}
         </div>
         <input id="order_button" type="submit" value="Заказать">
     </form>

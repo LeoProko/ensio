@@ -62,11 +62,15 @@ class Item(models.Model):
     name_id = models.CharField(max_length=50, null=True)
     name = models.CharField(max_length=50, null=True)
     price = models.FloatField(null=True)
-    weight = models.CharField(max_length=10, null=True)
+    weight = models.CharField(max_length=10, null=True, blank=True)
     materials = models.ManyToManyField(Material)
     sizes = models.ManyToManyField(Size)
     tags = models.ManyToManyField(Tag)
     stock_balance = models.FloatField(null=True)
+    # TODO
+    # autoprocess of main photo after uploading:
+    # - convert to 3x4
+    # - add white fog to the top and bottom
     main_photo = models.ImageField(upload_to=main_photo_path, null=True)
     description = models.TextField(null=True)
 

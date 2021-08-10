@@ -29,28 +29,32 @@
                     <br>
                 {% endfor %}
             </span>
-            <br>
-            <span id="item_weight">
-                {{ item.weight }}
-            </span>
-            <br>
+            {% if item.weight %}
+                <br>
+                <span id="item_weight">
+                    {{ item.weight }}
+                </span>
+                <br>
+            {% endif %}
             <br>
             <span id="item_description">
                 {{ item.description|safe }}
             </span>
 
             {% include 'html/order/order_form.html' %}
-            {% include 'html/order/size_tutorial.html' %}
+            {% if 'ring' in item_tags %}
+                {% include 'html/order/size_tutorial.html' %}
+                <div id="button_to_order_form">
+                    <a href="#order_form">
+                        <input id="order_button" type="submit" value="Заказать">
+                    </a>
+                </div>
+            {% endif %}
 
-            <div id="button_to_order_form">
-                <a href="#order_form">
-                    <input id="order_button" type="submit" value="Заказать">
-                </a>
-            </div>
 
             <p id="delivery_info">
                 Больше фоток можете увидеть в нашей
-                <a href="https://instagram.com">инсте</a>
+                <a href="https://instagram.com/leoproko_shop">инсте</a>
                 <br>
                 <br>
                 Доставка СберЛогистикой или Почтой России
