@@ -39,7 +39,7 @@
     text-align: center;
     width: 85%;
     margin: 1vw auto;
-    margin-bottom: 0;
+    margin-bottom: 3vw;
 }
 
 #button_to_order_form input[type=submit] {
