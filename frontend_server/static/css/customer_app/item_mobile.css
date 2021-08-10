@@ -35,7 +35,7 @@
 }
 
 #item_description {
-    font-size: 3vw;
+    font-size: 30px;
     text-align: center;
     width: 85%;
     margin: 1vw auto;
@@ -67,12 +67,12 @@
 }
 
 #order_form {
-    width: 85% !important;
-    margin: 0 auto !important;
+    width: 85%;
+    margin: 0 auto;
 }
 
 #order_form li {
-    font-size: 5vw !important;
+    font-size: 40px; 
 }
 
 #order_form input[type=text] {
