@@ -4,11 +4,11 @@ from django.conf.urls.static import static
 
 from back_office.handlers import index
 from back_office.handlers import documents
-from back_office.handlers import employees
 from back_office.handlers import orders
 from back_office.handlers import passwords
 from back_office.handlers import stock
 from back_office.handlers import tasks
+from back_office.handlers import user_page
 
 urlpatterns = [
     path('', index.index, name='back_office'),
@@ -19,11 +19,6 @@ urlpatterns = [
 
     path('stock/', stock.get_stock, name='stock'),
 
-    path('employees/', employees.show_all_employees, name='employees'),
-    path('new_employee/', employees.new_employee, name='new_employee'),
-    path('change_employee/<str:employee_id>', employees.change_employee, name='change_employee'),
-    path('delete_employee/<str:employee_id>', employees.delete_employee, name='delete_employee'),
-
     path('password/', passwords.password, name='password'),
 
     path('document/<str:document_id>', documents.view_document, name='view_document'),
@@ -33,6 +28,8 @@ urlpatterns = [
     path('delete_document/<str:document_id>', documents.delete_document, name='delete_document'),
 
     path('tasks/', tasks.get_tasks, name='tasks'),
+
+    path('user_page/<str:username>', user_page.index, name='user_page'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

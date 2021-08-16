@@ -23,3 +23,15 @@
   outline: none;
   overflow: hidden;
 }
+
+select {
+    background: #585858;
+    font-family: inherit;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    width: 400px;
+    height: 60px;
+    outline: none;
+}

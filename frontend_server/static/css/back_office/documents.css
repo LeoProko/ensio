@@ -1,0 +1,37 @@
+.documents {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.document {
+    text-align: left;
+    background: #ffffff;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    font-size: 18px;
+    padding: 20px;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+.document:hover {
+    background: #f0f0f0;
+}
+
+.document_preview {
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #f0f0f0;
+    padding: 20px 40px;
+}
+
+.preview_title {
+    text-align: center;
+    font-size: 25px;
+}
+
+[data-link] {
+    cursor: pointer;
+}

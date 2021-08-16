@@ -4,8 +4,8 @@ from django.contrib import admin
 
 from .models import *
 
+admin.site.register(User)
 admin.site.register(Password)
-admin.site.register(Employee)
 admin.site.register(Tag)
 admin.site.register(Material)
 admin.site.register(Size)

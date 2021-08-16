@@ -1,4 +1,56 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import BaseUserManager
+from django.contrib.auth.models import Group
+
+class UserManager(BaseUserManager):
+    def create_user(self, email, phone_number,
+                    public_name, password,
+                    **other_fileds):
+        if not email:
+            raise ValueError('Incorrect email')
+
+        email = self.normalize_email(email)
+        user = self.model(email=email, phone_number=phone_number,
+                          public_name=public_name, **other_fileds)
+        user.set_password(password)
+        user.save()
+        return user
+
+
+    def create_superuser(self, email, phone_number,
+                    public_name, password,
+                    **other_fileds):
+        other_fileds.setdefault('is_staff', True)
+        other_fileds.setdefault('is_superuser', True)
+        other_fileds.setdefault('is_active', True)
+
+        return self.create_user(email, phone_number,
+                    public_name, password, **other_fileds)
+
+class User(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=20, null=True, unique=True)
+    public_name = models.CharField(max_length=30, blank=True, null=True)
+    first_name = models.CharField(max_length=20, null=True, blank=True)
+    second_name = models.CharField(max_length=20, null=True, blank=True)
+    father_name = models.CharField(max_length=20, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, null=True)
+    telegram = models.CharField(max_length=50, blank=True)
+    email = models.EmailField(max_length=100, null=True, unique=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    start_date = models.DateField(blank=True, null=True)
+    birthday = models.DateField(blank=True, null=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'phone_number']
+
+    def __str__(self) -> str:
+        return str(self.username) + ' : ' + str(self.first_name) + ' ' + str(self.second_name)
 
 class Password(models.Model):
     service = models.CharField(max_length=200)
@@ -7,35 +59,6 @@ class Password(models.Model):
 
     def __str__(self) -> str:
         return str(self.service)
-
-class Employee(models.Model):
-    STATUS = (
-        ('Works', 'Works'),
-        ('Dismissed', 'Dismissed'),
-        ('On holiday', 'On holiday'),
-    )
-
-    POSITION = (
-        ('Manager', 'Manager'),
-        ('Deliveryman', 'Deliveryman'),
-        ('CEO', 'CEO'),
-        ('CTO', 'CTO'),
-        ('Founder', 'Founder'),
-    )
-
-    first_name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50)
-    father_name = models.CharField(max_length=50, blank=True)
-    position = models.CharField(max_length=50, choices=POSITION)
-    status = models.CharField(max_length=50, choices=STATUS)
-    phone_number = models.CharField(max_length=20, null=True)
-    telegram = models.CharField(max_length=50, blank=True)
-    email = models.CharField(max_length=100)
-    start_date = models.DateField()
-    birthday = models.DateField()
-
-    def __str__(self) -> str:
-        return self.first_name + ' ' + self.surname + ': ' + self.position
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -111,11 +134,14 @@ class Order(models.Model):
 
 class Document(models.Model):
     title = models.CharField(max_length=200, null=True)
-    owner = models.CharField(max_length=50, null=True, blank=True)
+    owner = models.CharField(max_length=50, null=True)
+    authors = models.ManyToManyField(User)
+    groups = models.ManyToManyField(Group)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     markdown_data = models.TextField(null=True)
     html_data = models.TextField(null=True)
-    is_private = models.BooleanField(default=True, null=True)
+    is_link_public = models.BooleanField(default=False)
+    is_indexed = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return str(self.title)
@@ -124,8 +150,8 @@ class Task(models.Model):
     done = models.BooleanField(default=False)
     task = models.TextField(null=True)
     deadline = models.DateField()
-    chief = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='chief')
-    executors = models.ManyToManyField(Employee, related_name='executors')
+    chief = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chief')
+    executors = models.ManyToManyField(User, related_name='executors')
 
     def __str__(self) -> str:
         return str(self.task)

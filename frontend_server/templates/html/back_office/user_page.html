@@ -1,14 +1,7 @@
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/back_office/documents.css' %}">
 
-<div class="center_form">
-    <form action="" method="POST">
-        <a href="{% url 'new_document' %}">
-            <input type="button" value="New document">
-        </a>
-    </form>
-</div>
+Public name: <b>{{ user.public_name }}</b>
+E-mail: <b>{{ user.email }}</b>
 
 <div class="documents">
     {% for document in documents %}
