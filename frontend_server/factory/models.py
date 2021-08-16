@@ -31,13 +31,13 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=20, null=True, unique=True)
+    email = models.EmailField(max_length=100, null=True, unique=True)
+    phone_number = models.CharField(max_length=20, null=True)
     public_name = models.CharField(max_length=30, blank=True, null=True)
     first_name = models.CharField(max_length=20, null=True, blank=True)
     second_name = models.CharField(max_length=20, null=True, blank=True)
     father_name = models.CharField(max_length=20, blank=True, null=True)
-    phone_number = models.CharField(max_length=20, null=True)
     telegram = models.CharField(max_length=50, blank=True)
-    email = models.EmailField(max_length=100, null=True, unique=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     start_date = models.DateField(blank=True, null=True)
     birthday = models.DateField(blank=True, null=True)

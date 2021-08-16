@@ -115,11 +115,19 @@ def view_document(request, document_id):
             return no_permissions(request)
 
     template = Template(BaseHtmlFactory.create.back_office(
-        'Document', 'back_office', 'document', '', ''
+        document.title, 'back_office', 'document', '', ''
     ))
+
+    can_edit = False
+    if request.user.is_authenticated:
+        can_edit = request.user.public_name in document.authors.all()
+        can_edit |= request.user.public_name == document.owner
+        can_edit |= request.user.is_superuser
+
     context = Context({
         'request' : request,
         'document' : document,
+        'can_edit' : can_edit,
     })
     return HttpResponse(template.render(context))
 

@@ -13,11 +13,14 @@
             This is Document editor. Heare you can use <a href="https://www.markdownguide.org/basic-syntax/">Markdown</a> for text formatting.
         </p>
         <hr>
-        <h2> Title: 
+        <b> Title: 
             <div class="input_form inline_div">
                 {{ form.title }}
             </div>
-        </h2>
+        </b>
+
+        <br>
+
         <i>Owner:</i> <b>{{ request.user.public_name }}</b>
 
         <br>

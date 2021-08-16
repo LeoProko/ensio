@@ -24,6 +24,7 @@ def index(request, username):
 
     context = Context({
         'documents' : reversed(documents),
+        'documents_amount' : len(documents),
         'request' : request,
         'user' : user,
     })

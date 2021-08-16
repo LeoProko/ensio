@@ -27,19 +27,21 @@
     </b>
     <br>
     <i> Date created: {{ document.date_created|date:'d M Y H:i' }} </i>
-    <hr>
-    <div class="buttons_wrapper">
-        <div class="inline_button">
-            <a href="{% url 'edit_document' document.id %}">
-                <input type="submit" value="Edit" />
-            </a>
+    {% if can_edit %}
+        <hr>
+        <div class="buttons_wrapper">
+            <div class="inline_button">
+                <a href="{% url 'edit_document' document.id %}">
+                    <input type="submit" value="Edit" />
+                </a>
+            </div>
+            <div class="inline_button">
+                <a href="{% url 'delete_document' document.id %}">
+                    <input type="submit" value="Remove" />
+                </a>
+            </div>
         </div>
-        <div class="inline_button">
-            <a href="{% url 'delete_document' document.id %}">
-                <input type="submit" value="Remove" />
-            </a>
-        </div>
-    </div>
+    {% endif %}
 </div>
 <div class="center_div document_body">
     <p class="p3">

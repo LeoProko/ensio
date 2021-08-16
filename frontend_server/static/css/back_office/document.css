@@ -35,3 +35,10 @@ select {
     height: 60px;
     outline: none;
 }
+
+.input_form {
+    width: 90%;
+}
+.input_form input {
+    width: 100%;
+}

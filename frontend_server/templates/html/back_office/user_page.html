@@ -1,7 +1,17 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/back_office/documents.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/back_office/user_page.css' %}">
 
-Public name: <b>{{ user.public_name }}</b>
-E-mail: <b>{{ user.email }}</b>
+<div class="wrapper_hvc">
+    <div class="user_page_header">
+        <h2> Found {{ documents_amount }} documents </h2>
+        Name: <b>{{ user.public_name }}</b>
+        <br>
+        Username: <b>{{ user.username }}</b>
+        <br>
+        E-mail: <b>{{ user.email }}</b>
+    </div>
+</div>
 
 <div class="documents">
     {% for document in documents %}
