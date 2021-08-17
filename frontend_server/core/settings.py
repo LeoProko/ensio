@@ -2,7 +2,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRIVATE_DIR = '/home/leoproko/projects/ensio_private/'
+PRIVATE_DIR = os.environ.get('PRIVATE_DIR')
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'back_office',
     'customer_app',
     'landing',
-    'base_app',
+    'core',
     'factory',
     'django_filters',
 ]
@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
-ROOT_URLCONF = 'base_app.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -63,7 +63,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'base_app.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
+
+AUTH_USER_MODEL = 'factory.User'
 
 
 # Database

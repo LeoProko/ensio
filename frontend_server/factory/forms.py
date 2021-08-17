@@ -1,11 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django import forms
 from django.forms import ModelForm, Form
 
 from markdown import markdown
 
-from .models import Order, Employee, Document, Task
+from .models import Order, Document, Task, User
 
 class OrderForm(ModelForm):
     class Meta:
@@ -31,21 +30,17 @@ class FastOrderForm(Form):
         }
     ))
 
-class EmployeeForm(ModelForm):
-    class Meta:
-        model = Employee
-        fields = '__all__'
-
 class RegisterForm(UserCreationForm):
+    phone_number = forms.CharField(max_length=12)
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'phone_number', 'password1', 'password2']
 
 class DocumentForm(ModelForm):
     class Meta:
         model = Document
         fields = '__all__'
-        exclude = ['html_data', 'owner']
+        exclude = ['html_data', 'owner', 'preview']
 
 class TaskForm(ModelForm):
     class Meta:

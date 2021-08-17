@@ -21,7 +21,7 @@
 <body>
     {% include 'html/factory/back_office_header.html' %}
 
-    {% if not request.user.is_anonymous %}
+    {% if request.user.is_staff %}
     <div class="content_wrapper">
         {% include 'html/factory/back_office_navbar.html' %}
         <div class="back_office_content">

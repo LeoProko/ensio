@@ -1,11 +1,16 @@
 <h2>Register</h2>
 <form method="POST" action="">
-    {% for field in form %}
-        {{ field.label }}
-        {{ field }}
-        {{ field.help_text }}
-        <hr>
-    {% endfor %}
+    Email: {{ form.email }}
+    <hr>
+    Phone number: {{ form.phone_number }}
+    <hr>
+    Username: {{ form.username }}
+    <hr>
+    Password: {{ form.password1 }}
+    <hr>
+    Repeat password: {{ form.password2 }}
+    <hr>
     <input type="submit" value="Register">
+    <hr>
     {{ form.errors }}
 </form>

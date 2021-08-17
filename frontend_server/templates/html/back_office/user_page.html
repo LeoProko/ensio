@@ -1,13 +1,16 @@
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/back_office/documents.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/back_office/user_page.css' %}">
 
-<div class="center_form">
-    <form action="" method="POST">
-        <a href="{% url 'new_document' %}">
-            <input type="button" value="New document">
-        </a>
-    </form>
+<div class="wrapper_hvc">
+    <div class="user_page_header">
+        <h2> Found {{ documents_amount }} documents </h2>
+        Name: <b>{{ user.public_name }}</b>
+        <br>
+        Username: <b>{{ user.username }}</b>
+        <br>
+        E-mail: <b>{{ user.email }}</b>
+    </div>
 </div>
 
 <div class="documents">

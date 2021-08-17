@@ -8,9 +8,6 @@ html {
 
 input {
   font-family: 'Montserrat', sans-serif;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   border: none;
   color: black;
   text-align: left;
@@ -165,12 +162,12 @@ h3 {
 
 #header_right {
     text-align: right;
+    padding-right: 30px;
 }
 
 #header_right a {
     padding-top: 3px;
     display: inline-block;
-    margin-right: 30px;
 }
 
 #header_buttons table {

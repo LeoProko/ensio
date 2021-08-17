@@ -11,8 +11,8 @@
               </td>
               <td id="header_right">
                   {% if request.user.is_authenticated %}
-                  <a href="/back_office/">
-                      <input type="button" value="{{ request.user }}">
+                  <a href="{% url 'user_page' request.user.username %}">
+                      <input type="button" value="{{ request.user.username }}">
                   </a>
                   <a href="{% url 'logout' %}">
                       <input type="button" value="Logout">
