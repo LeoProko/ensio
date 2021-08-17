@@ -9,7 +9,7 @@ from factory.decorators import allowed_users
 @allowed_users(allowed_users_list=[])
 def index(request):
     template = Template(BaseHtmlFactory.create.back_office(
-        'Ensio', 'back_office', 'main', '', ''
+        'Leo Proko', 'back_office', 'main', '', ''
     ))
     context = Context({
         'request' : request,

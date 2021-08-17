@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 from markdown import markdown
+from functools import reduce
 
 from factory.html_factories.base import BaseHtmlFactory
 from factory.models import Document
@@ -20,20 +21,20 @@ def get_documents(request):
         if request.user.is_superuser:
             documents = Document.objects.filter(
                 Q(is_link_public=True) |
-                Q(owner=request.user.public_name)
+                Q(owner=request.user.username)
             )
         else:
             documents = Document.objects.filter(
                 Q(is_link_public=True) & (
                     Q(is_indexed=True) |
-                    Q(groups__in=request.user.groups.all())
+                    reduce(lambda x, y : x | y, [Q(groups__name__contains=user_group.name) for user_group in request.user.groups.all()])
                 ) |
-                Q(owner=request.user.public_name)
-            )
+                Q(owner=request.user.username)
+            ).distinct()
     else:
         documents = Document.objects.filter(
-            is_indexed=True,
             is_link_public=True,
+            is_indexed=True,
         )
 
     context = Context({
@@ -55,7 +56,7 @@ def new_document(request):
         document_form = DocumentForm(request.POST)
         if document_form.is_valid():
             form = document_form.save(commit=False)
-            form.owner = request.user.public_name
+            form.owner = request.user.username
             form.html_data = markdown(form.markdown_data)
             form.save()
             document_form.save_m2m()
@@ -105,10 +106,10 @@ def view_document(request, document_id):
 
     if not document.is_link_public:
         if request.user.is_authenticated:
-            name = str(request.user.public_name)
+            name = str(request.user.username)
             if name != document.owner and\
                     name not in map(
-                        lambda author : author.public_name,
+                        lambda author : author.username,
                         document.authors.all()):
                 return no_permissions(request)
         else:
@@ -120,8 +121,8 @@ def view_document(request, document_id):
 
     can_edit = False
     if request.user.is_authenticated:
-        can_edit = request.user.public_name in document.authors.all()
-        can_edit |= request.user.public_name == document.owner
+        can_edit = request.user.username in document.authors.all()
+        can_edit |= request.user.username == document.owner
         can_edit |= request.user.is_superuser
 
     context = Context({
