@@ -21,7 +21,12 @@ def get_documents(request):
     if request.user.is_superuser:
         documents = Document.objects.filter(
             Q(is_link_public=True) |
-            Q(owner=request.user.username)
+            Q(owner=request.user.username) |
+            reduce(
+                lambda x, y : x | y,
+                [Q(groups__name__contains=user_group.name)
+                for user_group in request.user.groups.all()]
+            )
         )
     else:
         documents = Document.objects.filter(
