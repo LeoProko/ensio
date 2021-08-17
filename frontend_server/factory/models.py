@@ -136,7 +136,7 @@ class Document(models.Model):
     title = models.CharField(max_length=200, null=True)
     owner = models.CharField(max_length=50, null=True)
     authors = models.ManyToManyField(User)
-    groups = models.ManyToManyField(Group)
+    groups = models.ManyToManyField(Group, null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     markdown_data = models.TextField(null=True)
     html_data = models.TextField(null=True)

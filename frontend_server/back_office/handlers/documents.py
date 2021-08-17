@@ -1,3 +1,6 @@
+from functools import reduce
+from markdown import markdown
+
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.shortcuts import redirect
@@ -5,37 +8,35 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-from markdown import markdown
-from functools import reduce
-
 from factory.html_factories.base import BaseHtmlFactory
 from factory.models import Document
 from factory.forms import DocumentForm
 from factory.decorators import allowed_users, no_permissions
 
+@login_required(login_url='login')
 def get_documents(request):
     template = Template(BaseHtmlFactory.create.back_office(
         'Documents', 'back_office', 'documents', '', ''
     ))
-    if request.user.is_authenticated:
-        if request.user.is_superuser:
-            documents = Document.objects.filter(
-                Q(is_link_public=True) |
-                Q(owner=request.user.username)
-            )
-        else:
-            documents = Document.objects.filter(
-                Q(is_link_public=True) & (
-                    Q(is_indexed=True) |
-                    reduce(lambda x, y : x | y, [Q(groups__name__contains=user_group.name) for user_group in request.user.groups.all()])
-                ) |
-                Q(owner=request.user.username)
-            ).distinct()
+    if request.user.is_superuser:
+        documents = Document.objects.filter(
+            Q(is_link_public=True) |
+            Q(owner=request.user.username)
+        )
     else:
         documents = Document.objects.filter(
-            is_link_public=True,
-            is_indexed=True,
-        )
+            (
+                Q(is_link_public=True) &
+                Q(is_indexed=True)
+            ) |
+            reduce(
+                lambda x, y : x | y,
+                [Q(groups__name__contains=user_group.name)
+                for user_group in request.user.groups.all()]
+            ) |
+            Q(owner=request.user.username) |
+            Q(authors__public_name__contains=request.user.public_name)
+        ).distinct()
 
     context = Context({
         'documents' : reversed(documents),
@@ -75,7 +76,7 @@ from django.contrib.auth.models import Group
 @login_required(login_url='login')
 def edit_document(request, document_id):
     template = Template(BaseHtmlFactory.create.back_office(
-        'Edit document', 'back_office', 'new_document', '', ''
+        'Editor', 'back_office', 'new_document', '', ''
     ))
     document = Document.objects.get(id=document_id)
     document_form = DocumentForm(instance=document)
@@ -107,11 +108,14 @@ def view_document(request, document_id):
     if not document.is_link_public:
         if request.user.is_authenticated:
             name = str(request.user.username)
-            if name != document.owner and\
-                    name not in map(
+            if name != document.owner:
+                if request.user.is_superuser:
+                    return no_permissions(request)
+                if name not in map(
                         lambda author : author.username,
-                        document.authors.all()):
-                return no_permissions(request)
+                        document.authors.all()
+                    ):
+                    return no_permissions(request)
         else:
             return no_permissions(request)
 
