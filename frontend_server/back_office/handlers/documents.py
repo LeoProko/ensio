@@ -13,7 +13,6 @@ from factory.models import Document
 from factory.forms import DocumentForm
 from factory.decorators import allowed_users, no_permissions
 
-@login_required(login_url='login')
 def get_documents(request):
     template = Template(BaseHtmlFactory.create.back_office(
         'Documents', 'back_office', 'documents', '', ''

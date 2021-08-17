@@ -14,7 +14,17 @@ SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '195.2.70.101', 'leoproko.ru']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '195.2.70.101',
+    'leoproko.ru',
+    'docs.localhost',
+    'docs.127.0.0.1',
+]
+
+ROOT_HOSTCONF = 'core.hosts'
+DEFAULT_HOST = ' '
 
 
 # Application definition
@@ -32,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'factory',
     'django_filters',
+    'django_hosts',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
+    'django_hosts.middleware.HostsRequestMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
