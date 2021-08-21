@@ -2,13 +2,12 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
 from django_hosts.resolvers import reverse
 
 from factory.html_factories.base import BaseHtmlFactory
-from factory.forms import RegisterForm
+from factory.forms import RegisterForm, LoginForm
 from factory.decorators import unauthenticated_user
 
 @csrf_exempt
@@ -17,17 +16,20 @@ def user_login(request):
     template = Template(BaseHtmlFactory.create.new_create(
         'factory', 'Login', 'login'
     ))
+    form = LoginForm()
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect(reverse('documents', host='docs'))
-        messages.info(request, 'Email or password in incorrect')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect(reverse('documents', host='docs'))
 
     context = Context({
         'request' : request,
+        'form' : form,
     })
     return HttpResponse(template.render(context))
 

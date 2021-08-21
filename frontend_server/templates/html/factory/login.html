@@ -8,14 +8,23 @@
     <div id="login_form">
         <h2>Welcome back!</h2>
         <form method="POST" action="">
-            <input type="text" name="email" placeholder="Email...">
+            {{ form.email }}
             <br>
-            <input type="password" name="password" placeholder="Password...">
+            {{ form.password }}
             <br>
             <input type="submit" value="Login">
         </form>
         <a href="{% host_url 'register' host 'base' %}">
             Don't have an account?
         </a>
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                   {{ message }}
+            </div>
+        {% endfor %}
+        {% if form.errors %}
+            <p>Email or password not correct</p>
+        {% endif %}
     </div>
 </div>

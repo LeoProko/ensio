@@ -39,6 +39,18 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'phone_number', 'password1', 'password2']
 
+class LoginForm(Form):
+    email = forms.EmailField(label='email', widget=forms.TextInput(
+        attrs={
+            'Placeholder' : 'E-mail',
+        }
+    ))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(
+        attrs={
+            'Placeholder' : 'Password',
+        }
+    ))
+
 class TaskForm(ModelForm):
     class Meta:
         model = Task
