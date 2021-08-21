@@ -36,9 +36,13 @@
   font-size: 25px;
   width: 100%;
   font-weight: 600;
-  background: #A0E7CD;
+  background: #81AFF0;
   color: white;
   margin: 0 auto;
+}
+
+.buttons_wrapper input:hover {
+  background: #568BD7;
 }
 
 .inline_button {

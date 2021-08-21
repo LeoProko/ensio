@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
+from django_hosts.resolvers import reverse
 
 from factory.html_factories.base import BaseHtmlFactory
 from factory.forms import RegisterForm
@@ -13,8 +14,8 @@ from factory.decorators import unauthenticated_user
 @csrf_exempt
 @unauthenticated_user
 def user_login(request):
-    template = Template(BaseHtmlFactory.create.back_office(
-        'Login', 'factory', 'login', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'factory', 'Login', 'login'
     ))
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -22,7 +23,7 @@ def user_login(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/back_office/')
+            return redirect(reverse('documents', host='docs'))
         messages.info(request, 'Email or password in incorrect')
 
     context = Context({
@@ -33,8 +34,8 @@ def user_login(request):
 @csrf_exempt
 @unauthenticated_user
 def user_register(request):
-    template = Template(BaseHtmlFactory.create.back_office(
-        'Register', 'factory', 'register', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'factory', 'Register', 'register'
     ))
     form  = RegisterForm()
     if request.method == 'POST':
@@ -46,14 +47,13 @@ def user_register(request):
             user.save()
             group = Group.objects.get(name='guest')
             user.groups.add(group)
-            messages.success(request, username + ' has been registered')
-            return redirect('/back_office/')
+            return redirect(reverse('documents', host='docs'))
     context = Context({
         'request' : request,
-        'form' : form
+        'form' : form,
     })
     return HttpResponse(template.render(context))
 
 def user_logout(request):
     logout(request)
-    return redirect('login')
+    return redirect(reverse('login', host='base'))

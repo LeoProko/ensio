@@ -1,0 +1,12 @@
+{% load static %}
+{% load hosts %}
+
+<div class="header" id="ensio_header">
+    <div id="login_logo">
+        <a href="{% host_url 'documents' host 'docs' %}">
+            <img id="logo" src="{% static 'img/logo/leo_docs.svg' %}">
+        </a>
+    </div>
+</div>
+
+<div id="ghost_header"></div>

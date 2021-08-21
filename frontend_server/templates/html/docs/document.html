@@ -17,7 +17,7 @@
         {% with document.authors.all|length as last_index %}
         {% with document.authors.all.last as last %}
             {% for author in document.authors.all %}
-                <a href="{% host_url 'user_page' author.username host 'base' %}">
+                <a href="{% host_url 'user_page' author.username host 'docs' %}">
                     {{ author.public_name }}
                 </a>
                 {% if author != last %}

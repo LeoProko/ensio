@@ -16,7 +16,14 @@ def index(request, username):
     ))
 
     if request.user.is_authenticated:
-        if request.user.is_superuser:
+        if request.user == user:
+            documents = Document.objects.filter(
+                (
+                    Q(owner=user.public_name) |
+                    Q(authors__public_name__contains=user.public_name)
+                )
+            )
+        elif request.user.is_superuser:
             documents = Document.objects.filter(
                 (
                     Q(owner=user.public_name) |

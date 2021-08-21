@@ -14,19 +14,33 @@
     padding: 20px;
     margin: 10px;
     vertical-align: middle;
-    border: 5px solid #EAFFF7;
+    border: 1px solid #81AFF0;
     border-radius: 20px;
 }
 
 .document:hover {
-    background: #eafff7;
+    background: #D6E7FF;
+    border: 1px solid #ffffff;
+}
+
+#documents_header div {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .document_preview {
     max-width: 1000px;
     margin: 20px auto;
-    background: #EAFFF7;
+    background: #D6E7FF;
     padding: 20px 40px;
+    border-radius: 20px;
+}
+
+.document_preview h1,
+.document_preview h2,
+.document_preview h3,
+.document_preview p {
+    font-size: 18px;
 }
 
 .preview_title {

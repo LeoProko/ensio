@@ -11,14 +11,15 @@
 }
 
 .document_body {
-    background: #A0E7CD;
+    background: #81AFF0;
     padding: 0;
     width: 45%;
     display: inline-block;
     vertical-align: top;
     text-align: left;
     height: 100%;
-    border: 2px solid #A0E7CD;
+    border: 2px solid #81AFF0;
+    color: #ffffff;
 }
 
 .document_view {
@@ -33,6 +34,7 @@
     background: #ffffff;
     padding: 30px;
     min-height: 200px;
+    color: #000000;
 }
 
 #editor {
@@ -63,10 +65,10 @@
 }
 
 select {
-    background: #A0E7CD;
+    background: #81AFF0;
     font-family: inherit;
     font-size: 15px;
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     border: none;
     width: 400px;
@@ -80,7 +82,8 @@ select {
 
 .input_form input {
     width: 100%;
-    background: #A0E7CD;
+    background: #81AFF0;
+    color: #ffffff;
     border: none;
     border-radius: 0;
     padding: 5px 10px;

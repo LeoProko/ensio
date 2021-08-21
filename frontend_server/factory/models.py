@@ -29,6 +29,7 @@ class UserManager(BaseUserManager):
                     username, password, **other_fileds)
 
 class User(AbstractBaseUser, PermissionsMixin):
+    # TODO: add no_spaces validation to username
     username = models.CharField(max_length=20, null=True, unique=True)
     email = models.EmailField(max_length=100, null=True, unique=True)
     phone_number = models.CharField(max_length=20, null=True, unique=True)
@@ -49,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['username', 'phone_number']
 
     def __str__(self) -> str:
-        return str(self.username) + ' : ' + str(self.first_name) + ' ' + str(self.second_name)
+        return str(self.username) + ' : ' + str(self.public_name)
 
 class Password(models.Model):
     service = models.CharField(max_length=200)

@@ -1,0 +1,47 @@
+#ensio_header {
+    background: none;
+}
+
+#login_logo {
+    text-align: center;
+    margin-top: 5px;
+}
+
+#login_body {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#register_body {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 200px;
+    margin-left: -80px;
+    width: 100%;
+}
+
+#login_image, #login_form, #register_image {
+    display: inline-block;
+}
+
+#register_image {
+    margin-right: -260px;
+    vertical-align: top;
+    margin-top: -220px;
+}
+
+input {
+    background: #EAECFF;
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    width: 350px;
+}
+
+input[type=submit] {
+    text-align: center;
+    background: #568BD7;
+    color: #ffffff;
+    width: 410px;
+}

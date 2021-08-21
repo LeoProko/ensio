@@ -1,8 +1,21 @@
+{% load static %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/documents.css' %}">
 
 <div class="documents">
+    <div id="documents_header">
+        <div>
+            The best docs
+        </div>
+        <div>
+            <img src="{% static 'img/docs_character.png' %}">
+        </div>
+        <div>
+            From the best editor
+        </div>
+    <br>
     {% for document in documents %}
         <div class="document" data-link="{% url 'view_document' document.id %}">
             <div class="document_title">
@@ -33,7 +46,7 @@
             </div>
             <hr>
             <div class="document_preview">
-                {{ document.html_data|slice:':126'|safe }}...
+                {{ document.html_data|slice:':200'|safe }}...
             </div>
         </div>
     {% endfor %}

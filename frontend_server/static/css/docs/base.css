@@ -1,26 +1,24 @@
-body {
-  background: #ffffff;
-}
-
 .input_fill {
-    background: #60CAB7 !important;
+    background: #568BD7 !important;
     color: white !important;
     font-size: 18px;
 }
 
 .input_fill:hover {
-    background: #50ab9b !important;
+    background: #8abaff !important;
 }
 
 .input_stroke {
-    border: 1px solid #60cab7 !important;
+    border: 1px solid #568BD7 !important;
     background: #ffffff !important;
-    color: #60CAB7 !important;
+    color: #568BD7 !important;
     font-size: 18px;
 }
 
 .input_stroke:hover {
-    color: #50ab9b !important;
+    background: #8abaff !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
 }
 
 .header input {
@@ -35,8 +33,8 @@ body {
     filter: invert(10%);
 }
 
-.ghost_footer {
-  height: 70px;
+#ghost_header {
+    height: 50px;
 }
 
 .footer {
@@ -48,15 +46,21 @@ body {
 }
 
 .footer input {
-    background: #A0E7CD;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 5px 10px;
+    background: #ffffff;
+    border: 1px solid #568BD7;
+    color: #568BD7;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 20px;
     margin: 5px;
+    width: 150px;
+    text-align: center;
 }
 
 .footer input:hover {
-    background: #60CAB7;
+    background: #8abaff !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff;
 }
 
 #ensio_header{
@@ -74,7 +78,11 @@ body {
     backdrop-filter: blur(3px);
     background: rgba(255, 255, 255, 0.8);
     color: white;
-    height: 40px;
+    height: 50px;
     text-align: center;
     vertical-align: center;
+}
+
+.ghost_footer {
+    height: 50px;
 }

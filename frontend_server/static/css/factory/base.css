@@ -24,7 +24,7 @@ input[type=radio] {
 
 body {
   width: 100%;
-  background: #5F5F5F;
+  background: #ffffff;
   color: #000000;
   font-size:18px;
   margin: 0 auto;
@@ -52,7 +52,7 @@ h3 {
 }
 
 pre {
-  background: #EAFFF7;
+  background: #D6E7FF;
   padding: 20px;
 }
 
@@ -93,10 +93,6 @@ pre {
   left: 0;
   position: fixed;
   z-index: 100;
-}
-
-.content_wrapper {
-  margin: -10px auto;
 }
 
 .sidebar {
@@ -223,6 +219,5 @@ pre {
 .no_navbar {
     width: 100%;
     margin: 0;
-    margin-top: 20px;
     padding: 0;
 }

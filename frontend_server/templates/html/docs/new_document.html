@@ -15,11 +15,11 @@
         </div>
 
         <div class="title_text">
-        Owner: <i>{{ request.user.public_name }}</i>
+            Owner: <i>{{ request.user.username }}</i>
         </div>
 
         <div class="title_text">
-        Author(s): {{ form.authors }}
+            Author(s): {{ form.authors }}
         </div>
 
         {% if request.user.is_staff %}
@@ -36,11 +36,11 @@
         {% endif %}
 
         <div class="title_text">
-        Public link: {{ form.is_link_public }}
+            Public link: {{ form.is_link_public }}
         </div>
 
         <div class="title_text">
-        Public indexed: {{ form.is_indexed }}
+            Public indexed: {{ form.is_indexed }}
         </div>
     </div>
     <div id="editor">
