@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static 'css/p.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/docs/document.css' %}">
+
+<div class="center_div">
+</div>
+<form id="doc_form" action="" method="POST">
+    <div class="center_div document_title">
+        <div class="title_text">
+        Title: 
+            <div class="input_form inline_div">
+                {{ form.title }}
+            </div>
+        </div>
+
+        <div class="title_text">
+        Owner: <i>{{ request.user.public_name }}</i>
+        </div>
+
+        <div class="title_text">
+        Author(s): {{ form.authors }}
+        </div>
+
+        {% if request.user.is_staff %}
+            <div class="title_text">
+            Group(s):
+            {{ form.groups }}
+            </div>
+        {% endif %}
+
+        {% if document %}
+            <div class="title_text">
+            Date created: {{ document.date_created }}
+            </div>
+        {% endif %}
+
+        <div class="title_text">
+        Public link: {{ form.is_link_public }}
+        </div>
+
+        <div class="title_text">
+        Public indexed: {{ form.is_indexed }}
+        </div>
+    </div>
+    <div id="editor">
+        <div class="document_body document_textarea">
+            <p class="editor_title">Editor</p>
+            <div id="document_editor">
+                {{ form.markdown_data }}
+            </div>
+        </div>
+        <div class="document_body">
+            <p class="editor_title">Preview</p>
+            <div id="document_preview">
+                {{ document.html_data|safe }}
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+
+<script type="text/javascript" src="{% static 'js/document.js' %}"></script>

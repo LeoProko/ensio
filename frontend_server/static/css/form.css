@@ -20,8 +20,7 @@
 .input_form input {
   font-size: 18px;
   padding: 3px;
-  font-weight: 600;
-  background: #d1ddde;
+  background: #60CAB7;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   margin:5px;
@@ -37,9 +36,8 @@
   font-size: 25px;
   width: 100%;
   font-weight: 600;
-  background: #d1ddde;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  background: #A0E7CD;
+  color: white;
   margin: 0 auto;
 }
 

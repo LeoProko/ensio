@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title> &page_title& </title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="Ensio">
+    <meta name="author" content="leoproko">
+
+    <link rel="stylesheet" tepe="text/css" href="{% static '/css/factory/base.css' %}">
+    <link rel="stylesheet" tepe="text/css" href="{% static '/css/docs/base.css' %}">
+    <link rel="stylesheet" tepe="text/css" href="{% static '/css/div.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo/logo_black.png' %}">
+    <link rel="stylesheet" tepe="text/css" href="{% static '/css/p.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    {% include 'html/docs/base_header.html' %}
+
+    <div class="content_wrapper">
+        <div class="back_office_content no_navbar">
+            &content_html&
+        </div>
+    </div>
+
+    {% if footer %}
+        <div class="ghost_footer"></div>
+        {% include 'html/docs/base_footer.html' %}
+    {% endif %}
+</body>
+
+</html>
+

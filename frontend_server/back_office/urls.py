@@ -3,7 +3,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from back_office.handlers import index
-from back_office.handlers import documents
 from back_office.handlers import orders
 from back_office.handlers import passwords
 from back_office.handlers import stock
@@ -20,12 +19,6 @@ urlpatterns = [
     path('stock/', stock.get_stock, name='stock'),
 
     path('password/', passwords.password, name='password'),
-
-    path('document/<str:document_id>', documents.view_document, name='view_document'),
-    path('documents/', documents.get_documents, name='documents'),
-    path('new_document/', documents.new_document, name='new_document'),
-    path('edit_document/<str:document_id>', documents.edit_document, name='edit_document'),
-    path('delete_document/<str:document_id>', documents.delete_document, name='delete_document'),
 
     path('tasks/', tasks.get_tasks, name='tasks'),
 

@@ -1,0 +1,85 @@
+.document_title {
+    width: 90%;
+    max-width: 1000px;
+    background:white;
+    padding:10px 40px;
+}
+
+.title_text {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.document_body {
+    background: #A0E7CD;
+    padding: 0;
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    height: 100%;
+    border: 2px solid #A0E7CD;
+}
+
+.document_view {
+    background:white;
+    padding:10px 40px;
+    padding-bottom: 25px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+#document_preview {
+    background: #ffffff;
+    padding: 30px;
+    min-height: 200px;
+}
+
+#editor {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.editor_title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.document_textarea textarea {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    margin-bottom: -5px;
+    width: calc(100% - 40px);
+    height: auto;
+    min-height: 200px;
+    border: 0;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+}
+
+select {
+    background: #A0E7CD;
+    font-family: inherit;
+    font-size: 15px;
+    color: #000000;
+    text-align: center;
+    border: none;
+    width: 400px;
+    height: 20px;
+    outline: none;
+}
+
+.input_form {
+    width: 90%;
+}
+.input_form input {
+    width: 100%;
+    background: #A0E7CD;
+    border: none;
+    border-radius: 0;
+}

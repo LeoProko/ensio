@@ -1,0 +1,81 @@
+body {
+  background: #ffffff;
+}
+
+.input_fill {
+    background: #60CAB7 !important;
+    color: white !important;
+    font-size: 18px;
+}
+
+.input_fill:hover {
+    background: #50ab9b !important;
+}
+
+.input_stroke {
+    border: 1px solid #60cab7 !important;
+    background: #ffffff !important;
+    color: #60CAB7 !important;
+    font-size: 18px;
+}
+
+.input_stroke:hover {
+    color: #50ab9b !important;
+}
+
+.header input {
+    font-size: 16px;
+}
+
+.header input:hover {
+    color: #000000;
+}
+
+#logo:hover {
+    filter: invert(10%);
+}
+
+.ghost_footer {
+  height: 70px;
+}
+
+.footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+.footer input {
+    background: #60CAB7;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.footer input:hover {
+    background: #50ab9b;
+}
+
+#ensio_header{
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(3px);
+    background: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    height: 50px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+#ensio_footer {
+    backdrop-filter: blur(3px);
+    background: rgba(160, 255, 205, 0.7);
+    color: white;
+    height: 40px;
+    text-align: center;
+    vertical-align: center;
+}

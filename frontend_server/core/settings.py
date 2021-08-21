@@ -2,8 +2,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRIVATE_DIR = os.environ.get('PRIVATE_DIR')
-
+# PRIVATE_DIR = os.environ.get('PRIVATE_DIR')
+PRIVATE_DIR = '/home/leoproko/projects/ensio_private/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -14,18 +14,22 @@ SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# On local debug add DOMAIN_NAME to /etc/hosts
+DOMAIN_NAME = 'leoproko.io'
+# DOMAIN_NAME = 'leoproko.ru'
+
 ALLOWED_HOSTS = [
-    'localhost',
+    DOMAIN_NAME,
+    '.' + DOMAIN_NAME,
     '127.0.0.1',
     '195.2.70.101',
-    'leoproko.ru',
-    'docs.localhost',
-    'docs.127.0.0.1',
 ]
 
 ROOT_HOSTCONF = 'core.hosts'
-DEFAULT_HOST = ' '
-
+DEFAULT_HOST = 'base'
+PARENT_HOST = DOMAIN_NAME
+HOST_PORT = '8080'
+SESSION_COOKIE_DOMAIN = '.' + DOMAIN_NAME
 
 # Application definition
 
@@ -37,15 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'back_office',
-    'customer_app',
-    'landing',
     'core',
+    'docs',
+    'shop',
     'factory',
     'django_filters',
     'django_hosts',
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
-    'django_hosts.middleware.HostsRequestMiddleware',
     'django_hosts.middleware.HostsResponseMiddleware',
 ]
 

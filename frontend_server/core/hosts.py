@@ -8,7 +8,9 @@
 
 from django_hosts import patterns, host
 
-host_patterns = patterns('',
-    host('', 'core.urls', name=' '),
-    host('docs', 'core.urls', name='back_office'),
+host_patterns = patterns(
+    '',
+    host('', 'core.urls', name='base'),
+    host('docs', 'docs.urls', name='docs'),
+    host('shop', 'shop.urls', name='shop'),
 )

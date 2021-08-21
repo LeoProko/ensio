@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from factory.html_factories.base import BaseHtmlFactory
 from shop.models import Order
 from shop.forms import OrderForm
-from factory.filters import OrderFilter
+from shop.filters import OrderFilter
 from factory.decorators import allowed_users
 
 @login_required(login_url='login')
@@ -57,7 +57,7 @@ def change_order(request, order_id):
         if form.is_valid():
             form.save()
             print('CustomerOrder', order_id, 'has been changed', request.POST)
-            return redirect('/back_office/orders')
+            return redirect('/orders')
 
     context = Context({
         'request' : request,
@@ -68,14 +68,14 @@ def change_order(request, order_id):
 @csrf_exempt
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=[])
-def delete_order(request, order_id):
+def remove_order(request, order_id):
     template = Template(BaseHtmlFactory.create.back_office(
         'Delete order', 'back_office', 'delete_order', '', ''
     ))
     order = Order.objects.get(id=order_id)
     if request.method == 'POST':
         order.delete()
-        return redirect('/back_office/orders')
+        return redirect('/orders')
 
     context = Context({
         'request' : request,

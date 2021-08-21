@@ -1,11 +1,12 @@
 {% load static %}
+{% load hosts %}
 
 <div class="footer" id="ensio_footer">
   <div id="logo_footer">
       <a href="https://instagram.com/leoproko_shop">
           <img src="{% static 'img/logo/inst_logo_white.svg' %}">
       </a>
-      <a href="{% url 'index' %}">
+      <a href="{% host_url 'index' host 'base'%}">
           <img src="{% static 'img/logo/leoproko_logo_white.svg' %}">
       </a>
       <a href="https://vk.com/leoproko_shop">

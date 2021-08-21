@@ -5,7 +5,7 @@ from django.template import Template, Context
 from django.db.models import Q
 
 from factory.html_factories.base import BaseHtmlFactory
-from factory.models import Document
+from docs.models import Document
 from factory.models import User
 
 def index(request, username):

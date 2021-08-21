@@ -6,7 +6,6 @@ from factory.html_factories.base import BaseHtmlFactory
 from factory.decorators import allowed_users
 
 @login_required(login_url='login')
-@allowed_users(allowed_users_list=[])
 def index(request):
     template = Template(BaseHtmlFactory.create.back_office(
         'Leo Proko', 'back_office', 'main', '', ''

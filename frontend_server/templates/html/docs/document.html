@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/p.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/back_office/document.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/docs/document.css' %}">
 
 
 <div class="center_div document_title">
@@ -30,7 +30,8 @@
     <br>
     <i> Date created: {{ document.date_created|date:'d M Y H:i' }} </i>
     {% if can_edit %}
-        <hr>
+        <br>
+        <br>
         <div class="buttons_wrapper">
             <div class="inline_button">
                 <a href="{% url 'edit_document' document.id %}">
@@ -45,8 +46,6 @@
         </div>
     {% endif %}
 </div>
-<div class="center_div document_body">
-    <p class="p3">
-        {{ document.html_data|safe }}
-    </p>
+<div class="center_div document_view">
+    {{ document.html_data|safe }}
 </div>

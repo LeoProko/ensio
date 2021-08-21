@@ -17,8 +17,6 @@
         <th> Contact type </th>
         <th> Phone number </th>
         <th> Date created </th>
-        <th> Change </th>
-        <th> Remove </th>
     </tr>
     <tr>
         <td> {{ order.id }} </td>
@@ -29,8 +27,6 @@
         <td> {{ order.connection_type }} </td>
         <td> {{ order.phone_number }} </td>
         <td> {{ order.date_created }} </td>
-        <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
-        <td> <a href="{% url 'delete_order' order.id %}"> Remove </a> </td>
     </tr>
 </table>
 

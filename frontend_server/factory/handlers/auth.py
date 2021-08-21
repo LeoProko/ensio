@@ -40,8 +40,10 @@ def user_register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
             username = form.cleaned_data['username']
+            user = form.save(commit=False)
+            user.public_name = username
+            user.save()
             group = Group.objects.get(name='guest')
             user.groups.add(group)
             messages.success(request, username + ' has been registered')
