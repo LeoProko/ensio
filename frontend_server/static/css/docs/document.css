@@ -77,9 +77,11 @@ select {
 .input_form {
     width: 90%;
 }
+
 .input_form input {
     width: 100%;
     background: #A0E7CD;
     border: none;
     border-radius: 0;
+    padding: 5px 10px;
 }

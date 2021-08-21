@@ -1,0 +1,9 @@
+.user_page_header {
+    background: #ffffff;
+    padding: 10px 20px;
+    width: 400px;
+    height: auto;
+    text-align: center;
+    border: 5px solid #EAFFF7;
+    border-radius: 20px;
+}

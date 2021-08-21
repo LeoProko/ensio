@@ -16,7 +16,7 @@
                         <a href="{% host_url 'new_document' host 'docs' %}">
                             <input type="button" class="input_fill" value="New doc">
                         </a>
-                        <a href="{% host_url 'user_page' request.user.username host 'base' %}">
+                        <a href="{% host_url 'user_page' request.user.username host 'docs' %}">
                             <input type="button" class="input_stroke" value="{{ request.user.username }}">
                         </a>
                         <a href="{% host_url 'logout' host 'base' %}">

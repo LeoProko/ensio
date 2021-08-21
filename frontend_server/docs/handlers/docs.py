@@ -77,7 +77,6 @@ def new_doc(request):
     context = Context({
         'request' : request,
         'form' : document_form,
-        'footer' : True,
     })
     return HttpResponse(template.render(context))
 
@@ -103,7 +102,6 @@ def edit_doc(request, document_id):
         'request' : request,
         'document' : document,
         'form' : document_form,
-        'footer' : True,
     })
     return HttpResponse(template.render(context))
 
