@@ -1,4 +1,6 @@
+{% load static %}
 {% load hosts %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/documents.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/user_page.css' %}">
@@ -6,9 +8,11 @@
 <div class="wrapper_hvc">
     <div class="user_page_header">
         <h2> Found {{ documents_amount }} documents </h2>
-        Name: <b>{{ user.public_name }}</b>
+        <img src="{% static 'img/user_character.png' %}">
         <br>
         Username: <b>{{ user.username }}</b>
+        <br>
+        Name: <b>{{ user.public_name }}</b>
         <br>
         E-mail: <b>{{ user.email }}</b>
     </div>
