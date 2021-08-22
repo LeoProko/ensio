@@ -13,7 +13,7 @@ from factory.html_factories.base import BaseHtmlFactory
 from docs.models import Document
 from django.contrib.auth.models import Group
 from docs.forms import DocumentForm
-from factory.decorators import allowed_users, no_permissions
+from factory.decorators import allowed_users, not_found
 
 
 @login_required(login_url=reverse('login', host='base'))
@@ -38,14 +38,7 @@ def get_all(request):
                 (
                     Q(is_link_public=True) &
                     Q(is_indexed=True)
-                ) |
-                reduce(
-                    lambda x, y : x | y,
-                    [Q(groups__name__contains=user_group.name)
-                    for user_group in request.user.groups.all()]
-                ) |
-                Q(owner=request.user.username) |
-                Q(authors__public_name__contains=request.user.public_name)
+                )
             ).distinct()
 
     context = Context({
@@ -56,7 +49,6 @@ def get_all(request):
 
 @csrf_exempt
 @login_required(login_url=reverse('login', host='base'))
-@allowed_users(allowed_users_list=['cashier'])
 def new_doc(request):
     template = Template(BaseHtmlFactory.create.new_create(
         'docs', 'New doc', 'new_document'
@@ -65,6 +57,7 @@ def new_doc(request):
 
     if request.method == 'POST':
         document_form = DocumentForm(request.POST)
+        print(document_form.errors)
         if document_form.is_valid():
             form = document_form.save(commit=False)
             form.owner = request.user.username
@@ -72,7 +65,7 @@ def new_doc(request):
             form.save()
             document_form.save_m2m()
             print('New document has been created', request.POST)
-            return redirect(reverse('edit_document', str(form.id), host='docs'))
+            return redirect(reverse('edit_document', [form.id], host='docs'))
 
     context = Context({
         'request' : request,
@@ -86,6 +79,10 @@ def edit_doc(request, document_id):
     template = Template(BaseHtmlFactory.create.new_create(
         'docs', 'Editor', 'new_document'
     ))
+    try:
+        document = Document.objects.get(id=document_id)
+    except:
+        return not_found(request)
     document = Document.objects.get(id=document_id)
     document_form = DocumentForm(instance=document)
     if request.method == 'POST':
@@ -96,7 +93,7 @@ def edit_doc(request, document_id):
             form.save()
             document_form.save_m2m()
             print('Document', document_id, 'has been changed', request.POST)
-            return redirect(reverse('edit_document', document_id, host='docs'))
+            return redirect(reverse('edit_document', [document_id], host='docs'))
 
     context = Context({
         'request' : request,
@@ -110,21 +107,21 @@ def get_doc(request, document_id):
     try:
         document = Document.objects.get(id=document_id)
     except:
-        return no_permissions(request)
+        return not_found(request)
 
     if not document.is_link_public:
         if request.user.is_authenticated:
             name = str(request.user.username)
             if name != document.owner:
                 if request.user.is_superuser:
-                    return no_permissions(request)
+                    return not_found(request)
                 if name not in map(
                         lambda author : author.username,
                         document.authors.all()
                     ):
-                    return no_permissions(request)
+                    return not_found(request)
         else:
-            return no_permissions(request)
+            return not_found(request)
 
     template = Template(BaseHtmlFactory.create.new_create(
         'docs', document.title, 'document'

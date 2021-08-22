@@ -221,3 +221,17 @@ pre {
     margin: 0;
     padding: 0;
 }
+
+#not_found {
+    margin-top: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#not_found h1 {
+    font-size: 30px;
+}
+
+#not_found p {
+    font-size: 25px;
+}

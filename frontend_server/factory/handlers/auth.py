@@ -1,3 +1,5 @@
+from markdown import markdown
+
 from django.http import HttpResponse
 from django.template import Template, Context
 from django.shortcuts import redirect
@@ -9,6 +11,7 @@ from django_hosts.resolvers import reverse
 from factory.html_factories.base import BaseHtmlFactory
 from factory.forms import RegisterForm, LoginForm
 from factory.decorators import unauthenticated_user
+from docs.models import Document
 
 @csrf_exempt
 @unauthenticated_user
@@ -25,7 +28,7 @@ def user_login(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect(reverse('documents', host='docs'))
+                return redirect(reverse('user_page', [user.username], host='docs'))
 
     context = Context({
         'request' : request,
@@ -49,7 +52,16 @@ def user_register(request):
             user.save()
             group = Group.objects.get(name='guest')
             user.groups.add(group)
-            return redirect(reverse('documents', host='docs'))
+            with open('factory/default_docs/hello_doc.txt', 'r', encoding='utf8') as default_doc:
+                markdown_data = default_doc.read()
+            html_data = markdown(markdown_data, extensions=['fenced_code'])
+            Document.objects.create(
+                owner=username,
+                title='Welcome article',
+                html_data=html_data,
+                markdown_data=markdown_data
+            )
+            return redirect(reverse('login', host='base'))
     context = Context({
         'request' : request,
         'form' : form,

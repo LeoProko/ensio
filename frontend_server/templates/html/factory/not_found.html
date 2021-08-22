@@ -1,0 +1,15 @@
+{% load static %}
+{% load hosts %}
+
+<link rel="stylesheet" href="{% static 'css/div.css' %}">
+
+<div id="not_found">
+    <h1> Ooops...</h1>
+    <br>
+    <img src="{% static 'img/not_found_character.png' %}">
+    <br>
+    <p>Page not found</p>
+    <a href="{% host_url 'documents' host 'docs' %}">
+        Back to main page
+    </a>
+</div>

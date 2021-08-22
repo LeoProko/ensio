@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/documents.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/user_page.css' %}">
 
+<script type="text/javascript" src="{% static 'js/documents.js' %}"></script>
+
 <div class="wrapper_hvc">
     <div class="user_page_header">
         <h2> Found {{ documents_amount }} documents </h2>
@@ -26,22 +28,28 @@
             </div>
             <hr>
             <div class="document_title">
-                {% if document.authors.all|length == 1 %}
+                {% comment %}{% if document.authors.all|length == 1 %}{% endcomment %}
+                {% comment %}Author:{% endcomment %}
+                {% comment %}{% else %}{% endcomment %}
+                {% comment %}Authors:{% endcomment %}
+                {% comment %}{% endif %}{% endcomment %}
+                {% comment %}<b>{% endcomment %}
+                    {% comment %}{% with document.authors.all|length as last_index %}{% endcomment %}
+                    {% comment %}{% with document.authors.all.last as last %}{% endcomment %}
+                        {% comment %}{% for author in document.authors.all %}{% endcomment %}
+                            {% comment %}{{ author.public_name }}{% endcomment %}
+                            {% comment %}{% if author != last %}{% endcomment %}
+                                {% comment %},{% endcomment %}
+                            {% comment %}{% endif %}{% endcomment %}
+                        {% comment %}{% endfor %}{% endcomment %}
+                    {% comment %}{% endwith %}{% endcomment %}
+                    {% comment %}{% endwith %}{% endcomment %}
+                {% comment %}</b>{% endcomment %}
                 Author:
-                {% else %}
-                Authors:
-                {% endif %}
                 <b>
-                    {% with document.authors.all|length as last_index %}
-                    {% with document.authors.all.last as last %}
-                        {% for author in document.authors.all %}
-                            {{ author.public_name }}
-                            {% if author != last %}
-                                ,
-                            {% endif %}
-                        {% endfor %}
-                    {% endwith %}
-                    {% endwith %}
+                    <a href="{% host_url 'user_page' document.owner host 'docs' %}">
+                        {{ document.owner }}
+                    </a>
                 </b>
             </div>
             <div class="document_title">
@@ -49,10 +57,9 @@
             </div>
             <hr>
             <div class="document_preview">
-                {{ document.html_data|slice:':126'|safe }}...
+                {{ document.html_data|slice:':230'|safe }}...
             </div>
         </div>
     {% endfor %}
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static 'js/documents.js' %}"></script>
+

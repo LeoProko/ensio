@@ -86,3 +86,11 @@
 .ghost_footer {
     height: 50px;
 }
+
+.hljs {
+    background: #D6E7FF !important;
+}
+
+[data-link] {
+    cursor: pointer;
+}

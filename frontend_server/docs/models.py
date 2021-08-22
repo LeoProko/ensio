@@ -6,8 +6,8 @@ from factory.models import User
 class Document(models.Model):
     title = models.CharField(max_length=200, null=True)
     owner = models.CharField(max_length=50, null=True)
-    authors = models.ManyToManyField(User)
-    groups = models.ManyToManyField(Group)
+    authors = models.ManyToManyField(User, blank=True)
+    groups = models.ManyToManyField(Group, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     markdown_data = models.TextField(null=True)
     html_data = models.TextField(null=True)

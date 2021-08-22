@@ -1,10 +1,12 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import handler404, handler500
 
 from shop.handlers import shop
 from shop.handlers import stock
 from shop.handlers import orders
+from factory.decorators import not_found
 
 urlpatterns = [
     path('', shop.index, name='index'),
@@ -24,3 +26,6 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = not_found
+handler500 = not_found

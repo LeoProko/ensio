@@ -18,11 +18,11 @@
             Owner: <i>{{ request.user.username }}</i>
         </div>
 
-        <div class="title_text">
-            Author(s): {{ form.authors }}
-        </div>
-
         {% if request.user.is_staff %}
+            <div class="title_text">
+                Author(s): {{ form.authors }}
+            </div>
+
             <div class="title_text">
             Group(s):
             {{ form.groups }}
@@ -31,7 +31,7 @@
 
         {% if document %}
             <div class="title_text">
-            Date created: {{ document.date_created }}
+                Date created: {{ document.date_created }}
             </div>
         {% endif %}
 
@@ -39,9 +39,11 @@
             Public link: {{ form.is_link_public }}
         </div>
 
-        <div class="title_text">
-            Public indexed: {{ form.is_indexed }}
-        </div>
+        {% if request.user.is_staff %}
+            <div class="title_text">
+                Public indexed: {{ form.is_indexed }}
+            </div>
+        {% endif %}
     </div>
     <div id="editor">
         <div class="document_body document_textarea">

@@ -18,11 +18,17 @@ def index(request, username):
     if request.user.is_authenticated:
         if request.user == user:
             documents = Document.objects.filter(
+                Q(owner=user.public_name) |
+                Q(authors__public_name__contains=user.public_name) |
                 (
-                    Q(owner=user.public_name) |
-                    Q(authors__public_name__contains=user.public_name)
+                    reduce(
+                        lambda x, y : x | y,
+                        [Q(groups__name__contains=user_group.name)
+                        for user_group in request.user.groups.all()]
+                    ) &
+                    Q(is_link_public=True)
                 )
-            )
+            ).distinct()
         elif request.user.is_superuser:
             documents = Document.objects.filter(
                 (
@@ -30,7 +36,7 @@ def index(request, username):
                     Q(authors__public_name__contains=user.public_name)
                 ) &
                 Q(is_link_public=True)
-            )
+            ).distinct()
         else:
             documents = Document.objects.filter(
                 (
