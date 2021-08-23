@@ -1,4 +1,5 @@
 .input_fill {
+    text-decoration: none;
     background: #568BD7 !important;
     color: white !important;
     font-size: 18px;
@@ -9,6 +10,7 @@
 }
 
 .input_stroke {
+    text-decoration: none;
     border: 1px solid #568BD7 !important;
     background: #ffffff !important;
     color: #568BD7 !important;
@@ -18,7 +20,7 @@
 .input_stroke:hover {
     background: #8abaff !important;
     color: #ffffff !important;
-    border: 1px solid #ffffff !important;
+    border: 1px solid #8abaff !important;
 }
 
 .header input {
@@ -89,6 +91,22 @@
 
 .hljs {
     background: #D6E7FF !important;
+}
+
+.remove_form {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.remove_form a {
+    text-decoration: none;
+}
+
+.remove_form input {
+    font-size: 25px;
+    padding: 0 10px;
+    font-weight: 500;
+    height: 50px;
 }
 
 [data-link] {
