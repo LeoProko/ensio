@@ -5,7 +5,6 @@ from django.conf.urls import handler404, handler500
 from factory.decorators import not_found
 
 urlpatterns = [
-    path('back_office/', include('back_office.urls')),
     path('', include('factory.urls')),
     path('admin/', admin.site.urls),
 ]

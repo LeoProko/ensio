@@ -28,6 +28,10 @@
     vertical-align: middle;
 }
 
+#documents_image {
+    width: 500px;
+}
+
 .document_preview {
     max-width: 1000px;
     margin: 20px auto;
