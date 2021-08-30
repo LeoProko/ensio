@@ -1,0 +1,64 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/shop/all_items.css' %}">
+
+<div id="items_header">
+    <div>
+        <h2>
+            Leo Proko: ювелирные украшения на выход и каждый день
+        </h2>
+
+        <p>
+            Мы — магазин ювелирных украшений. Работаем с серебром и бронзой.
+            Делаем так, чтобы каждый нашел себе украшение как на вечеринку, так и на каждый день
+        </p>
+
+        <p>
+            У нас работают только опытные ювелиры, которые уделяют внимание каждой детали
+        </p>
+
+        <p>
+            По всем вопросам можете писать в
+            <a href="https://www.instagram.com/leoproko_shop/">инстаграм</a>,
+            <a href="https://t.me/leoproko">телеграм</a>
+            или
+            <a href="https://wa.me/79998390085">вотс ап</a>
+        </p>
+    </div>
+    <div>
+        <img src="{% static 'img/shop/sleepy-wellcome-1.png' %}">
+    </div>
+</div>
+
+{% for item in items %}
+    <a class="item_link" href="{% url 'item' item.name_id %}">
+        <div class="item">
+            <div class="item_name">
+                <h2>
+                    {{ item.name }}
+                </h2>
+            </div>
+            <div class="item_material">
+                <p>
+                {% for material in item.materials.all %}
+                    {{ material }}
+                {% endfor %}
+                </p>
+            </div>
+            <div class="item_image">
+                <img src="{% static item.main_photo.url %}">
+            </div>
+            <div class="item_price">
+                <p>
+                    {{ item.price|floatformat:0 }}₽
+                </p>
+            </div>
+        </div>
+    </a>
+{% endfor %}
+<p>
+    Illustration by
+    <a href="https://icons8.com/illustrations/author/5eb50ac301d03600141ee1f9">Aleksandr Smetanov</a>
+    from
+    <a href="https://icons8.com/illustrations">Ouch!</a>
+</p>

@@ -59,13 +59,3 @@ class Password(models.Model):
 
     def __str__(self) -> str:
         return str(self.service)
-
-class Task(models.Model):
-    done = models.BooleanField(default=False)
-    task = models.TextField(null=True)
-    deadline = models.DateField()
-    chief = models.ForeignKey(User, on_delete=models.CASCADE, related_name='chief')
-    executors = models.ManyToManyField(User, related_name='executors')
-
-    def __str__(self) -> str:
-        return str(self.task)

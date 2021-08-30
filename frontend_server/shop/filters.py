@@ -1,10 +1,5 @@
 import django_filters
-from shop.models import Order, Item
-
-class OrderFilter(django_filters.FilterSet):
-    class Meta:
-        model = Order
-        fields = ['item', 'status', 'phone_number']
+from shop.models import Item
 
 class ItemFilter(django_filters.FilterSet):
     min_stock = django_filters.NumberFilter(field_name='stock_balance', lookup_expr='gte')

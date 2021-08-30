@@ -1,0 +1,14 @@
+.customers_content {
+    text-align: center;
+}
+
+.contacts {
+    display: inline-block;
+    width: 35%;
+    vertical-align: top;
+    padding: 0 1%;
+}
+
+.contacts_images {
+    width: 300px;
+}

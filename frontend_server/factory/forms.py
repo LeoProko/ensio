@@ -4,9 +4,7 @@ from django.forms import ModelForm, Form
 
 from markdown import markdown
 
-from shop.models import Order
-from docs.models import Document
-from factory.models import Task, User
+from factory.models import User
 
 class RegisterForm(UserCreationForm):
     username = forms.CharField(label='username', widget=forms.TextInput(
@@ -50,8 +48,3 @@ class LoginForm(Form):
             'Placeholder' : 'Password',
         }
     ))
-
-class TaskForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = '__all__'

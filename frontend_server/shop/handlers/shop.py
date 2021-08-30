@@ -8,12 +8,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
 from factory.html_factories.base import BaseHtmlFactory
-from shop.models import Order, Item, ItemImage, Tag
-from shop.forms import FastOrderForm, TrackOrderForm
+from crm.models import Order
+from shop.models import Item, ItemImage, Tag
+from crm.forms import FastOrderForm
+from shop.forms import TrackOrderForm
 
-def index(request):
-    template = Template(BaseHtmlFactory.create.customer_app(
-        'Leo Proko shop', 'customer_app', 'shop', '', ''
+def all_items(request):
+    template = Template(BaseHtmlFactory.create.new_create(
+        'shop', 'Leo Proko Shop', 'all_items'
     ))
     items = Item.objects.all()
     context = Context({
@@ -29,17 +31,17 @@ def get_sizes_list(sizes) -> list:
     return sizes_list
 
 @csrf_exempt
-def view_item(request, item_id):
+def view_item(request, item_id: int):
     item = Item.objects.get(name_id=item_id)
     item_tags = [tag.name for tag in item.tags.all()]
     images = ItemImage.objects.filter(item=item)
     if request.user_agent.is_mobile:
-        template = Template(BaseHtmlFactory.create.customer_app(
-            item.name, 'customer_app', 'item_mobile', '', ''
+        template = Template(BaseHtmlFactory.create.new_create(
+            'shop', item.name, 'item_mobile'
         ))
     else:
-        template = Template(BaseHtmlFactory.create.customer_app(
-            item.name, 'customer_app', 'item', '', ''
+        template = Template(BaseHtmlFactory.create.new_create(
+            'shop', item.name, 'item'
         ))
 
     order_form = FastOrderForm(initial={
@@ -78,8 +80,8 @@ def view_item(request, item_id):
     return HttpResponse(template.render(context))
 
 def collections(request):
-    template = Template(BaseHtmlFactory.create.customer_app(
-        'Collections', 'customer_app', 'collections', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'shop', 'Collections', 'collections'
     ))
     images_path = 'static/img/collections/free_yourself'
     images = os.listdir(os.path.join(settings.BASE_DIR, images_path))
@@ -92,8 +94,8 @@ def collections(request):
     return HttpResponse(template.render(context))
 
 def delivery(request):
-    template = Template(BaseHtmlFactory.create.customer_app(
-        'Delivery', 'customer_app', 'delivery', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'shop', 'Delivery', 'delivery'
     ))
     context = Context({
         'request' : request,
@@ -102,8 +104,8 @@ def delivery(request):
     return HttpResponse(template.render(context))
 
 def contacts(request):
-    template = Template(BaseHtmlFactory.create.customer_app(
-        'Contacts', 'customer_app', 'contacts', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'shop', 'Contacts', 'contacts'
     ))
     context = Context({
         'request' : request,
@@ -113,8 +115,9 @@ def contacts(request):
 
 @csrf_exempt
 def track_order(request):
-    template = Template(BaseHtmlFactory.create.customer_app(
-        'Track Order', 'customer_app', 'track_order', '', ''))
+    template = Template(BaseHtmlFactory.create.new_create(
+        'shop', 'Track Order', 'track_order'
+    ))
 
     form = TrackOrderForm()
 
@@ -134,8 +137,9 @@ def track_order(request):
 
 
 def track_order_by_id(request, order_id):
-    template = Template(BaseHtmlFactory.create.customer_app(
-        'Track Order', 'customer_app', 'track_order_by_id', '', ''))
+    template = Template(BaseHtmlFactory.create.new_create(
+        'shop', 'Track Order', 'track_order_by_id'
+    ))
     order_is_found = True
     order = ''
     try:

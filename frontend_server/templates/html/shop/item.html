@@ -1,0 +1,69 @@
+{% load static %}
+
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/order/order_form.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/order/size_tutorial.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/item.css' %}">
+
+<table id="content_table">
+    <tr>
+        <td>
+            <img class="item_image" src="{% static item.main_photo.url %}">
+            {% for image in images  %}
+                <img class="item_image" src="{% static image.image.url %}">
+            {% endfor %}
+        </td>
+        <td>
+            <span id="item_name">
+                {{ item.name }}
+            </span>
+            <br>
+            <br>
+            <span id="item_price">
+                {{ item.price|floatformat:0 }}₽
+            </span>
+            <br>
+            <br>
+            <span id="item_material">
+                {% for material in item.materials.all %}
+                    {{ material }}
+                    <br>
+                {% endfor %}
+            </span>
+            {% if item.weight %}
+                <br>
+                <span id="item_weight">
+                    {{ item.weight }}
+                </span>
+                <br>
+            {% endif %}
+            <br>
+            <span id="item_description">
+                {{ item.description|safe }}
+            </span>
+
+            {% include 'html/shop/order/order_form.html' %}
+            {% if 'ring' in item_tags %}
+                {% include 'html/shop/order/size_tutorial.html' %}
+                <div id="button_to_order_form">
+                    <a href="#order_form">
+                        <input id="order_button" type="submit" value="Заказать">
+                    </a>
+                </div>
+            {% endif %}
+
+
+            <p id="delivery_info">
+                Больше фоток можете увидеть в нашей
+                <a href="https://instagram.com/leoproko_shop">инсте</a>
+                <br>
+                <br>
+                Доставка СберЛогистикой или Почтой России
+                <br>
+                Статус заказа вы сможете отследить по номеру заказа
+                на <a href="/track_order">этой странице</a>,
+                а статус посылки на сайте службы доставки по трек-номеру,
+                который мы вам вышлем после отправления.
+            </p>
+        </td>
+    </tr>
+</table>

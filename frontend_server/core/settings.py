@@ -12,7 +12,7 @@ PRIVATE_DIR = '/home/leoproko/projects/ensio_private/'
 SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8').read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # On local debug add DOMAIN_NAME to /etc/hosts
 DOMAIN_NAME = 'leoproko.io'
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'core',
     'docs',
     'shop',
+    'crm',
     'factory',
     'django_filters',
     'django_hosts',
