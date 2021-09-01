@@ -3,6 +3,7 @@
     max-width: 1000px;
     background:white;
     padding:10px 40px;
+    margin: 0 auto;
 }
 
 .title_text {
@@ -14,10 +15,10 @@
     background: #81AFF0;
     padding: 0;
     width: 45%;
+    height: auto;
     display: inline-block;
     vertical-align: top;
     text-align: left;
-    height: 100%;
     border: 2px solid #81AFF0;
     color: #ffffff;
 }
@@ -54,8 +55,7 @@
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     padding: 20px;
-    margin-bottom: -5px;
-    width: calc(100% - 40px);
+    width: 100%;
     height: auto;
     min-height: 200px;
     border: 0;

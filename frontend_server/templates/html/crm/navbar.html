@@ -1,0 +1,13 @@
+{% load hosts %}
+
+<div id="sidebar">
+  <a href="/">
+      <input class="input_stroke" type="button" value="Money">
+  </a>
+  <a href="{% host_url 'orders' host 'crm' %}">
+      <input class="input_stroke" type="button" value="Orders">
+  </a>
+  <a href="{% host_url 'documents' host 'docs' %}">
+      <input class="input_stroke" type="button" value="Documents">
+  </a>
+</div>

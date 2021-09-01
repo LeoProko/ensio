@@ -1,27 +1,27 @@
 {% load static %}
 
-<div class="header" id="customer_header">
+<div id="header">
   <div id="header_buttons">
       <table>
           <tr>
-              <td id="customer_header_left">
+              <td id="header_left">
                   <a href="{% url 'index' %}">
-                      <img id="logo" src="{% static 'img/shop/logo.svg' %}">
+                      <img id="logo" src="{% static 'img/logo/leo_proko_blue.svg' %}">
                   </a>
               </td>
-              <td id="customer_header_right">
+              <td id="header_right">
                       <a href="{% url 'collections' %}">
-                          <span class="customer_link">
+                          <span class="header_link">
                               коллекции
                           </span>
                       </a>
                       <a href="{% url 'delivery' %}">
-                          <span class="customer_link">
+                          <span class="header_link">
                               доставка
                           </span>
                       </a>
                       <a href="{% url 'contacts' %}">
-                          <span class="customer_link">
+                          <span class="header_link">
                               контакты
                           </span>
                       </a>

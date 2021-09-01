@@ -14,8 +14,8 @@ from factory.decorators import allowed_users
 @login_required(login_url='login')
 @allowed_users(allowed_users_list=['cashier'])
 def orders(request):
-    template = Template(BaseHtmlFactory.create.back_office(
-        'Orders', 'back_office', 'orders', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'crm', 'Orders', 'orders'
     ))
     orders = Order.objects.all()
     order_counter = orders.count()
@@ -44,10 +44,10 @@ def orders(request):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users_list=[])
+@allowed_users(allowed_users_list=['cashier'])
 def change_order(request, order_id):
-    template = Template(BaseHtmlFactory.create.back_office(
-        'Change order', 'back_office', 'new_order', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'crm', 'Change order', 'new_order'
     ))
     order = Order.objects.get(id=order_id)
     order_form = OrderForm(instance=order)
@@ -67,10 +67,9 @@ def change_order(request, order_id):
 
 @csrf_exempt
 @login_required(login_url='login')
-@allowed_users(allowed_users_list=[])
 def remove_order(request, order_id):
-    template = Template(BaseHtmlFactory.create.back_office(
-        'Delete order', 'back_office', 'delete_order', '', ''
+    template = Template(BaseHtmlFactory.create.new_create(
+        'crm', 'Remove order', 'remove_order'
     ))
     order = Order.objects.get(id=order_id)
     if request.method == 'POST':

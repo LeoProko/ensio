@@ -1,12 +1,7 @@
-<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-<link rel="stylesheet" tepe="text/css" href="{% static 'css/p.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/document.css' %}">
 
-<div class="center_div">
-</div>
 <form id="doc_form" action="" method="POST">
-    <div class="center_div document_title">
+    <div class="document_title">
         <div class="title_text">
         Title: 
             <div class="input_form inline_div">
@@ -65,5 +60,4 @@
 
 <script type="text/javascript" src="{% static 'js/document.js' %}"></script>
 
-<div class="ghost_footer"></div>
-{% include 'html/docs/base_footer.html' %}
+{% include 'html/docs/footer.html' %}

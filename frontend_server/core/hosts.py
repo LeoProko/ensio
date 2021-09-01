@@ -13,4 +13,5 @@ host_patterns = patterns(
     host('', 'core.urls', name='base'),
     host('docs', 'docs.urls', name='docs'),
     host('shop', 'shop.urls', name='shop'),
+    host('crm', 'crm.urls', name='crm'),
 )

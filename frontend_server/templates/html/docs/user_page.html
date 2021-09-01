@@ -1,14 +1,13 @@
 {% load static %}
 {% load hosts %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/div.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/documents.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/user_page.css' %}">
 
 <script type="text/javascript" src="{% static 'js/documents.js' %}"></script>
 
-<div class="wrapper_hvc">
-    <div class="user_page_header">
+<div class="user_page_header">
+    <div>
         <h2> Found {{ documents_amount }} documents </h2>
         <img src="{% static 'img/docs/user_character.png' %}">
         <br>

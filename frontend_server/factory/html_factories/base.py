@@ -24,9 +24,10 @@ class Create:
         return Create._replace_macros_in_html_page(base_type, page_title, html, css, js)
 
     @staticmethod
-    def new_create(folder_name, page_title, html_name):
-        html_content = open('templates/html/' + folder_name + '/' + html_name + '.html', 'r').read()
-
+    def new_create(folder_name, page_title, html_name=''):
+        html_content = ''
+        if html_name:
+            html_content = open('templates/html/' + folder_name + '/' + html_name + '.html', 'r').read()
         html_template = open('templates/html/' + folder_name + '/base.html', 'r').read()
         html_template = html_template.replace('&page_title&', page_title)
         html_template = html_template.replace('&content_html&', html_content)

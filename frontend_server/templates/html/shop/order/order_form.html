@@ -8,16 +8,18 @@
             {{ order_form.customer_name }}
         </div>
         <div>
-            <p class="field_title">Способ связи</p>
+            <h2 class="form_title">
+                Способ связи
+            </h2>
             {{ order_form.connection_type }}
         </div>
         <div>
             {{ order_form.phone_number }}
         </div>
         <div>
-            <p class="field_title">
+            <h2 class="form_title">
                 Размер
-            </p>
+            </h2>
             {{ order_form.size }}
             {% if 'ring' in item_tags %}
                 <p class="field_help_text">

@@ -1,0 +1,266 @@
+:root {
+    --link-color: #2461FF;
+    --visited-link-color: #A216E4;
+    --blue-text: #568BD7;
+}
+
+a {
+    text-decoration: underline;
+    color: var(--link-color);
+}
+
+a:visited {
+    color: var(--visited-link-color);
+}
+
+body {
+  width: 100%;
+  background-image: linear-gradient(#ffffff, #8AC7FF);
+  color: #000000;
+  margin: 0 auto;
+}
+
+h1 {
+  color: var(--blue-text);
+  font-weight: bold;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+h2 {
+  color: var(--blue-text);
+  font-weight: bold;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+h3 {
+  color: var(--blue-text);
+  font-weight: bold;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  color: black;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+}
+
+input[type=radio] {
+  appearance: radio;
+}
+
+.input_fill {
+    text-decoration: none;
+    background: #568BD7 !important;
+    color: white !important;
+    font-size: 18px;
+    border-radius: 3px;
+}
+
+.input_fill:hover {
+    background: #8abaff !important;
+}
+
+.input_stroke {
+    text-decoration: none;
+    border: 1px solid #568BD7 !important;
+    border-radius: 3px;
+    background: #ffffff !important;
+    color: #568BD7 !important;
+    font-size: 18px;
+}
+
+.input_stroke:hover {
+    background: #8abaff !important;
+    color: #ffffff !important;
+    border: 1px solid #8abaff !important;
+}
+
+.content {
+  width: calc(100% - 250px);
+  margin-top: 20px;
+  margin-left: 200px;
+  padding-right: 50px;
+}
+
+.content_wrapper {
+    margin: -10px auto;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0px 3px;
+    border: 0;
+    width: 100%;
+    word-wrap: break-word;
+    table-layout: fixed;
+}
+
+.table th {
+    text-align: center;
+    background: #ffffff;
+    font-weight: 700;
+    border-top: 2px solid var(--blue-text);
+    border-bottom: 2px solid var(--blue-text);
+    padding: 10px 3px 10px 3px;
+}
+
+.table td {
+    text-align: center;
+    font-weight: 500;
+    padding: 10px 3px 10px 3px;
+    border-top: 2px solid var(--blue-text);
+    border-bottom: 2px solid var(--blue-text);
+}
+
+.table td:first-child,
+.table th:first-child {
+    border-left: 2px solid var(--blue-text);
+    border-radius: 10px 0 0 10px;
+}
+
+.table td:last-child,
+.table th:last-child {
+    border-right: 2px solid var(--blue-text);
+    border-radius: 0 10px 10px 0;
+}
+
+.table tr {
+    background: #ffffff;
+}
+
+#footer a {
+    color: white;
+}
+
+#footer {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    height: 50px;
+    text-align: center;
+    vertical-align: center;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+#ghost_footer {
+  height: 70px;
+}
+
+#ghost_header {
+  height: 50px;
+}
+
+#header a:hover {
+    text-decoration: none;
+}
+
+#header input {
+    width: auto;
+    padding: 0 20px;
+    height: 35px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#header input:hover {
+    color: #000000;
+}
+
+#header_buttons table {
+  width: 100%;
+  margin-top: -10px;
+}
+
+#header_left a {
+  margin-left: 30px;
+}
+
+#header_left img {
+    height: 30px;
+    margin-top: 10px;
+}
+
+#header_left {
+    text-align: left;
+}
+
+#header_right a {
+    padding-top: 3px;
+    display: inline-block;
+}
+
+#header_right {
+    text-align: right;
+    padding-right: 30px;
+}
+
+#header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    height: 50px;
+    color: var(--blue-text);
+    z-index: 100;
+}
+
+#logo:hover {
+    filter: invert(30%);
+}
+
+#logo_footer a {
+    display: inline-block;
+    margin: 0 10px;
+    margin-top: -20px;
+}
+
+#logo_footer img {
+    display: inline-block;
+    height: 35px;
+    margin-top: 18px;
+}
+
+#logo_footer img:hover {
+    filter: invert(30%);
+}
+
+#logo_footer {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#sidebar a {
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar input {
+    font-size: 18px;
+    width: 160px;
+    height: 35px;
+    text-align: center;
+    margin: 1.5px 3px;
+    border-radius: 10px !important;
+}
+
+#sidebar {
+    background-image: linear-gradient(to left, #ffffff, #8AC7FF);
+    position: fixed;
+    height: 100%;
+    margin-top: -10px;
+}
