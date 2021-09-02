@@ -203,27 +203,3 @@ pre {
     display: inline-block;
     margin-top: 10px;
 }
-
-@media only screen and (max-width: 1000px) {
-    #footer {
-        height: 60px;
-    }
-
-    #footer span {
-        font-size: 40px;
-    }
-
-    #logo_footer img {
-        height: 50px;
-    }
-
-    #logo_footer a {
-        margin: 0 30px;
-        margin-top: -20px;
-    }
-
-    .footer_link a {
-        margin: 0 70px;
-        margin-top: -43px;
-    }
-}

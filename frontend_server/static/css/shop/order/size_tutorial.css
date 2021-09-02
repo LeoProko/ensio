@@ -3,6 +3,10 @@
     margin: 5% 0;
 }
 
+#size_tutorial p {
+    text-align: left;
+}
+
 #size_tutorial img {
     padding: 5%;
     width: 150px;

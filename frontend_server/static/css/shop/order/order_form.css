@@ -1,10 +1,14 @@
-#order_form {
+.order_form {
     background: #ffffff;
     text-align: left;
     margin: 15px 5px;
 }
 
-#order_form li {
+label { 
+    color: var(--blue-text);
+}
+
+.order_form li {
     list-style-type: none;
 }
 
@@ -12,7 +16,7 @@
     color: #9a9a9a;
 }
 
-#order_form input[type=text] {
+.order_form input[type=text] {
     background: #ffffff;
     border: 2px solid var(--blue-text);
     border-radius: 60px;
@@ -21,7 +25,7 @@
     margin: 1% 0;
 }
 
-#order_form input[type=submit] {
+.order_form input[type=submit] {
     background: #E23333;
     color: white;
     text-align: center;
@@ -30,11 +34,11 @@
     font-size: 28px;
 }
 
-#order_form input[type=submit]:hover {
+.order_form input[type=submit]:hover {
     background: #BD1818;
 }
 
-#order_form input[type=radio] {
+.order_form input[type=radio] {
     background-color: #ffffff;
     height: 20px;
     width: 20px;
@@ -42,17 +46,18 @@
     margin-bottom: 2%;
 }
 
-#order_form input[type=radio]:after {
+.order_form input[type=radio]:after {
     content: '';
     height: 20px;
     width: 20px;
-    border-radius: 0.5vw;
+    border-radius: 5px;
     background-color: var(--blue-text);
     display: inline-block;
     visibility: visible;
     border: 0;
 }
-#order_form input[type=radio]:checked:after {
+
+.order_form input[type=radio]:checked:after {
     content: '';
     height: 10px;
     width: 10px;
@@ -63,17 +68,17 @@
     border: 5px solid var(--blue-text);
 }
 
-#order_form p,
-#order_form ul {
+.order_form p,
+.order_form ul {
     color: #000000;
     margin: 0;
 }
 
-#order_form ul {
+.order_form ul {
     padding: 2% 0;
 }
 
-#order_button {
+.order_button {
     margin-top: 15px;
 }
 

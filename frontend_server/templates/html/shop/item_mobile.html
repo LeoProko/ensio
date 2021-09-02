@@ -2,38 +2,109 @@
 
 <link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/order/order_form.css' %}">
 <link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/order/size_tutorial.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/shop/items.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/item.css' %}">
 <link rel="stylesheet" tepe="text/css" href="{% static '/css/shop/item_mobile.css' %}">
 
-<div class="item" style="background-image: url({% static item.main_photo.url %});">
-    <div class="item_name">
+<div id="caption">
+    <h1>
         {{ item.name }}
+    </h1>
+    <p>
+        {% for material in item.materials.all %}
+            {{ material }}
+            <br>
+        {% endfor %}
+    </p>
+    {% if item.weight %}
+        <p>
+            {{ item.weight }}
+        </p>
+    {% endif %}
+</div>
+
+<div class="item_image">
+    <img src="{% static item.main_photo.url %}">
+</div>
+{% for image in images  %}
+    <div class="item_image">
+        <img src="{% static image.image.url %}">
     </div>
-    <div class="item_material">
-    {% for material in item.materials.all %}
-        {{ material }}
-    {% endfor %}
+{% endfor %}
+<div id="prev">
+    <div id="prev_button">
+        <a onclick="plusSlides(-1)">
+            <div>
+                &#10094;
+            </div>
+        </a>
     </div>
-    <div class="item_price">
-    {{ item.price|floatformat:0 }}₽
+</div>
+<div id="next">
+    <div id="next_button">
+        <a onclick="plusSlides(1)">
+            <div>
+                &#10095;
+            </div>
+        </a>
     </div>
 </div>
 
-<div id="button_to_order_form">
-    <a href="#order_form">
+<h3 id="price">
+    {{ item.price|floatformat:0 }}₽
+</h3>
+
+<div class="order_form">
+    <a href="#navigate">
         <input id="order_button" type="submit" value="Заказать">
     </a>
 </div>
 
-<div id="item_description">
+<p id="item_description">
     {{ item.description|safe }}
+</p>
+
+<img id="girl_image" src="{% static 'img/shop/3d-stripy-sport-woman.png' %}">
+
+<div id="navigate" class="block order_form_block">
+    <h2 class="form_title">Быстрый заказ</h2>
+    {% include 'html/shop/order/order_form.html' %}
 </div>
 
-{% for image in images  %}
-    <img class="item_image" src="{% static image.image.url %}">
-{% endfor %}
+<p id="item_description">
+    По всем вопросам пишите в
+    <a href="https://www.instagram.com/leoproko_shop/">инстаграм</a>,
+    <a href="https://t.me/leoproko">телеграм</a>
+    или
+    <a href="https://wa.me/79998390085">вотс ап</a>
+</p>
 
-{% include 'html/shop/order/order_form.html' %}
+<p id="item_description">
+    Доставляем СберЛогистикой или Почтой России
+</p>
+
+<p id="item_description">
+    Статус заказа смотрите по номеру заказа <a href="/track_order">этой странице</a>,
+    а статус посылки на сайте службы доставки по трек-номеру,
+    который мы вам вышлем после отправления
+</p>
+
 {% if 'ring' in item_tags %}
-    {% include 'html/shop/order/size_tutorial.html' %}
+    <div class="block">
+        {% include 'html/shop/order/size_tutorial.html' %}
+    </div>
 {% endif %}
+
+<div class="order_form">
+    <a href="#navigate">
+        <input id="order_button" type="submit" value="Заказать">
+    </a>
+</div>
+
+<p>
+    Illustration by
+    <a href="https://icons8.com/illustrations/author/5c07e68d82bcbc0092519bb6">Icons 8</a>
+    from
+    <a href="https://icons8.com/illustrations">Ouch!</a>
+</p>
+
+<script type="text/javascript" src="{% static 'js/item.js' %}"></script>

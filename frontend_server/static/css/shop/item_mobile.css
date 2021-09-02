@@ -1,140 +1,163 @@
-.customers_content {
-    background: #ffffff;
+.content {
+    text-align: center;
+    width: 95%;
+    min-width: 0;
 }
 
-#customer_footer {
-    height: 60px;
+#header {
+    height: 65px;
 }
 
-#customer_footer span {
+#header_left img {
+    height: 45px;
+}
+
+.header_link {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+#caption {
+     text-align: center;
+}
+
+#caption h1 {
+    font-size: 80px;
+    margin: 10px;
+    font-weight: 600;
+}
+
+#caption p {
     font-size: 40px;
+    margin: 5px;
+}
+
+.item_image {
+    margin-top: 30px;
+}
+
+.item_image img {
+    border-radius: 100px;
+    border: 6px solid var(--blue-text);
+    width: calc(100% - 12px);
+}
+
+#prev,
+#next {
+    width: 49%;
+    margin-top: -105%;
+}
+
+
+#prev_button,
+#next_button {
+    border-radius: 10px;
+    width: 100px;
+}
+
+#prev_button a,
+#next_button a {
+    padding: 10px;
+    font-size: 90px;
+    height: 700px;
+    text-align: center;
+    color: #ffffff;
+}
+
+#prev_button a div,
+#next_button a div {
+    margin-top: 300px;
+}
+
+#price {
+    font-size: 70px;
+    margin: 0;
+    margin-top: -40px;
+    font-weight: 500;
+}
+
+.order_form input[type=submit] {
+    font-size: 75px;
+    border-radius: 150px;
+}
+
+#item_description {
+    font-size: 40px;
+    width: 90%;
+    margin: 30px auto;
+}
+
+.order_form_block h2 {
+    font-size: 70px;
+}
+
+.order_form input[type=text] {
+    font-size: 60px;
+}
+
+label {
+    font-size: 50px;
+}
+
+.block {
+    border: 6px solid var(--blue-text);
+    border-radius: 100px;
+    padding: 50px;
+}
+
+.order_form input[type=radio] {
+    height: 50px;
+    width: 50px;
+}
+
+.order_form input[type=radio]:after {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+}
+
+.order_form input[type=radio]:checked:after {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    border: 10px solid var(--blue-text);
+}
+
+select {
+    width: 200px;
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+.field_help_text {
+    font-size: 40px;
+}
+
+#size_tutorial {
+    margin: 0;
+}
+
+#size_tutorial img {
+    width: 300px;
+}
+
+#size_tutorial h2 {
+    font-size: 70px;
+    margin: 0;
+}
+
+#size_tutorial p {
+    font-size: 30px;
+}
+
+#tutorial_table {
+    font-size: 40px;
+}
+
+#footer {
+    height: 60px;
 }
 
 #logo_footer img {
     height: 50px;
-}
-
-.footer_link a {
-    margin: 0 70px;
-    margin-top: -43px;
-}
-
-.item_name {
-    margin-top: 7%;
-    font-size: 9vw;
-}
-
-.item_material {
-    margin-top: 1%;
-    font-size: 4vw;
-}
-
-.item_price {
-    bottom: 5vw;
-    font-size: 7vw;
-}
-
-#item_description {
-    font-size: 30px;
-    text-align: center;
-    width: 85%;
-    margin: 1vw auto;
-    margin-bottom: 3vw;
-}
-
-#button_to_order_form input[type=submit] {
-    background: #E23333;
-    color: white;
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 8vw;
-    text-align: center;
-    width: 80%;
-    margin: 3%;
-    border-radius: 5vw;
-}
-
-#button_to_order_form input[type=submit]:hover {
-    background: #BD1818;
-}
-
-#order_form {
-    margin-top: 0% !important;
-}
-
-.item_image {
-    width: 95%;
-    padding: 0.5% 0;
-}
-
-#order_form {
-    width: 85%;
-    margin: 0 auto;
-}
-
-#order_form li {
-    font-size: 40px; 
-}
-
-#order_form input[type=text] {
-    font-size: 6vw !important;
-    padding: 0.5vw 1vw !important;
-    color: #ffffff !important;
-}
-
-.field_title {
-    font-size: 7vw !important;
-}
-
-#order_form input[type=radio],
-#order_form input[type=radio]:after {
-    height: 6vw !important;
-    width: 8vw !important;
-}
-
-#order_form input[type=radio]:after,
-#order_form input[type=radio]:checked:after {
-    border-radius: 1.5vw !important;
-}
-
-#order_form input[type=radio]:checked:after {
-    height: 3vw !important;
-    width: 5vw !important;
-    border: 1.5vw solid #585858 !important;
-}
-
-select {
-    font-size: 6vw !important;
-}
-
-option {
-    font-size: 3vw !important;
-}
-
-#size_tutorial {
-    margin: 2% auto !important;
-    width: 85% !important;
-}
-
-#size_tutorial_link {
-    font-size: 5vw !important;
-}
-
-#order_button {
-    font-size: 7vw !important;
-}
-
-#tutorial_title {
-    font-size: 5vw !important;
-}
-
-#tutorial_table {
-    font-size: 4vw !important;
-}
-
-#tutorial_table td {
-    padding: 1vw !important;
-}
-
-::placeholder {
-    color: #9a9a9a !important;
 }
