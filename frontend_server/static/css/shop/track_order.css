@@ -1,38 +1,49 @@
 #track_order {
     margin: 0 auto;
-    font-size: 3vw;
-    background: #373737;
+    background: var(--blue-text);
     margin-top: 10%;
     text-align: center;
-    width: 50%;
+    width: 300px;
+    border-radius: 30px;
+    padding: 10px;
 }
 
 #track_order_id {
     margin: 0 auto;
     margin-top: 5%;
-    font-size: 40px;
-    background: #373737;
+    font-size: 18px;
+    background: #ffffff;
     text-align: center;
-    width: 90%;
+    width: 600px;
+    border: 2px solid var(--blue-text);
+    border-radius: 30px;
 }
 
 #track_order input[type=text] {
-    background: #585858;
-    color: #ffffff;
-    font-size: 4vw;
+    background: #ffffff;
+    border-radius: 5px;
+    color: #585858;
+    font-size: 22px;
     text-align: center;
     width: 70%;
     margin: 4% 5%;
 }
 
 #track_order input[type=submit] {
-    background: #9a9a9a;
-    color: #ffffff;
-    font-size: 3vw;
+    background: #ffffff;
+    color: var(--blue-text);
+    border: 2px solid var(--blue-text);
+    border-radius: 5px;
+    font-size: 22px;
     text-align: center;
     margin: 4% 5%;
     margin-top: 0%;
     padding: 1% 5%;
+}
+
+#track_order input[type=submit]:hover {
+    background: #8abaff;
+    color: #ffffff;
 }
 
 #table {
@@ -40,34 +51,27 @@
 }
 
 #track_order_id table {
-    color: #ffffff;
+    background: #ffffff;
+    color: #000000;
     list-style-type: none;
     margin: 0 auto;
     width: 100%;
-    border-spacing: 0px;
-    border: 2px solid #9a9a9a;
+    border-spacing: 2px;
 }
 
 #track_order_id td {
     text-align: center;
     padding: 1%;
-    border: 2px solid #9a9a9a;
+    border: 2px solid var(--blue-text);
+    border-radius: 30px;
 }
 
 #links {
     padding-bottom: 5%;
 }
 
-#links a {
-    color: #ffffff;
-}
-
 #links a:hover {
-    color: #9a9a9a;
-}
-
-::placeholder {
-    color: #9a9a9a;
+    color: #8abaff;
 }
 
 @media only screen and (max-width: 1000px) {

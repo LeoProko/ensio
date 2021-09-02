@@ -2,8 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/docs/document.css' %}">
 
-
-<div class="center_div document_title">
+<div class="document_title">
     <h1> {{ document.title }} </h1>
     {% comment %}{% if document.authors.all|length == 1 %}{% endcomment %}
     {% comment %}<i>Author:</i>{% endcomment %}
@@ -38,17 +37,18 @@
         <div class="buttons_wrapper">
             <div class="inline_button">
                 <a href="{% url 'edit_document' document.id %}">
-                    <input type="submit" value="Edit" />
+                    <input class="input_fill" type="submit" value="Edit" />
                 </a>
             </div>
             <div class="inline_button">
                 <a href="{% url 'remove_document' document.id %}">
-                    <input type="submit" value="Remove" />
+                    <input class="input_stroke" type="submit" value="Remove" />
                 </a>
             </div>
         </div>
     {% endif %}
 </div>
-<div class="center_div document_view">
+
+<div class="document_view">
     {{ document.html_data|safe }}
 </div>

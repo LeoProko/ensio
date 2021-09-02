@@ -1,0 +1,37 @@
+#order {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#order_form {
+    background: #ffffff;
+    border: 2px solid var(--blue-text);
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 30px;
+}
+
+#order_form select,
+#order_form input {
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    background: #5f5f5f;
+    color: #ffffff;
+    padding: 1%;
+}
+
+#order_form input {
+    width: calc(100% - 9px);
+}
+
+#submit_button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#submit_button input {
+    font-size: 20px;
+    text-align: center;
+    padding: 1% 2%;
+}

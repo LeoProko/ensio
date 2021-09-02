@@ -83,7 +83,7 @@ def collections(request):
     template = Template(BaseHtmlFactory.create.new_create(
         'shop', 'Collections', 'collections'
     ))
-    images_path = 'static/img/collections/free_yourself'
+    images_path = 'static/img/shop/collections/free_yourself'
     images = os.listdir(os.path.join(settings.BASE_DIR, images_path))
     images.sort()
     context = Context({

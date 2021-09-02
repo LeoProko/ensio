@@ -3,7 +3,7 @@
     max-width: 1000px;
     background:white;
     padding:10px 40px;
-    margin: 0 auto;
+    margin: auto auto;
 }
 
 .title_text {
@@ -29,6 +29,7 @@
     padding-bottom: 25px;
     width: 90%;
     max-width: 1000px;
+    margin: 0 auto;
 }
 
 #document_preview {
@@ -87,4 +88,16 @@ select {
     border: none;
     border-radius: 0;
     padding: 5px 10px;
+}
+
+.buttons_wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.buttons_wrapper input {
+    text-align: center;
+    font-size: 22px;
+    width: 100%;
+    font-weight: 600;
 }

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{% static 'css/customer_app/track_order.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/shop/track_order.css' %}">
 
 <div id="track_order_id">
     {% if order_is_found %}
@@ -47,13 +47,13 @@
         </table>
     </div>
     {% else %}
-    <p>
+    <h3>
         Заказ не найден
-    </p>
+    </h3>
     {% endif %}
     <div id="links">
         <span>
-            <a href="/shop">На главную</a>
+            <a href="/">На главную</a>
         </span>
         <br>
         <span>

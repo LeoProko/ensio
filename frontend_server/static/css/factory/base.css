@@ -1,9 +1,26 @@
-#ensio_header {
-    background: none;
+#header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    height: 40px;
+    color: var(--blue-text);
+    z-index: 100;
+    text-align: center;
 }
 
-#login_logo {
+#ghost_header {
+    height: 40px;
+}
+
+#header_logo {
     text-align: center;
+    height: 100%;
+}
+
+#header_logo img {
+    height: 30px;
     margin-top: 5px;
 }
 
@@ -21,7 +38,9 @@
     width: 100%;
 }
 
-#login_image, #login_form, #register_image {
+#login_image,
+#login_form,
+#register_image {
     display: inline-block;
 }
 
