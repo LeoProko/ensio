@@ -12,7 +12,7 @@ PRIVATE_DIR = '/home/leoproko/projects/ensio_private/'
 SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8').read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # On local debug add DOMAIN_NAME to /etc/hosts
 DOMAIN_NAME = 'leoproko.io'
@@ -116,6 +116,35 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Logger
+# https://docs.djangoproject.com/en/3.2/topics/logging/
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/log.log'),
+            'formatter': 'formatter',
+        },
+    },
+    'formatters': {
+        'formatter': {
+            'format': '{levelname} {asctime} {module}: {message}',
+            'style': '{',
+        }
+    },
+    'loggers': {
+        'shop': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
 
 
 # Internationalization

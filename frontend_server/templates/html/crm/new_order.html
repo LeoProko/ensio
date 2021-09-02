@@ -4,7 +4,7 @@
     <div id="order_form">
         <form action="" method="POST">
             {% for field in form %}
-                {{ field.label }}
+                <h3>{{ field.label }}</h3>
                 {{ field }}
                 <br>
             {% endfor %}

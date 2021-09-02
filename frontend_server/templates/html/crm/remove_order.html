@@ -1,13 +1,7 @@
-<link rel="stylesheet" tepe="text/css" href="{% static '/css/form.css' %}">
-<link rel="stylesheet" tepe="text/css" href="{% static '/css/table.css' %}">
-<link rel="stylesheet" tepe="text/css" href="{% static '/css/div.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static 'css/crm/orders.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static 'css/crm/order.css' %}">
 
-<div class="white_header">
-    <h2> Delete order {{ order.id }} </h2>
-    <h3> Are you sure to remove this order? </h3>
-</div>
-
-<table class="data_table">
+<table class="table">
     <tr id="tablde_header">
         <th> Order number </th>
         <th> Name id </th>
@@ -30,11 +24,15 @@
     </tr>
 </table>
 
-<div class="center_form">
+<div id="order_header">
+    <h2> Are you sure to remove order number {{ order.id }}? </h3>
+</div>
+
+<div id="remove_form">
     <form action="" method="POST">
         <a href="{% url 'orders' %}">
-            <input type="button" value="No, return back">
+            <input class="input_fill" type="button" value="No, return back">
         </a>
-        <input type="submit" value="Yes, delete">
+        <input class="input_stroke" type="submit" value="Yes, delete">
     </form>
 </div>

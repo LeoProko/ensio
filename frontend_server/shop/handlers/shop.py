@@ -8,10 +8,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
 from factory.html_factories.base import BaseHtmlFactory
+from factory.logger import Logger
 from crm.models import Order
 from shop.models import Item, ItemImage, Tag
 from crm.forms import FastOrderForm
 from shop.forms import TrackOrderForm
+
+logger = Logger(__name__)
 
 def all_items(request):
     template = Template(BaseHtmlFactory.create.new_create(
@@ -22,6 +25,7 @@ def all_items(request):
         'request' : request,
         'items' : items,
     })
+    logger.log_path(request)
     return HttpResponse(template.render(context))
 
 def get_sizes_list(sizes) -> list:
@@ -77,6 +81,7 @@ def view_item(request, item_id: int):
         'images' : images,
         'order_form' : order_form,
     })
+    logger.log_path(request)
     return HttpResponse(template.render(context))
 
 def collections(request):
@@ -90,7 +95,7 @@ def collections(request):
         'request' : request,
         'images' : images,
     })
-
+    logger.log_path(request)
     return HttpResponse(template.render(context))
 
 def delivery(request):
@@ -100,7 +105,7 @@ def delivery(request):
     context = Context({
         'request' : request,
     })
-
+    logger.log_path(request)
     return HttpResponse(template.render(context))
 
 def contacts(request):
@@ -110,7 +115,7 @@ def contacts(request):
     context = Context({
         'request' : request,
     })
-
+    logger.log_path(request)
     return HttpResponse(template.render(context))
 
 @csrf_exempt
@@ -118,20 +123,17 @@ def track_order(request):
     template = Template(BaseHtmlFactory.create.new_create(
         'shop', 'Track Order', 'track_order'
     ))
-
     form = TrackOrderForm()
-
     if request.method == 'POST':
         form = TrackOrderForm(request.POST)
         if form.is_valid():
             order_id = form.cleaned_data['order_id']
             return redirect('/track_order/' + order_id)
-
-
     context = Context({
         'request' : request,
         'form' : form,
     })
+    logger.log_path(request)
     return HttpResponse(template.render(context))
 
 
@@ -151,4 +153,5 @@ def track_order_by_id(request, order_id):
         'order_is_found' : order_is_found,
         'order' : order,
     })
+    logger.log_path(request)
     return HttpResponse(template.render(context))
