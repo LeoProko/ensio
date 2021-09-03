@@ -1,6 +1,9 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/shop/contacts.css' %} ">
+{% if is_mobile %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shop/contacts_mobile.css' %} ">
+{% endif %}
 
 <div class="contacts">
     <h1>
@@ -16,7 +19,7 @@
     </p>
 
     <p>
-        По всем вопросам можете писать в
+        По всем вопросам пишите в
         <a href="https://www.instagram.com/leoproko_shop/">инстаграм</a>,
         <a href="https://t.me/leoproko">телеграм</a>
         или

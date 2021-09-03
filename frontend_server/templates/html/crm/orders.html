@@ -53,7 +53,7 @@
         <td> {{ order.customer_name }} </td>
         <td> {{ order.connection_type }} </td>
         <td> {{ order.phone_number }} </td>
-        <td> {{ order.date_created }} </td>
+        <td> {{ order.date_created|date:'d M Y H:i' }} </td>
         <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
         <td> <a href="{% url 'remove_order' order.id %}"> Remove </a> </td>
     </tr>

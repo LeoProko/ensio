@@ -23,21 +23,18 @@ body {
 
 h1 {
   color: var(--blue-text);
-  font-weight: bold;
   font-size: 32px;
   font-weight: 600;
 }
 
 h2 {
   color: var(--blue-text);
-  font-weight: bold;
   font-size: 26px;
   font-weight: 600;
 }
 
 h3 {
   color: var(--blue-text);
-  font-weight: bold;
   font-size: 22px;
   font-weight: 600;
 }
@@ -202,28 +199,4 @@ pre {
 #logo_footer {
     display: inline-block;
     margin-top: 10px;
-}
-
-@media only screen and (max-width: 1000px) {
-    #footer {
-        height: 60px;
-    }
-
-    #footer span {
-        font-size: 40px;
-    }
-
-    #logo_footer img {
-        height: 50px;
-    }
-
-    #logo_footer a {
-        margin: 0 30px;
-        margin-top: -20px;
-    }
-
-    .footer_link a {
-        margin: 0 70px;
-        margin-top: -43px;
-    }
 }

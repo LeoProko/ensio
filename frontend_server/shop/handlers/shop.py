@@ -21,9 +21,13 @@ def all_items(request):
         'shop', 'Leo Proko Shop', 'all_items'
     ))
     items = Item.objects.all()
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
         'items' : items,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
@@ -74,12 +78,16 @@ def view_item(request, item_id: int):
             print('New Order has been created', request.POST)
             return redirect('/track_order/' + str(new_order.id))
 
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
         'item' : item,
         'item_tags' : item_tags,
         'images' : images,
         'order_form' : order_form,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
@@ -91,9 +99,13 @@ def collections(request):
     images_path = 'static/img/shop/collections/free_yourself'
     images = os.listdir(os.path.join(settings.BASE_DIR, images_path))
     images.sort()
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
         'images' : images,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
@@ -102,8 +114,12 @@ def delivery(request):
     template = Template(BaseHtmlFactory.create.new_create(
         'shop', 'Delivery', 'delivery'
     ))
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
@@ -112,8 +128,12 @@ def contacts(request):
     template = Template(BaseHtmlFactory.create.new_create(
         'shop', 'Contacts', 'contacts'
     ))
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
@@ -129,9 +149,13 @@ def track_order(request):
         if form.is_valid():
             order_id = form.cleaned_data['order_id']
             return redirect('/track_order/' + order_id)
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
         'form' : form,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
@@ -148,10 +172,14 @@ def track_order_by_id(request, order_id):
         order = Order.objects.get(id=order_id)
     except:
         order_is_found = False
+    is_mobile = False
+    if request.user_agent.is_mobile:
+        is_mobile = True
     context = Context({
         'request' : request,
         'order_is_found' : order_is_found,
         'order' : order,
+        'is_mobile' : is_mobile,
     })
     logger.log_path(request)
     return HttpResponse(template.render(context))
