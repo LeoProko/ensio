@@ -1,4 +1,4 @@
 # Proko Engine
 
 ## Shop
-The required photo size for the main page is a **vertical 3x4**
+The required photo size for the main page is a **vertical 4x5**
