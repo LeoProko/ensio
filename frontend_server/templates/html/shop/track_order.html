@@ -1,9 +1,18 @@
+{% load static %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/shop/track_order.css' %}">
 
-<div id="track_order">
-    <form id="track_order_form" action="" method="POST">
-        {{ form.order_id }}
-        <br>
-        <input type="submit" value="Найти заказ">
-    </form>
+<div id="track_order_wrapper">
+    <h1>
+        Где мой заказ?
+    </h1>
+    <img src="{% static 'img/shop/where_is_order.png' %}">
+
+    <div id="track_order">
+        <form id="track_order_form" action="" method="POST">
+            {{ form.order_id }}
+            <br>
+            <input type="submit" value="Поиск">
+        </form>
+    </div>
 </div>

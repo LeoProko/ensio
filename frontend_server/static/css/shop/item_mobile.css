@@ -4,19 +4,6 @@
     min-width: 0;
 }
 
-#header {
-    height: 65px;
-}
-
-#header_left img {
-    height: 45px;
-}
-
-.header_link {
-    font-size: 35px;
-    font-weight: 500;
-}
-
 #caption {
      text-align: center;
 }
@@ -152,12 +139,4 @@ select {
 
 #tutorial_table {
     font-size: 40px;
-}
-
-#footer {
-    height: 60px;
-}
-
-#logo_footer img {
-    height: 50px;
 }

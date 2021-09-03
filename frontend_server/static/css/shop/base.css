@@ -23,21 +23,18 @@ body {
 
 h1 {
   color: var(--blue-text);
-  font-weight: bold;
   font-size: 32px;
   font-weight: 600;
 }
 
 h2 {
   color: var(--blue-text);
-  font-weight: bold;
   font-size: 26px;
   font-weight: 600;
 }
 
 h3 {
   color: var(--blue-text);
-  font-weight: bold;
   font-size: 22px;
   font-weight: 600;
 }

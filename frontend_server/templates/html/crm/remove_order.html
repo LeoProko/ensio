@@ -20,7 +20,7 @@
         <td> {{ order.customer_name }} </td>
         <td> {{ order.connection_type }} </td>
         <td> {{ order.phone_number }} </td>
-        <td> {{ order.date_created }} </td>
+        <td> {{ order.date_created|date:'d M Y H:i' }} </td>
     </tr>
 </table>
 

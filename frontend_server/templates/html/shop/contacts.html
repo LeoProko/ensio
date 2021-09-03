@@ -1,6 +1,9 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/shop/contacts.css' %} ">
+{% if is_mobile %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shop/contacts_mobile.css' %} ">
+{% endif %}
 
 <div class="contacts">
     <h1>

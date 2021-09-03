@@ -2,6 +2,10 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/shop/delivery.css' %} ">
 
+{% if is_mobile %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shop/delivery_mobile.css' %} ">
+{% endif %}
+
 <div id="delivery">
     <h1>
         Доставка

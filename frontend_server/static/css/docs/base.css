@@ -16,21 +16,21 @@ body {
 
 h1 {
   color: black;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 30px;
   margin: 0;
 }
 
 h2 {
   color: black;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 24px;
   margin: 0;
 }
 
 h3 {
   color: black;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 20px;
   margin: 0;
 }

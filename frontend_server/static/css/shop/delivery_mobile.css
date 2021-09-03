@@ -1,0 +1,15 @@
+#delivery {
+    width: 100%;
+}
+
+#delivery h1 {
+    font-size: 50px;
+}
+
+#delivery p {
+    font-size: 30px;
+}
+
+.delivery_images {
+    width: 600px;
+}

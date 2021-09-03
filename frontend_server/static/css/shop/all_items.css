@@ -40,31 +40,6 @@
     border-radius: 60px;
 }
 
-@media only screen and (max-width: 1000px) {
-    .customers_content {
-        width: 100%;
-        margin-top: 1.3vw;
-    }
-
-    .item {
-      width: 95%;
-      height: 130vw;
-    }
-      
-    .item_name {
-        font-size: 9vw;
-    }
-
-    .item_material {
-        font-size: 4vw;
-    }
-
-    .item_price {
-        bottom: 5vw;
-        font-size: 7vw;
-    }
-}
-
 #items_header {
     display: flex;
     justify-content: space-between;
