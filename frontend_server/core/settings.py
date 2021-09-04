@@ -2,8 +2,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRIVATE_DIR = os.environ.get('PRIVATE_DIR')
-
+PRIVATE_DIR = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'ensio_private')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -12,10 +11,23 @@ PRIVATE_DIR = os.environ.get('PRIVATE_DIR')
 SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8').read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '195.2.70.101', 'leoproko.ru']
+# On local debug add DOMAIN_NAME to /etc/hosts
+DOMAIN_NAME = 'leoproko.io'
 
+ALLOWED_HOSTS = [
+    DOMAIN_NAME,
+    '.' + DOMAIN_NAME,
+    '127.0.0.1',
+    '195.2.70.101',
+]
+
+ROOT_HOSTCONF = 'core.hosts'
+DEFAULT_HOST = 'base'
+PARENT_HOST = DOMAIN_NAME
+HOST_PORT = '8080'
+SESSION_COOKIE_DOMAIN = '.' + DOMAIN_NAME
 
 # Application definition
 
@@ -26,15 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'back_office',
-    'customer_app',
-    'landing',
     'core',
+    'docs',
+    'shop',
+    'crm',
     'factory',
     'django_filters',
+    'django_hosts',
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -43,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -99,6 +114,35 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Logger
+# https://docs.djangoproject.com/en/3.2/topics/logging/
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/log.log'),
+            'formatter': 'formatter',
+        },
+    },
+    'formatters': {
+        'formatter': {
+            'format': '{levelname} {asctime} {module}: {message}',
+            'style': '{',
+        }
+    },
+    'loggers': {
+        'shop': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
 
 
 # Internationalization

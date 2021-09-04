@@ -1,0 +1,38 @@
+<link rel="stylesheet" tepe="text/css" href="{% static 'css/crm/orders.css' %}">
+<link rel="stylesheet" tepe="text/css" href="{% static 'css/crm/order.css' %}">
+
+<table class="table">
+    <tr id="tablde_header">
+        <th> Order number </th>
+        <th> Name id </th>
+        <th> Size </th>
+        <th> Status </th>
+        <th> Name </th>
+        <th> Contact type </th>
+        <th> Phone number </th>
+        <th> Date created </th>
+    </tr>
+    <tr>
+        <td> {{ order.id }} </td>
+        <td> {{ order.item.name_id }} </td>
+        <td> {{ order.size }} </td>
+        <td> {{ order.status }} </td>
+        <td> {{ order.customer_name }} </td>
+        <td> {{ order.connection_type }} </td>
+        <td> {{ order.phone_number }} </td>
+        <td> {{ order.date_created|date:'d M Y H:i' }} </td>
+    </tr>
+</table>
+
+<div id="order_header">
+    <h2> Are you sure to remove order number {{ order.id }}? </h3>
+</div>
+
+<div id="remove_form">
+    <form action="" method="POST">
+        <a href="{% url 'orders' %}">
+            <input class="input_fill" type="button" value="No, return back">
+        </a>
+        <input class="input_stroke" type="submit" value="Yes, delete">
+    </form>
+</div>

@@ -1,0 +1,16 @@
+.user_page_header {
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user_page_header div {
+    background: #ffffff;
+    padding: 10px 20px;
+    width: 400px;
+    height: auto;
+    text-align: center;
+    border: 1px solid #81AFF0;
+    border-radius: 20px;
+}

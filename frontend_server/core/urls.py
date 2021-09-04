@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import handler404, handler500
+
+from factory.decorators import not_found
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('back_office/', include('back_office.urls')),
-    path('landing/', include('landing.urls')),
     path('', include('factory.urls')),
-    path('', include('customer_app.urls')),
+    path('admin/', admin.site.urls),
 ]
+
+handler404 = not_found
+handler500 = not_found

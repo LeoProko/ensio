@@ -1,0 +1,71 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/shop/track_order.css' %}">
+
+<div id="track_order_wrapper">
+    <h1>
+        Где мой заказ?
+    </h1>
+    <img src="{% static 'img/shop/where_is_order.png' %}">
+    <div id="track_order_id">
+        {% if order_is_found %}
+        <div id="table">
+            <table>
+                <tr>
+                    <td>
+                        Номер заказа
+                    </td>
+                    <td>
+        {{ order.id }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Товар
+                    </td>
+                    <td>
+                        {{ order.item.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Размер
+                    </td>
+                    <td>
+                        {{ order.size }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Статус
+                    </td>
+                    <td>
+                        {{ order.status }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Дата создания
+                    </td>
+                    <td>
+                        {{ order.date_created|date:'d M Y H:i' }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {% else %}
+        <h1>
+            Заказ не найден
+        </h1>
+        {% endif %}
+        <div id="links">
+            <span>
+                <a href="/">На главную</a>
+            </span>
+            <br>
+            <span>
+                <a href="/track_order">Отследить другой заказ</a>
+            </span>
+        </div>
+    </div>
+</div>

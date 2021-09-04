@@ -1,0 +1,35 @@
+{% load static %}
+
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+
+<div class="order_form">
+    <form action="" method="POST">
+        <div>
+            {{ order_form.customer_name }}
+        </div>
+        <div>
+            <h2 class="form_title">
+                Способ связи
+            </h2>
+            {{ order_form.connection_type }}
+        </div>
+        <div>
+            {{ order_form.phone_number }}
+        </div>
+        <div>
+            <h2 class="form_title">
+                Размер
+            </h2>
+            {{ order_form.size }}
+            {% if 'ring' in item_tags %}
+                <p class="field_help_text">
+                    <a href="#size_tutorial"
+                        id="size_tutorial_link">
+                        Как выбрать размер?
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+        <input id="order_button" type="submit" value="Заказать">
+    </form>
+</div>

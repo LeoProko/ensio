@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/crm/order.css' %}">
+
+<div id="order">
+    <div id="order_form">
+        <form action="" method="POST">
+            {% for field in form %}
+                <h3>{{ field.label }}</h3>
+                {{ field }}
+                <br>
+            {% endfor %}
+            <div id="submit_button">
+                <input class="input_fill" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>

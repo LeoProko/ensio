@@ -1,0 +1,19 @@
+{% load static %}
+{% load hosts %}
+
+<div id="ghost_footer"></div>
+
+<div id="footer">
+    <div class="inline_button">
+        <input form="doc_form" type="submit" value="Save/Compile" />
+    </div>
+    <div class="inline_button">
+    {% if document %}
+        <a href="{% url 'view_document' document.id %}">
+    {% else %}
+        <a href="">
+    {% endif %}
+            <input type="button" value="View" />
+        </a>
+    </div>
+</div>

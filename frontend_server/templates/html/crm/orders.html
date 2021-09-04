@@ -1,0 +1,61 @@
+<link rel="stylesheet" type="text/css" href="{% static 'css/crm/orders.css' %}">
+
+<div class="orders_header_container">
+    <div class="orders_header" id="left">
+        <div>
+            <h3> Found {{ order_counter }} orders </h3>
+            <ul>
+            {% for order_count in order_counters %}
+                <li>
+                    {{ order_count.0 }}: {{ order_count.1 }}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="orders_header" id="right">
+        <form method="get">
+            <p class="input_title">
+                Item: 
+            </p>{{ filter.form.item }}
+            <p class="input_title">
+                Status:
+            </p>{{ filter.form.status }}
+            <p class="input_title">
+                Phone number:
+            </p>{{ filter.form.phone_number }}
+            <div id="search_button">
+                <input class="input_fill" type="submit" value="Search">
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <tr id="tablde_header">
+        <th> Order number </th>
+        <th> Name id </th>
+        <th> Size </th>
+        <th> Status </th>
+        <th> Name </th>
+        <th> Contact type </th>
+        <th> Phone number </th>
+        <th> Date created </th>
+        <th> Change </th>
+        <th> Remove </th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td> {{ order.id }} </td>
+        <td> {{ order.item.name_id }} </td>
+        <td> {{ order.size }} </td>
+        <td> {{ order.status }} </td>
+        <td> {{ order.customer_name }} </td>
+        <td> {{ order.connection_type }} </td>
+        <td> {{ order.phone_number }} </td>
+        <td> {{ order.date_created|date:'d M Y H:i' }} </td>
+        <td> <a href="{% url 'change_order' order.id %}"> Change </a> </td>
+        <td> <a href="{% url 'remove_order' order.id %}"> Remove </a> </td>
+    </tr>
+    {% endfor %}
+</table>

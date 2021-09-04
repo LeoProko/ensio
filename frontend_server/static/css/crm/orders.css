@@ -1,0 +1,62 @@
+.orders_header_container {
+    height: 230px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.orders_header {
+    background: #ffffff;
+    display: inline-block;
+    width: 48%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    padding: 0.7%;
+    border: 2px solid var(--blue-text);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orders_header h3 {
+    margin: 3px;
+}
+
+.orders_header select,
+.orders_header input[type=text] {
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    background: #ffffff;
+    border: 2px solid var(--blue-text);
+    color: var(--blue-text);
+    outline: none;
+}
+
+.orders_header#right {
+    right: 0;
+}
+.orders_header#right form {
+    max-width: 400px;
+}
+
+#search_button {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#search_button input {
+    text-align: center;
+    width: 100px;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.input_title {
+    color: var(--blue-text);
+    margin: 5px 0;
+    font-weight: 600;
+}

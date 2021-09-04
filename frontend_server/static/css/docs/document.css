@@ -1,0 +1,103 @@
+.document_title {
+    width: 90%;
+    max-width: 1000px;
+    background:white;
+    padding:10px 40px;
+    margin: auto auto;
+}
+
+.title_text {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.document_body {
+    background: #81AFF0;
+    padding: 0;
+    width: 45%;
+    height: auto;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    border: 2px solid #81AFF0;
+    color: #ffffff;
+}
+
+.document_view {
+    background:white;
+    padding:10px 40px;
+    padding-bottom: 25px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#document_preview {
+    background: #ffffff;
+    padding: 30px;
+    min-height: 200px;
+    color: #000000;
+}
+
+#editor {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.editor_title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.document_textarea textarea {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    border: 0;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+}
+
+select {
+    background: #81AFF0;
+    font-family: inherit;
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    width: 400px;
+    height: 20px;
+    outline: none;
+}
+
+.input_form {
+    width: 90%;
+}
+
+.input_form input {
+    width: 100%;
+    background: #81AFF0;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    padding: 5px 10px;
+}
+
+.buttons_wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.buttons_wrapper input {
+    text-align: center;
+    font-size: 22px;
+    width: 100%;
+    font-weight: 600;
+}

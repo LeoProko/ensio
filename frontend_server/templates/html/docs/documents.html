@@ -1,0 +1,60 @@
+{% load static %}
+{% load hosts %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/docs/documents.css' %}">
+
+<script type="text/javascript" src="{% static 'js/documents.js' %}"></script>
+
+<div class="documents">
+    <div id="documents_header">
+        <div>
+            The best docs
+        </div>
+        <div>
+            <img id="documents_image" src="{% static 'img/docs/sleepy-welcome-2.png' %}">
+        </div>
+        <div>
+            From the best editor
+        </div>
+    <br>
+    {% for document in documents %}
+        <div class="document" data-link="{% url 'view_document' document.id %}">
+            <div class="document_title">
+                <b>{{ document.title }}</b>
+            </div>
+            <hr>
+            <div class="document_title">
+                {% comment %}{% if document.authors.all|length == 1 %}{% endcomment %}
+                {% comment %}Author:{% endcomment %}
+                {% comment %}{% else %}{% endcomment %}
+                {% comment %}Authors:{% endcomment %}
+                {% comment %}{% endif %}{% endcomment %}
+                {% comment %}<b>{% endcomment %}
+                    {% comment %}{% with document.authors.all|length as last_index %}{% endcomment %}
+                    {% comment %}{% with document.authors.all.last as last %}{% endcomment %}
+                        {% comment %}{% for author in document.authors.all %}{% endcomment %}
+                            {% comment %}{{ author.public_name }}{% endcomment %}
+                            {% comment %}{% if author != last %}{% endcomment %}
+                                {% comment %},{% endcomment %}
+                            {% comment %}{% endif %}{% endcomment %}
+                        {% comment %}{% endfor %}{% endcomment %}
+                    {% comment %}{% endwith %}{% endcomment %}
+                    {% comment %}{% endwith %}{% endcomment %}
+                {% comment %}</b>{% endcomment %}
+                Author:
+                <b>
+                    <a href="{% host_url 'user_page' document.owner host 'docs' %}">
+                        {{ document.owner }}
+                    </a>
+                </b>
+            </div>
+            <div class="document_title">
+                Date created: {{ document.date_created|date:'d M Y H:i' }}
+            </div>
+            <hr>
+            <div class="document_preview">
+                {{ document.html_data|slice:':230'|safe }}...
+            </div>
+        </div>
+    {% endfor %}
+</div>

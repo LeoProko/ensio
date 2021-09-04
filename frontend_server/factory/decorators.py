@@ -4,9 +4,9 @@ from django.http import HttpResponse
 
 from factory.html_factories.base import BaseHtmlFactory
 
-def no_permissions(request):
-    template = Template(BaseHtmlFactory.create.back_office(
-        'No permissions', 'back_office', 'no_permissions', '', ''
+def not_found(request, *args, **kwargs):
+    template = Template(BaseHtmlFactory.create.new_create(
+        'factory', 'Not found', 'not_found'
     ))
     context = Context({
         'request' : request,
@@ -27,6 +27,6 @@ def allowed_users(allowed_users_list=[]):
             for group in request.user.groups.all():
                 if group.name in allowed_users_list:
                     return handle_func(request, *args, **kwargs)
-            return no_permissions(request)
+            return not_found(request)
         return wrapper
     return decorator

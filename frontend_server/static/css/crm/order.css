@@ -1,0 +1,59 @@
+#order {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#order h3 {
+    margin-bottom: 2px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+#order_header {
+    text-align: center;
+}
+
+#order_form {
+    background: #ffffff;
+    border: 2px solid var(--blue-text);
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 10px 30px;
+}
+
+#order_form select,
+#order_form input {
+    height: auto;
+    width: 100%;
+    font-size: 20px;
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid var(--blue-text);
+    padding: 2px 5px;
+}
+
+#submit_button {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#submit_button input {
+    font-size: 20px;
+    text-align: center;
+    padding: 1% 2%;
+}
+
+#remove_form {
+  margin: 10px auto;
+  text-align: center;
+}
+
+#remove_form a {
+    text-decoration: none;
+}
+
+#remove_form input {
+  font-size: 20px;
+  padding: 5px 10px;
+  font-weight: 600;
+}

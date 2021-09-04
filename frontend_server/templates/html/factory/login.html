@@ -1,11 +1,30 @@
-<h2>Login</h2>
+{% load static %}
+{% load hosts %}
 
-<form method="POST" action="">
-    <input type="text" name="email" placeholder="Email...">
-    <input type="password" name="password" placeholder="Password...">
-    <input type="submit" value="Login">
-</form>
-
-{% for message in messages %}
-    <p class="message">{{ message }}</p>
-{% endfor %}
+<div id="login_body">
+    <div id="login_image">
+        <img src="{% static 'img/factory/login_character.png' %}">
+    </div>
+    <div id="login_form">
+        <h2>Welcome back!</h2>
+        <form method="POST" action="">
+            {{ form.email }}
+            <br>
+            {{ form.password }}
+            <br>
+            <input type="submit" value="Login">
+        </form>
+        <a href="{% host_url 'register' host 'base' %}">
+            Don't have an account?
+        </a>
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                   {{ message }}
+            </div>
+        {% endfor %}
+        {% if form.errors %}
+            <p>Email or password not correct</p>
+        {% endif %}
+    </div>
+</div>

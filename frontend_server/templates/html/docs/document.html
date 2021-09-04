@@ -1,0 +1,54 @@
+{% load hosts %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/docs/document.css' %}">
+
+<div class="document_title">
+    <h1> {{ document.title }} </h1>
+    {% comment %}{% if document.authors.all|length == 1 %}{% endcomment %}
+    {% comment %}<i>Author:</i>{% endcomment %}
+    {% comment %}{% else %}{% endcomment %}
+    {% comment %}<i>Authors:</i>{% endcomment %}
+    {% comment %}{% endif %}{% endcomment %}
+    {% comment %}<b>{% endcomment %}
+        {% comment %}{% with document.authors.all|length as last_index %}{% endcomment %}
+        {% comment %}{% with document.authors.all.last as last %}{% endcomment %}
+            {% comment %}{% for author in document.authors.all %}{% endcomment %}
+                {% comment %}<a href="{% host_url 'user_page' author.username host 'docs' %}">{% endcomment %}
+                    {% comment %}{{ author.public_name }}{% endcomment %}
+                {% comment %}</a>{% endcomment %}
+                {% comment %}{% if author != last %}{% endcomment %}
+                    {% comment %},{% endcomment %}
+                {% comment %}{% endif %}{% endcomment %}
+            {% comment %}{% endfor %}{% endcomment %}
+        {% comment %}{% endwith %}{% endcomment %}
+        {% comment %}{% endwith %}{% endcomment %}
+    {% comment %}</b>{% endcomment %}
+    Author:
+    <b>
+        <a href="{% host_url 'user_page' document.owner host 'docs' %}">
+            {{ document.owner }}
+        </a>
+    </b>
+    <br>
+    <i> Date created: {{ document.date_created|date:'d M Y H:i' }} </i>
+    {% if can_edit %}
+        <br>
+        <br>
+        <div class="buttons_wrapper">
+            <div class="inline_button">
+                <a href="{% url 'edit_document' document.id %}">
+                    <input class="input_fill" type="submit" value="Edit" />
+                </a>
+            </div>
+            <div class="inline_button">
+                <a href="{% url 'remove_document' document.id %}">
+                    <input class="input_stroke" type="submit" value="Remove" />
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<div class="document_view">
+    {{ document.html_data|safe }}
+</div>

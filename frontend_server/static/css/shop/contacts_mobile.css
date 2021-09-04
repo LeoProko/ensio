@@ -1,0 +1,15 @@
+.contacts {
+    width: 100%;
+}
+
+.contacts h1 {
+    font-size: 50px;
+}
+
+.contacts p {
+    font-size: 30px;
+}
+
+.contacts_images {
+    width: 600px;
+}

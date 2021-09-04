@@ -4,52 +4,47 @@ from django.forms import ModelForm, Form
 
 from markdown import markdown
 
-from .models import Order, Document, Task, User
-
-class OrderForm(ModelForm):
-    class Meta:
-        model = Order
-        fields = '__all__'
-
-class FastOrderForm(Form):
-    CONNECTION = (
-        ('Phone', 'Телефон'),
-        ('Telegram', 'Телеграм'),
-        ('Whats App', 'Вотс ап'),
-    )
-    size = forms.ChoiceField(choices=[])
-    customer_name = forms.CharField(max_length=50, label='Имя', widget=forms.TextInput(
-        attrs={
-            'Placeholder' : 'Имя',
-        }
-    ))
-    connection_type = forms.ChoiceField(choices=CONNECTION, widget=forms.RadioSelect)
-    phone_number = forms.CharField(max_length=50, label='Номер телефона', widget=forms.TextInput(
-        attrs={
-            'Placeholder' : 'Номер телефона',
-        }
-    ))
+from factory.models import User
 
 class RegisterForm(UserCreationForm):
-    phone_number = forms.CharField(max_length=12)
+    username = forms.CharField(label='username', widget=forms.TextInput(
+        attrs={
+            'Placeholder' : 'Username',
+        }
+    ))
+    email = forms.EmailField(label='email', widget=forms.TextInput(
+        attrs={
+            'Placeholder' : 'E-mail',
+        }
+    ))
+    phone_number = forms.CharField(label='phone_number', widget=forms.TextInput(
+        attrs={
+            'Placeholder' : 'Phone number',
+        }
+    ))
+    password1 = forms.CharField(label='password1', widget=forms.PasswordInput(
+        attrs={
+            'Placeholder' : 'Password',
+        }
+    ))
+    password2 = forms.CharField(label='password2', widget=forms.PasswordInput(
+        attrs={
+            'Placeholder' : 'Repeat password',
+        }
+    ))
+
     class Meta:
         model = User
         fields = ['username', 'email', 'phone_number', 'password1', 'password2']
 
-class DocumentForm(ModelForm):
-    class Meta:
-        model = Document
-        fields = '__all__'
-        exclude = ['html_data', 'owner', 'preview']
-
-class TaskForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = '__all__'
-
-class TrackOrderForm(forms.Form):
-    order_id = forms.CharField(max_length=12, widget=forms.TextInput(
+class LoginForm(Form):
+    email = forms.EmailField(label='email', widget=forms.TextInput(
         attrs={
-            'Placeholder' : 'Номер заказа'
+            'Placeholder' : 'E-mail',
+        }
+    ))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(
+        attrs={
+            'Placeholder' : 'Password',
         }
     ))

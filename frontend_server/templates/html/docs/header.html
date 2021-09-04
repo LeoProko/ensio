@@ -1,0 +1,38 @@
+{% load static %}
+{% load hosts %}
+
+<div id="header">
+    <div id="header_buttons">
+        <table>
+            <tr>
+                <td id="header_left">
+                    <a href="/">
+                        <img id="logo" src="{% static 'img/logo/proko_docs_blue.svg' %}">
+                    </a>
+                </td>
+                <td id="header_right">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% host_url 'new_document' host 'docs' %}">
+                            <input type="button" class="input_fill" value="New doc">
+                        </a>
+                        <a href="{% host_url 'user_page' request.user.username host 'docs' %}">
+                            <input type="button" class="input_stroke" value="{{ request.user.username }}">
+                        </a>
+                        <a href="{% host_url 'logout' host 'base' %}">
+                            <input type="button" class="input_stroke" value="Logout">
+                        </a>
+                    {% else %}
+                        <a href="{% host_url 'login' host 'base' %}">
+                            <input type="button" class="input_fill" value="Login">
+                        </a>
+                        <a href="{% host_url 'register' host 'base' %}">
+                            <input type="button" class="input_stroke" value="Register">
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="ghost_header"></div>

@@ -1,0 +1,36 @@
+{% load hosts %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/docs/documents.css' %}">
+
+<div class="documents">
+    <div class="document" data-link="{% url 'view_document' document.id %}">
+        <div class="document_title">
+            <b>{{ document.title }}</b>
+        </div>
+        <hr>
+        <div class="document_title">
+            Author:
+            <b>
+                <a href="{% host_url 'user_page' document.owner host 'docs' %}">
+                    {{ document.owner }}
+                </a>
+            </b>
+        </div>
+        <div class="document_title">
+            Date created: {{ document.date_created|date:'d M Y H:i' }}
+        </div>
+        <hr>
+        <div class="document_preview">
+            {{ document.html_data|slice:':230'|safe }}...
+        </div>
+    </div>
+</div>
+
+<div class="remove_form">
+    <form action="" method="POST">
+        <a href="{% url 'documents' %}">
+            <input class="input_stroke" type="button" value="No, return back">
+        </a>
+        <input class="input_fill" type="submit" value="Yes, delete">
+    </form>
+</div>

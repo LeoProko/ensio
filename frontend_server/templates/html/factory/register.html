@@ -1,16 +1,37 @@
-<h2>Register</h2>
-<form method="POST" action="">
-    Email: {{ form.email }}
-    <hr>
-    Phone number: {{ form.phone_number }}
-    <hr>
-    Username: {{ form.username }}
-    <hr>
-    Password: {{ form.password1 }}
-    <hr>
-    Repeat password: {{ form.password2 }}
-    <hr>
-    <input type="submit" value="Register">
-    <hr>
-    {{ form.errors }}
-</form>
+{% load static %}
+{% load hosts %}
+
+<div id="register_body">
+    <div id="register_image">
+        <img src="{% static 'img/factory/register_character.png' %}">
+    </div>
+    <div id="login_form">
+        <h2>Hi!</h2>
+        Fill out the form below
+        <br>
+        to register
+        <br>
+        <form method="POST" action="">
+            {{ form.email }}
+            <br>
+            {{ form.phone_number }}
+            <br>
+            {{ form.username }}
+            <br>
+            {{ form.password1 }}
+            <br>
+            {{ form.password2 }}
+            <br>
+            <input type="submit" value="Register">
+            <br>
+            <a href="{% host_url 'login' host 'base' %}">
+                Already have an account?
+            </a>
+            {{ form.errors.email }}
+            {{ form.errors.phone_number }}
+            {{ form.errors.username }}
+            {{ form.errors.password1 }}
+            {{ form.errors.password2 }}
+        </form>
+    </div>
+</div>

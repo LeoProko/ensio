@@ -1,0 +1,53 @@
+.documents {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.document {
+    text-align: left;
+    background: #ffffff;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    font-size: 18px;
+    padding: 20px;
+    margin: 10px;
+    vertical-align: middle;
+    border: 1px solid #81AFF0;
+    border-radius: 20px;
+}
+
+.document:hover {
+    background: #D6E7FF;
+    border: 1px solid #ffffff;
+}
+
+#documents_header div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#documents_image {
+    width: 500px;
+}
+
+.document_preview {
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #D6E7FF;
+    padding: 20px 40px;
+    border-radius: 20px;
+}
+
+.document_preview h1,
+.document_preview h2,
+.document_preview h3,
+.document_preview p {
+    font-size: 18px;
+}
+
+.preview_title {
+    text-align: center;
+    font-size: 25px;
+}

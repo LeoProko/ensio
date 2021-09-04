@@ -1,0 +1,38 @@
+#size_tutorial {
+    text-align: center;
+    margin: 5% 0;
+}
+
+#size_tutorial p {
+    text-align: left;
+}
+
+#size_tutorial img {
+    padding: 5%;
+    width: 150px;
+}
+
+#tutorial_table {
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid var(--blue-text);
+    border-collapse: collapse;
+    width: 90%;
+}
+
+#tutorial_table th,
+#tutorial_table td {
+    border: 1px solid var(--blue-text);
+}
+
+#tutorial_table th {
+    padding: 10px;
+}
+
+#tutorial_table td {
+    padding: 5px;
+    vertical-align: top;
+    width: 50%;
+    text-align: center;
+}
+
