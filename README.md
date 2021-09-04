@@ -13,7 +13,7 @@ python3 -c 'from django.core.management.utils import get_random_secret_key; prin
 
 - Install all necessary extensions
 ```bash
-pip3 install -r requirements.txt
+./install_requirements.sh
 ```
 
 - Go to the `frontend_server` directory and add the necessary hosts to your machine. This is needed to run subdomains like docs.leoproko.io, shop.leoproko.io, etc,
