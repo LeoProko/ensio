@@ -26,7 +26,7 @@ def all_items(request):
         is_mobile = True
     context = Context({
         'request' : request,
-        'items' : items,
+        'items' : reversed(items),
         'is_mobile' : is_mobile,
     })
     logger.log_path(request)
