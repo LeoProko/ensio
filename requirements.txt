@@ -4,5 +4,6 @@ django-filter==2.4.0
 django-hosts==4.0
 django-ipware==4.0.0
 django-user-agents==0.4.0
+Markdown==3.3.4
 requests==2.25.1
 user-agents==2.2.0
