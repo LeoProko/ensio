@@ -2,8 +2,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# PRIVATE_DIR = os.environ.get('PRIVATE_DIR')
-PRIVATE_DIR = '/home/leoproko/projects/ensio_private/'
+PRIVATE_DIR = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'ensio_private')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -16,7 +15,6 @@ DEBUG = False
 
 # On local debug add DOMAIN_NAME to /etc/hosts
 DOMAIN_NAME = 'leoproko.io'
-# DOMAIN_NAME = 'leoproko.ru'
 
 ALLOWED_HOSTS = [
     DOMAIN_NAME,
