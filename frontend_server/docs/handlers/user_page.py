@@ -18,8 +18,8 @@ def index(request, username):
     if request.user.is_authenticated:
         if request.user == user:
             documents = Document.objects.filter(
-                Q(owner=user.public_name) |
-                Q(authors__public_name__contains=user.public_name) |
+                Q(owner=user.username) |
+                Q(authors__username__contains=user.username) |
                 (
                     reduce(
                         lambda x, y : x | y,
@@ -32,16 +32,16 @@ def index(request, username):
         elif request.user.is_superuser:
             documents = Document.objects.filter(
                 (
-                    Q(owner=user.public_name) |
-                    Q(authors__public_name__contains=user.public_name)
+                    Q(owner=user.username) |
+                    Q(authors__username__contains=user.username)
                 ) &
                 Q(is_link_public=True)
             ).distinct()
         else:
             documents = Document.objects.filter(
                 (
-                    Q(owner=user.public_name) |
-                    Q(authors__public_name__contains=user.public_name)
+                    Q(owner=user.username) |
+                    Q(authors__username__contains=user.username)
                 ) & (
                         (
                             Q(is_link_public=True) &
@@ -53,14 +53,14 @@ def index(request, username):
                             for user_group in request.user.groups.all()]
                         ) |
                         Q(owner=request.user.username) |
-                        Q(authors__public_name__contains=request.user.public_name)
+                        Q(authors__username__contains=request.user.username)
                     )
             ).distinct()
     else:
         documents = Document.objects.filter(
             (
-                Q(owner=user.public_name) |
-                Q(authors__public_name__contains=user.public_name)
+                Q(owner=user.username) |
+                Q(authors__username__contains=user.username)
             ) &
             Q(is_link_public=True) &
             Q(is_indexed=True)
