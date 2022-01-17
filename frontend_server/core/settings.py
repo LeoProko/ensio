@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'docs',
     'shop',
     'crm',
+    'design',
     'factory',
     'django_filters',
     'django_hosts',

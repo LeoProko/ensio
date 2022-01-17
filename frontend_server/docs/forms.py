@@ -1,8 +1,6 @@
-from django import forms
 from django.forms import ModelForm
 
 from docs.models import Document
-from factory.models import User
 
 class DocumentForm(ModelForm):
     class Meta:

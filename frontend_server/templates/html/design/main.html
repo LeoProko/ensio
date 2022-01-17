@@ -1,0 +1,11 @@
+{% load static %}
+{% load hosts %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/design/main.css' %}">
+
+<div class="image_generator_body">
+    <h1> Hi! </h1>
+    <form id="image_name_form" action="" method="POST">
+        {{ form.image_name }}
+    </form>
+</div>

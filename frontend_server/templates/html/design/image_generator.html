@@ -1,0 +1,10 @@
+{% load static %}
+{% load hosts %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/design/main.css' %}">
+
+<div class="image_generator_body">
+    <h1> Good {{ image_name }} </h1>
+    <img id="generator_image" src="{% static image_path %}"/>
+    <p><a href="{% host_url 'index' host 'design' %}"> Back</a></p>
+</div>

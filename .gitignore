@@ -1,6 +1,8 @@
 #project folders
 frontend_server/static/img/item_photos/
 frontend_server/factory/migrations/
+logs
+*.logs
 
 # DB
 *.sqlite3

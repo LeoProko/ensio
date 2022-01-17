@@ -1,8 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from django.forms import ModelForm, Form
+from django.forms import Form
 
-from markdown import markdown
 
 from factory.models import User
 

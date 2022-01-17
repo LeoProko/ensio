@@ -66,3 +66,10 @@ input[type=submit] {
     color: #ffffff;
     width: 410px;
 }
+
+@media only screen and (max-width: 1000px) {
+    #header_logo img {
+        height: 40px;
+        margin-top: 5px;
+    }
+}
