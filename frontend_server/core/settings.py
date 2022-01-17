@@ -147,6 +147,11 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
+        'design': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
     },
 }
 
