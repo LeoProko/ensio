@@ -14,9 +14,9 @@ SECRET_KEY = open(os.path.join(PRIVATE_DIR, 'secret_key'), 'r', encoding='utf8')
 DEBUG = False
 
 # On local debug add DOMAIN_NAME to /etc/hosts
-DOMAIN_NAME = 'leoproko.io'
 DOMAIN_NAME_RU = 'leoproko.ru'
-DOMAIN_NAME_COM = 'leoproko.com'
+# DOMAIN_NAME_COM = 'leoproko.com'
+DOMAIN_NAME_COM = 'leoproko.io'
 
 ALLOWED_HOSTS = [
     DOMAIN_NAME_RU,

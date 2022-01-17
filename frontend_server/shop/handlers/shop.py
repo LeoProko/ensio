@@ -10,7 +10,7 @@ from django.conf import settings
 from factory.html_factories.base import BaseHtmlFactory
 from factory.logger import Logger
 from crm.models import Order
-from shop.models import Item, ItemImage, Tag
+from shop.models import Item, ItemImage
 from crm.forms import FastOrderForm
 from shop.forms import TrackOrderForm
 
