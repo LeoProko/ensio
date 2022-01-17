@@ -14,7 +14,7 @@ from shop.models import Item, ItemImage, Tag
 from crm.forms import FastOrderForm
 from shop.forms import TrackOrderForm
 
-logger = Logger(__name__)
+logger = Logger(__name__, 'shop.leoproko.ru')
 
 def all_items(request):
     template = Template(BaseHtmlFactory.create.new_create(

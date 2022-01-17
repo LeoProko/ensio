@@ -15,19 +15,24 @@ DEBUG = False
 
 # On local debug add DOMAIN_NAME to /etc/hosts
 DOMAIN_NAME = 'leoproko.io'
+DOMAIN_NAME_RU = 'leoproko.ru'
+DOMAIN_NAME_COM = 'leoproko.com'
 
 ALLOWED_HOSTS = [
-    DOMAIN_NAME,
-    '.' + DOMAIN_NAME,
+    DOMAIN_NAME_RU,
+    DOMAIN_NAME_COM,
+    '.' + DOMAIN_NAME_RU,
+    '.' + DOMAIN_NAME_COM,
     '127.0.0.1',
     '195.2.70.101',
 ]
 
 ROOT_HOSTCONF = 'core.hosts'
 DEFAULT_HOST = 'base'
-PARENT_HOST = DOMAIN_NAME
+PARENT_HOST = DOMAIN_NAME_COM
 HOST_PORT = '8080'
-SESSION_COOKIE_DOMAIN = '.' + DOMAIN_NAME
+# HOST_PORT = '80'
+SESSION_COOKIE_DOMAIN = '.' + DOMAIN_NAME_COM
 
 # Application definition
 
@@ -168,6 +173,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
+# STATIC_URL = '/root/ensio/frontend_server/static/'
 
 MEDIA_URL = '/img/'
 
