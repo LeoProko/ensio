@@ -10,3 +10,4 @@ requests==2.22.0
 user-agents==2.2.0
 numpy==1.21.3
 opencv-python==4.5.5.62
+bs4==0.0.1
